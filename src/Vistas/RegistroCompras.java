@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import walletcontrol.TextPrompt;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import walletcontrol.ControlCompras;

@@ -5,8 +5,8 @@
  */
 package Vistas;
 
+import walletcontrol.TextPrompt;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 
 /**
  *
@@ -212,7 +212,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
-         System.exit(0);erpox
+         System.exit(0);
     }//GEN-LAST:event_jLabel5MousePressed
 
     

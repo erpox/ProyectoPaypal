@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import walletcontrol.TextPrompt;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
