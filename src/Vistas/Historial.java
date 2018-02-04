@@ -402,11 +402,12 @@ public class Historial extends javax.swing.JFrame {
         });
         TablaCompras.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         TablaCompras.setAutoscrolls(false);
+        TablaCompras.setColumnSelectionAllowed(false);
         TablaCompras.setComponentPopupMenu(jPopupMenu1);
         TablaCompras.setGridColor(new java.awt.Color(245, 245, 245));
         TablaCompras.setRowHeight(30);
         TablaCompras.setSelectionBackground(new java.awt.Color(30, 136, 229));
-        TablaCompras.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TablaCompras.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         TablaCompras.getTableHeader().setResizingAllowed(false);
         TablaCompras.getTableHeader().setReorderingAllowed(false);
         TablaCompras.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -419,7 +420,6 @@ public class Historial extends javax.swing.JFrame {
         if (TablaCompras.getColumnModel().getColumnCount() > 0) {
             TablaCompras.getColumnModel().getColumn(0).setResizable(false);
             TablaCompras.getColumnModel().getColumn(0).setPreferredWidth(15);
-            TablaCompras.getColumnModel().getColumn(0).setCellRenderer(null);
         }
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 500));
