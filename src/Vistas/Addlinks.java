@@ -5,18 +5,29 @@
  */
 package Vistas;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.filechooser.FileSystemView;
+
 /**
  *
  * @author Eduardo7
  */
 public class Addlinks extends javax.swing.JFrame {
-
+    static String usuario,ID;
+    static String documentos;
     /**
      * Creates new form Addlinks
      */
     public Addlinks() {
         initComponents();
         setLocationRelativeTo(null);
+        documentos=FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
     }
 
     /**
@@ -42,6 +53,7 @@ public class Addlinks extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
+        jTextArea1.setBorder(null);
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Checkmark_24px_1.png"))); // NOI18N
@@ -54,6 +66,11 @@ public class Addlinks extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Delete_24px.png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,13 +116,51 @@ public class Addlinks extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+
+
+        try {
+            escribir();
+        } catch (IOException ex) {
+            Logger.getLogger(Addlinks.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_jLabel1MousePressed
+
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        this.dispose();
+    }//GEN-LAST:event_jLabel2MousePressed
 
     /**
      * @param args the command line arguments
      */
 
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+    public void escribir() throws IOException{
+        
+            File ruta=new File(documentos+"\\WalletControl"+"\\"+usuario+
+                    "\\"+ID);
+            ruta.mkdirs();
+
+            File fichero = new File(documentos+"\\WalletControl"+"\\"+usuario+
+                    "\\"+ID+"\\"+ID+".txt");
+            
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fichero,true));
+            String texto=jTextArea1.getText();
+            jTextArea1.write(bw);
+            bw.newLine();
+            bw.newLine();
+            bw.newLine();
+            bw.close();
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

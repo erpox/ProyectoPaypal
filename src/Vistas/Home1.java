@@ -116,6 +116,7 @@ public class Home1 extends javax.swing.JFrame {
         });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_48px_1.png"))); // NOI18N
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel2.setBackground(new java.awt.Color(33, 150, 243));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -212,6 +213,7 @@ public class Home1 extends javax.swing.JFrame {
         jLabel6.setText("Ventas");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Money_Bag_48px_1.png"))); // NOI18N
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanelVentasLayout = new javax.swing.GroupLayout(jPanelVentas);
         jPanelVentas.setLayout(jPanelVentasLayout);
@@ -235,7 +237,7 @@ public class Home1 extends javax.swing.JFrame {
         );
 
         jPanelExcange.setBackground(new java.awt.Color(245, 245, 245));
-        jPanelExcange.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanelExcange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelExcange.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanelExcangeMouseEntered(evt);
@@ -249,7 +251,7 @@ public class Home1 extends javax.swing.JFrame {
         });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Currency_Exchange_48px.png"))); // NOI18N
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel11.setBackground(new java.awt.Color(33, 150, 243));
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -487,7 +489,8 @@ public class Home1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelExcangeMouseExited
 
     private void jPanelExcangeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelExcangeMousePressed
-        // TODO add your handling code here:
+       new Exchange().setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_jPanelExcangeMousePressed
 
     private void jPanelconfigMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelconfigMouseEntered

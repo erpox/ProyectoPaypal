@@ -6,7 +6,6 @@
 package walletcontrol;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class Persona implements Serializable {
 
