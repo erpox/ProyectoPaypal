@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import walletcontrol.ControlCompras;
+import walletcontrol.ControlVentas;
 import walletcontrol.Persona;
 
 /**
@@ -21,10 +22,29 @@ import walletcontrol.Persona;
 public class Dashboard extends javax.swing.JFrame {
 
          ControlCompras controlBreakdown=new ControlCompras();
+         ControlVentas ventasBreakdown=new ControlVentas();
            ArrayList<Persona> arrayBreak=new ArrayList<>();
+           ArrayList<Persona> arrayVentas=new ArrayList<>();
+           
+           double sumaPaypal = 0,sumaPayza=0,sumaPayeer=0,sumaPayoneer=0,
+                    sumaNeteller=0,sumaBitcoin=0,sumaEthereum=0,sumaSTP=0,
+                    sumaGiftcard=0,sumaSkrill=0;
+            int paypal = 0, payza=0,payeer=0,payoneer=0,neteller=0,bitcoin=0,
+                    ethereum=0,stp=0,giftcard=0,skrill=0;
+            double total;
+            double sumaForo = 0,sumaFace = 0, sumaInsta = 0,sumaAIR = 0;
+            double parseSuma;
+            int foroPtc = 0,facebook = 0,Instagram = 0,airTM=0;
+            DecimalFormat formatter = new DecimalFormat("#0.00");
+            
     public Dashboard() {
         initComponents();
         comprasBreakDown();
+        orgienComprasBreak();
+        procesadorComprasBreak();
+        PanelVentas.setVisible(false);
+        ventasBreakDown();
+        origenVentasBreak();
         setLocationRelativeTo(null);
     }
 
@@ -75,7 +95,65 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        subPanelCompras3 = new javax.swing.JPanel();
+        subPanelCompras6 = new javax.swing.JPanel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jLabel89 = new javax.swing.JLabel();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        jLabel92 = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel96 = new javax.swing.JLabel();
+        jLabel97 = new javax.swing.JLabel();
+        jLabel98 = new javax.swing.JLabel();
+        jLabel99 = new javax.swing.JLabel();
+        jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
+        jLabel102 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
+        jLabel104 = new javax.swing.JLabel();
+        jLabel105 = new javax.swing.JLabel();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        jLabel110 = new javax.swing.JLabel();
+        jLabel111 = new javax.swing.JLabel();
+        jLabel112 = new javax.swing.JLabel();
+        jLabel113 = new javax.swing.JLabel();
+        jLabel114 = new javax.swing.JLabel();
+        PanelVentas = new javax.swing.JPanel();
+        subPanelVentas1 = new javax.swing.JPanel();
+        totalVentas = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        subPanelVentas = new javax.swing.JPanel();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        jLabel84 = new javax.swing.JLabel();
+        subPanelVentas2 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -111,12 +189,15 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Header.setBackground(new java.awt.Color(66, 66, 66));
+        Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        headerTittle.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        headerTittle.setFont(new java.awt.Font("Microsoft JhengHei", 1, 30)); // NOI18N
         headerTittle.setForeground(new java.awt.Color(255, 255, 255));
         headerTittle.setText("Resumen de operaciones");
+        Header.add(headerTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 34, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_30px.png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -125,6 +206,7 @@ public class Dashboard extends javax.swing.JFrame {
                 jLabel2MousePressed(evt);
             }
         });
+        Header.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 11, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px_1.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -133,16 +215,29 @@ public class Dashboard extends javax.swing.JFrame {
                 jLabel3MousePressed(evt);
             }
         });
+        Header.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 11, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(2, 136, 209));
+        jPanel3.setBackground(new java.awt.Color(66, 66, 66));
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel3MousePressed(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Shopping_Cart_24px_1.png"))); // NOI18N
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel4.setBackground(new java.awt.Color(174, 213, 129));
+        Header.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 60, 45));
+
+        jPanel4.setBackground(new java.awt.Color(39, 174, 96));
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel4MousePressed(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Return_Purchase_24px_1.png"))); // NOI18N
 
@@ -163,9 +258,16 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 171, 145));
+        Header.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 45));
+
+        jPanel5.setBackground(new java.awt.Color(231, 76, 60));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.setPreferredSize(new java.awt.Dimension(55, 55));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel5MousePressed(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Currency_Exchange_24px_2.png"))); // NOI18N
 
@@ -186,50 +288,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
-        Header.setLayout(HeaderLayout);
-        HeaderLayout.setHorizontalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(headerTittle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel2))
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        HeaderLayout.setVerticalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(headerTittle))
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))))
-                .addGap(39, 39, 39)
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        Header.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 60, 45));
+
+        jPanel1.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 841, 154));
 
         PanelCompras.setBackground(new java.awt.Color(255, 255, 255));
         PanelCompras.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -241,44 +302,44 @@ public class Dashboard extends javax.swing.JFrame {
         subPanelCompras1.setBorder(dropShadowBorder1);
 
         totalCompras.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        totalCompras.setForeground(new java.awt.Color(67, 160, 71));
+        totalCompras.setForeground(new java.awt.Color(39, 174, 96));
         totalCompras.setText("30");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel10.setText("compras concretadas");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel11.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(39, 174, 96));
         jLabel11.setText("10");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel12.setText("realizadas esta semana");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel9.setText("El");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 87, 34));
         jLabel13.setText("70%");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel14.setText("proviene de Instagram");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(30, 136, 229));
         jLabel15.setText("Paypal");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel16.setText("es el procesador mas usado");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setText("El procesador con mas ingresos es");
+        jLabel17.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jLabel17.setText("Procesador con mas ingresos");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 87, 34));
         jLabel18.setText("Payoneer");
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 87, 34));
         jLabel19.setText("$315");
 
@@ -287,63 +348,74 @@ public class Dashboard extends javax.swing.JFrame {
         subPanelCompras1Layout.setHorizontalGroup(
             subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(totalCompras)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel10))
+            .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel11)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel12))
+            .addGroup(subPanelCompras1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel19))
-                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel16))
-                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14))
-                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12))
-                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
-                        .addComponent(totalCompras)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jLabel9)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel13)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel14))
+            .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel15)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel16))
+            .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel17)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel18)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel19))
         );
         subPanelCompras1Layout.setVerticalGroup(
             subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(subPanelCompras1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(7, 7, 7)
+                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(totalCompras)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel10)))
+                .addGap(6, 6, 6)
+                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel12)))
+                .addGap(6, 6, 6)
+                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel14))))
+                .addGap(10, 10, 10)
+                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
+                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel16)))
+                .addGap(6, 6, 6)
+                .addGroup(subPanelCompras1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(subPanelCompras1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel17))
                     .addComponent(jLabel18)
-                    .addComponent(jLabel19))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel19)))
         );
 
-        PanelCompras.add(subPanelCompras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 380, 180));
+        PanelCompras.add(subPanelCompras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 390, 190));
 
         subPanelCompras2.setBackground(new java.awt.Color(255, 255, 255));
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder2 = new org.jdesktop.swingx.border.DropShadowBorder();
@@ -351,48 +423,48 @@ public class Dashboard extends javax.swing.JFrame {
         dropShadowBorder2.setShowTopShadow(true);
         subPanelCompras2.setBorder(dropShadowBorder2);
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(30, 136, 229));
         jLabel20.setText("Foro-PTC");
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(30, 136, 229));
         jLabel21.setText("Facebook");
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(30, 136, 229));
         jLabel22.setText("Instagram");
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(30, 136, 229));
         jLabel23.setText("AirTM");
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel24.setText("171.98$ en 12 compras");
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel25.setText("No se han registrado ");
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel26.setText("No se han registrado ");
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel27.setText("No se han registrado compras");
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel28.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(39, 174, 96));
         jLabel28.setText("0.0%");
 
-        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel29.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(39, 174, 96));
         jLabel29.setText("0.0%");
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel30.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(39, 174, 96));
         jLabel30.setText("0.0%");
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel31.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(39, 174, 96));
         jLabel31.setText("0.0%");
 
         javax.swing.GroupLayout subPanelCompras2Layout = new javax.swing.GroupLayout(subPanelCompras2);
@@ -418,7 +490,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel24)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(subPanelCompras2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel28)
                     .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -449,295 +521,446 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(jLabel23)
                     .addComponent(jLabel27)
                     .addComponent(jLabel31))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        PanelCompras.add(subPanelCompras2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 380, 180));
+        PanelCompras.add(subPanelCompras2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 390, 190));
 
-        subPanelCompras3.setBackground(new java.awt.Color(255, 255, 255));
+        subPanelCompras6.setBackground(new java.awt.Color(255, 255, 255));
         org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder3 = new org.jdesktop.swingx.border.DropShadowBorder();
         dropShadowBorder3.setShowLeftShadow(true);
         dropShadowBorder3.setShowTopShadow(true);
-        subPanelCompras3.setBorder(dropShadowBorder3);
+        subPanelCompras6.setBorder(dropShadowBorder3);
+        subPanelCompras6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel85.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel85.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel85.setText("Paypal");
+        subPanelCompras6.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 23, -1, -1));
+
+        jLabel86.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel86.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel86.setText("Payza");
+        subPanelCompras6.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 55, -1, -1));
+
+        jLabel87.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel87.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel87.setText("Payoneer");
+        subPanelCompras6.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 87, -1, -1));
+
+        jLabel88.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel88.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel88.setText("Payeer");
+        subPanelCompras6.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 120, -1, -1));
+
+        jLabel89.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel89.setText("Bitcoin");
+        subPanelCompras6.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 153, -1, -1));
+
+        jLabel90.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel90.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel90.setText("Giftcard");
+        subPanelCompras6.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 55, -1, -1));
+
+        jLabel91.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel91.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel91.setText("Neteller");
+        subPanelCompras6.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 87, -1, -1));
+
+        jLabel92.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel92.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel92.setText("Ethereum");
+        subPanelCompras6.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 23, -1, -1));
+
+        jLabel93.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel93.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel93.setText("STP");
+        subPanelCompras6.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 153, -1, -1));
+
+        jLabel94.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel94.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel94.setText("Skrill");
+        subPanelCompras6.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
+
+        jLabel95.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel95.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 27, -1, -1));
+
+        jLabel96.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel96.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
+
+        jLabel97.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel97.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 91, -1, -1));
+
+        jLabel98.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel98.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 124, -1, -1));
+
+        jLabel99.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel99.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 157, -1, -1));
+
+        jLabel100.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel100.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel100.setText("0.0%");
+        subPanelCompras6.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 27, -1, -1));
+
+        jLabel101.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel101.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel101.setText("0.0%");
+        subPanelCompras6.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 60, -1, -1));
+
+        jLabel102.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel102.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel102.setText("0.0%");
+        subPanelCompras6.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 95, -1, -1));
+
+        jLabel103.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel103.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel103.setText("0.0%");
+        subPanelCompras6.add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 125, -1, -1));
+
+        jLabel104.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel104.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel104.setText("0.0%");
+        subPanelCompras6.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 157, -1, -1));
+
+        jLabel105.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel105.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 27, -1, -1));
+
+        jLabel106.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel106.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 59, -1, -1));
+
+        jLabel107.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel107.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 91, -1, -1));
+
+        jLabel108.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel108.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 124, -1, -1));
+
+        jLabel109.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel109.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 157, -1, -1));
+
+        jLabel110.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel110.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel110.setText("0.0%");
+        subPanelCompras6.add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 27, -1, -1));
+
+        jLabel111.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel111.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel111.setText("0.0%");
+        subPanelCompras6.add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 60, -1, -1));
+
+        jLabel112.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel112.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel112.setText("0.0%");
+        subPanelCompras6.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 95, -1, -1));
+
+        jLabel113.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel113.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel113.setText("0.0%");
+        subPanelCompras6.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 125, -1, -1));
+
+        jLabel114.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel114.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel114.setText("0.0%");
+        subPanelCompras6.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 157, -1, 22));
+
+        PanelCompras.add(subPanelCompras6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 790, 200));
+
+        jPanel1.add(PanelCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 160, 830, 460));
+
+        PanelVentas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelVentas.setPreferredSize(new java.awt.Dimension(820, 430));
+        PanelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        subPanelVentas1.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder4 = new org.jdesktop.swingx.border.DropShadowBorder();
+        dropShadowBorder4.setShowLeftShadow(true);
+        dropShadowBorder4.setShowTopShadow(true);
+        subPanelVentas1.setBorder(dropShadowBorder4);
+        subPanelVentas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        totalVentas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        totalVentas.setForeground(new java.awt.Color(39, 174, 96));
+        totalVentas.setText("30");
+        subPanelVentas1.add(totalVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, -1, -1));
+
+        jLabel62.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jLabel62.setText("Ventas concretadas");
+        subPanelVentas1.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 20, -1, -1));
+
+        jLabel63.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel63.setText("10");
+        subPanelVentas1.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 47, -1, -1));
+
+        jLabel64.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jLabel64.setText("realizadas esta semana");
+        subPanelVentas1.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 55, -1, -1));
+
+        jLabel65.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jLabel65.setText("El");
+        subPanelVentas1.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 88, -1, -1));
+
+        jLabel66.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(255, 87, 34));
+        jLabel66.setText("70%");
+        subPanelVentas1.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 85, -1, -1));
+
+        jLabel67.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jLabel67.setText("proviene de Instagram");
+        subPanelVentas1.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 88, -1, -1));
+
+        jLabel68.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        jLabel68.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel68.setText("Paypal");
+        subPanelVentas1.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 119, -1, -1));
+
+        jLabel69.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jLabel69.setText("es el procesador mas usado");
+        subPanelVentas1.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 123, -1, -1));
+
+        jLabel70.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jLabel70.setText("Procesador con mas ingresos");
+        subPanelVentas1.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 153, -1, -1));
+
+        jLabel71.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        jLabel71.setForeground(new java.awt.Color(255, 87, 34));
+        jLabel71.setText("Payoneer");
+        subPanelVentas1.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 149, -1, -1));
+
+        jLabel72.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        jLabel72.setForeground(new java.awt.Color(255, 87, 34));
+        jLabel72.setText("$315");
+        subPanelVentas1.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 149, -1, -1));
+
+        PanelVentas.add(subPanelVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 390, 190));
+
+        subPanelVentas.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder5 = new org.jdesktop.swingx.border.DropShadowBorder();
+        dropShadowBorder5.setShowLeftShadow(true);
+        dropShadowBorder5.setShowTopShadow(true);
+        subPanelVentas.setBorder(dropShadowBorder5);
+        subPanelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel73.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel73.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel73.setText("Foro-PTC");
+        subPanelVentas.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 25, -1, -1));
+
+        jLabel74.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel74.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel74.setText("Facebook");
+        subPanelVentas.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 61, -1, -1));
+
+        jLabel75.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel75.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel75.setText("Instagram");
+        subPanelVentas.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 97, -1, -1));
+
+        jLabel76.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
+        jLabel76.setForeground(new java.awt.Color(30, 136, 229));
+        jLabel76.setText("AirTM");
+        subPanelVentas.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 133, -1, -1));
+
+        jLabel77.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel77.setText("No se han registrado ventas");
+        subPanelVentas.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 29, -1, -1));
+
+        jLabel78.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel78.setText("No se han registrado ventas");
+        subPanelVentas.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 65, -1, -1));
+
+        jLabel79.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel79.setText("No se han registrado ventas");
+        subPanelVentas.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 101, -1, -1));
+
+        jLabel80.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel80.setText("No se han registrado ventas");
+        subPanelVentas.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 137, -1, -1));
+
+        jLabel81.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel81.setText("0.0%");
+        subPanelVentas.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 29, -1, -1));
+
+        jLabel82.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel82.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel82.setText("0.0%");
+        subPanelVentas.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 65, -1, -1));
+
+        jLabel83.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel83.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel83.setText("0.0%");
+        subPanelVentas.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 101, -1, -1));
+
+        jLabel84.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel84.setForeground(new java.awt.Color(39, 174, 96));
+        jLabel84.setText("0.0%");
+        subPanelVentas.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 137, -1, -1));
+
+        PanelVentas.add(subPanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 390, 190));
+
+        subPanelVentas2.setBackground(new java.awt.Color(255, 255, 255));
+        org.jdesktop.swingx.border.DropShadowBorder dropShadowBorder6 = new org.jdesktop.swingx.border.DropShadowBorder();
+        dropShadowBorder6.setShowLeftShadow(true);
+        dropShadowBorder6.setShowTopShadow(true);
+        subPanelVentas2.setBorder(dropShadowBorder6);
+        subPanelVentas2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(30, 136, 229));
         jLabel32.setText("Paypal");
+        subPanelVentas2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 23, -1, -1));
 
-        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(30, 136, 229));
         jLabel33.setText("Payza");
+        subPanelVentas2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 55, -1, -1));
 
-        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(30, 136, 229));
         jLabel34.setText("Payoneer");
+        subPanelVentas2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 87, -1, -1));
 
-        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(30, 136, 229));
         jLabel35.setText("Payeer");
+        subPanelVentas2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 120, -1, -1));
 
-        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(30, 136, 229));
         jLabel36.setText("Bitcoin");
+        subPanelVentas2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 153, -1, -1));
 
-        jLabel37.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(30, 136, 229));
         jLabel37.setText("Giftcard");
+        subPanelVentas2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 55, -1, -1));
 
-        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(30, 136, 229));
         jLabel38.setText("Neteller");
+        subPanelVentas2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 87, -1, -1));
 
-        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel39.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(30, 136, 229));
         jLabel39.setText("Ethereum");
+        subPanelVentas2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 23, -1, -1));
 
-        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel40.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(30, 136, 229));
         jLabel40.setText("STP");
+        subPanelVentas2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 153, -1, -1));
 
-        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel41.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(30, 136, 229));
         jLabel41.setText("Skrill");
+        subPanelVentas2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
-        jLabel42.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel42.setText("No se han registrado compras");
+        jLabel42.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel42.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 27, -1, -1));
 
-        jLabel43.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel43.setText("No se han registrado compras");
+        jLabel43.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel43.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
 
-        jLabel44.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel44.setText("No se han registrado compras");
+        jLabel44.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel44.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 91, -1, -1));
 
-        jLabel45.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel45.setText("No se han registrado compras");
+        jLabel45.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel45.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 124, -1, -1));
 
-        jLabel46.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel46.setText("No se han registrado compras");
+        jLabel46.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel46.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 157, -1, -1));
 
-        jLabel47.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel47.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(39, 174, 96));
         jLabel47.setText("0.0%");
+        subPanelVentas2.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 27, -1, -1));
 
-        jLabel48.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel48.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(39, 174, 96));
         jLabel48.setText("0.0%");
+        subPanelVentas2.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 60, -1, -1));
 
-        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel49.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(39, 174, 96));
         jLabel49.setText("0.0%");
+        subPanelVentas2.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 95, -1, -1));
 
-        jLabel50.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel50.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(39, 174, 96));
         jLabel50.setText("0.0%");
+        subPanelVentas2.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 125, -1, -1));
 
-        jLabel51.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel51.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(39, 174, 96));
         jLabel51.setText("0.0%");
+        subPanelVentas2.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 157, -1, -1));
 
-        jLabel52.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel52.setText("No se han registrado compras");
+        jLabel52.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel52.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 27, -1, -1));
 
-        jLabel53.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel53.setText("No se han registrado compras");
+        jLabel53.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel53.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 59, -1, -1));
 
-        jLabel54.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel54.setText("No se han registrado compras");
+        jLabel54.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel54.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 91, -1, -1));
 
-        jLabel55.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel55.setText("No se han registrado compras");
+        jLabel55.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel55.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 124, -1, -1));
 
-        jLabel56.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel56.setText("No se han registrado compras");
+        jLabel56.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel56.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 157, -1, -1));
 
-        jLabel57.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel57.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel57.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(39, 174, 96));
         jLabel57.setText("0.0%");
+        subPanelVentas2.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 27, -1, -1));
 
-        jLabel58.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel58.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel58.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel58.setForeground(new java.awt.Color(39, 174, 96));
         jLabel58.setText("0.0%");
+        subPanelVentas2.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 60, -1, -1));
 
-        jLabel59.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel59.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel59.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(39, 174, 96));
         jLabel59.setText("0.0%");
+        subPanelVentas2.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 95, -1, -1));
 
-        jLabel60.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel60.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(39, 174, 96));
         jLabel60.setText("0.0%");
+        subPanelVentas2.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 125, -1, -1));
 
-        jLabel61.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(67, 160, 71));
+        jLabel61.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(39, 174, 96));
         jLabel61.setText("0.0%");
+        subPanelVentas2.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 157, -1, 22));
 
-        javax.swing.GroupLayout subPanelCompras3Layout = new javax.swing.GroupLayout(subPanelCompras3);
-        subPanelCompras3.setLayout(subPanelCompras3Layout);
-        subPanelCompras3Layout.setHorizontalGroup(
-            subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel34)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel44)
-                .addGap(52, 52, 52)
-                .addComponent(jLabel49)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel54)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel59))
-            .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel35)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel45)
-                .addGap(71, 71, 71)
-                .addComponent(jLabel50)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel41)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel55)
-                .addGap(69, 69, 69)
-                .addComponent(jLabel60))
-            .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel36)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel46)
-                .addGap(70, 70, 70)
-                .addComponent(jLabel51)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel40)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel56)
-                .addGap(75, 75, 75)
-                .addComponent(jLabel61))
-            .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addComponent(jLabel33)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel43)
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel48))
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addComponent(jLabel32)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel42)
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel47)))
-                .addGap(64, 64, 64)
-                .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addComponent(jLabel39)
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel52)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel57))
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addComponent(jLabel37)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel53)
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel58))))
-        );
-        subPanelCompras3Layout.setVerticalGroup(
-            subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel32)
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel42)
-                            .addComponent(jLabel47)
-                            .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel52)
-                                .addComponent(jLabel39))
-                            .addComponent(jLabel57))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33)
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel43))
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel48))
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel53)
-                            .addComponent(jLabel37)))
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel58)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel34)
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel44))
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel49))
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel54)
-                            .addComponent(jLabel38)))
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel59)))
-                .addGap(11, 11, 11)
-                .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35)
-                    .addComponent(jLabel50)
-                    .addComponent(jLabel41)
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel45)
-                            .addComponent(jLabel55)
-                            .addComponent(jLabel60))))
-                .addGap(11, 11, 11)
-                .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel51)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(subPanelCompras3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(subPanelCompras3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel46)
-                            .addComponent(jLabel56)))))
-        );
+        PanelVentas.add(subPanelVentas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 790, 200));
 
-        PanelCompras.add(subPanelCompras3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 790, 200));
+        jPanel1.add(PanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 160, 830, 460));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelCompras, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-                    .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PanelCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 630));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -758,24 +981,42 @@ public class Dashboard extends javax.swing.JFrame {
              }
     }//GEN-LAST:event_jLabel2MousePressed
 
+    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
+       jPanel4.setBackground(new java.awt.Color(66, 66, 66));
+       jPanel3.setBackground(new java.awt.Color(52, 152, 219));
+       jPanel5.setBackground(new java.awt.Color(231,76,60));
+       PanelVentas.setVisible(true);
+       PanelCompras.setVisible(false);
+       
+    }//GEN-LAST:event_jPanel4MousePressed
+
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+       jPanel3.setBackground(new java.awt.Color(66, 66, 66));
+       jPanel4.setBackground(new java.awt.Color(39,174,96));
+       jPanel5.setBackground(new java.awt.Color(231,76,60));
+       PanelCompras.setVisible(true);
+       PanelVentas.setVisible(false);
+    }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
+       jPanel5.setBackground(new java.awt.Color(66,66,66));
+       jPanel3.setBackground(new java.awt.Color(52, 152, 219));
+       jPanel4.setBackground(new java.awt.Color(39,174,96));
+       
+    }//GEN-LAST:event_jPanel5MousePressed
+
     
     
     private void comprasBreakDown() {
         try {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
+            
             arrayBreak=controlBreakdown.retornaPersona();
                         
-            double total = arrayBreak.size();
+            total = arrayBreak.size();
             totalCompras.setText(String.valueOf(total));
-            double sumaForo = 0,sumaFace = 0, sumaInsta = 0,sumaAIR = 0;
-            double parseSuma;
-            int foroPtc = 0,facebook = 0,Instagram = 0,airTM=0;
             
-            double sumaPaypal = 0,sumaPayza=0,sumaPayeer=0,sumaPayoneer=0,
-                    sumaNeteller=0,sumaBitcoin=0,sumaEthereum=0,sumaSTP=0,
-                    sumaGiftcard=0,sumaSkrill=0;
-            int paypal = 0, payza=0,payeer=0,payoneer=0,neteller=0,bitcoin=0,
-                    ethereum=0,stp=0,giftcard=0,skrill=0;
+            
+            
             
             
             for (int i = 0; i <arrayBreak.size(); i++) {
@@ -840,10 +1081,69 @@ public class Dashboard extends javax.swing.JFrame {
                     payeer++;
                 }
 
+            }    
+        } catch (IOException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+    
+    private void orgienComprasBreak(){
+        if(foroPtc!=0){
+           
+            
+            double porcentForo=((foroPtc*100)/total);
+            String porcentajeForo=String.format( "%.2f", porcentForo );
+            String sumaForo2=formatter.format(sumaForo);
+            jLabel28.setText(porcentajeForo+"%");
+            jLabel24.setText(sumaForo2+"$ en "+foroPtc+" compras");
+
+                if(foroPtc>facebook && foroPtc>Instagram && foroPtc>airTM){
+                    jLabel14.setText("provienen de Foro-PTC");
+                    jLabel13.setText(String.valueOf(porcentajeForo)+"%");
+     
+            }
             }
             
-           
-            if(paypal!=0){
+            
+            if(facebook!=0){
+            double porcentFace=((facebook*100)/total);
+            String porcentajeFace=formatter.format(porcentFace);
+            String sumaFace2=formatter.format(sumaFace);
+            jLabel29.setText(porcentajeFace+"%");
+            jLabel25.setText(sumaFace2+"$ en "+facebook+" compras");
+                if (facebook>Instagram && facebook>airTM) {
+                    jLabel14.setText("provienen de Facebook");
+                    jLabel13.setText(String.valueOf(porcentajeFace)+"%");
+                }
+            }
+            
+            if(Instagram!=0){
+            double porcentInsta=((Instagram*100)/total);
+            String porcentajeInsta=formatter.format(porcentInsta);
+            String sumaInsta2=formatter.format(sumaInsta);
+            jLabel30.setText(porcentajeInsta+"%");
+            jLabel26.setText(sumaInsta2+"$ en "+Instagram+" compras");
+                if (Instagram>airTM) {
+                    jLabel14.setText("provienen de Instagram");
+                    jLabel13.setText(String.valueOf(porcentajeInsta)+"%");
+                }
+            }
+            if(airTM!=0){
+            double porcentAIR=((airTM*100)/total);
+            String porcentajeAIR=formatter.format(porcentAIR);
+            String sumaAIR2=formatter.format(sumaAIR);
+            jLabel31.setText(porcentajeAIR+"%");
+            jLabel27.setText(sumaAIR2+"$ en "+airTM+" compras");
+                if (airTM>foroPtc && airTM>Instagram && airTM>facebook) {
+                    jLabel14.setText("provienen de AirTM");
+                    jLabel13.setText(String.valueOf(porcentajeAIR)+"%");
+                } 
+            }
+    }
+    private void procesadorComprasBreak(){
+        if(paypal!=0){
                 double porcentPaypal=((paypal*100)/total);
                 String porcentajePaypal=formatter.format(porcentPaypal);
                 String sumaPaypal2=formatter.format(sumaPaypal);
@@ -970,23 +1270,97 @@ public class Dashboard extends javax.swing.JFrame {
                     jLabel15.setText("Neteller");
                 }
             }
+    }
+    
+    private void ventasBreakDown(){
+        try {
             
-            
-            
-            
-            if(foroPtc!=0){
-            //=formatter.format(porcentForo);
-            
+            arrayVentas=ventasBreakdown.retornaPersonaVentas();
+                        
+            total = arrayVentas.size();
+            totalVentas.setText(String.valueOf(total));
+
+            for (int i = 0; i <arrayBreak.size(); i++) {
+                
+                if(arrayBreak.get(i).getOrigen().equals("Foro-PTC")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaForo += parseSuma;
+                    foroPtc++;
+                }else if(arrayBreak.get(i).getOrigen().equals("Facebook")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaFace += parseSuma;
+                    facebook++;
+                }else if(arrayBreak.get(i).getOrigen().equals("Instagram")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaInsta +=parseSuma;
+                    Instagram++; 
+                }else if(arrayBreak.get(i).getOrigen().equals("AirTM")) {
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaAIR += parseSuma;
+                    airTM++;  
+                }
+                
+                if(arrayBreak.get(i).getProcesador().equals("Paypal")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaPaypal+=parseSuma;
+                    paypal++;
+                }else if(arrayBreak.get(i).getProcesador().equals("Payza")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaPayza+=parseSuma;
+                    payza++;
+                }else if(arrayBreak.get(i).getProcesador().equals("Payoneer")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaPayoneer+=parseSuma;
+                    payoneer++;
+                }else if(arrayBreak.get(i).getProcesador().equals("Bitcoin")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaBitcoin+=parseSuma;
+                    bitcoin++;
+                }else if(arrayBreak.get(i).getProcesador().equals("Ethereum")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaEthereum+=parseSuma;
+                    ethereum++;
+                }else if(arrayBreak.get(i).getProcesador().equals("Skrill")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaSkrill+=parseSuma;
+                    skrill++;
+                }else if(arrayBreak.get(i).getProcesador().equals("Neteller")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaNeteller+=parseSuma;
+                    neteller++;
+                }else if(arrayBreak.get(i).getProcesador().equals("Giftcard")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaGiftcard+=parseSuma;
+                    giftcard++;
+                }else if(arrayBreak.get(i).getProcesador().equals("STP")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaSTP+=parseSuma;
+                    stp++;
+                }else if(arrayBreak.get(i).getProcesador().equals("Payeer")){
+                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                    sumaPayeer+=parseSuma;
+                    payeer++;
+                }
+
+            }   
+            System.err.println(airTM);
+        } catch (IOException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+    private void origenVentasBreak(){
+    if(foroPtc!=0){ 
             double porcentForo=((foroPtc*100)/total);
             String porcentajeForo=String.format( "%.2f", porcentForo );
             String sumaForo2=formatter.format(sumaForo);
-            System.err.println(porcentajeForo);
-            jLabel28.setText(porcentajeForo+"%");
-            jLabel24.setText(sumaForo2+"$ en "+foroPtc+" compras");
+            jLabel81.setText(porcentajeForo+"%");
+            jLabel77.setText(sumaForo2+"$ en "+foroPtc+" compras");
 
                 if(foroPtc>facebook && foroPtc>Instagram && foroPtc>airTM){
-                    jLabel14.setText("provienen de Foro-PTC");
-                    jLabel13.setText(String.valueOf(porcentajeForo)+"%");
+                    jLabel67.setText("provienen de Foro-PTC");
+                    jLabel66.setText(String.valueOf(porcentajeForo)+"%");
      
             }
             }
@@ -996,11 +1370,11 @@ public class Dashboard extends javax.swing.JFrame {
             double porcentFace=((facebook*100)/total);
             String porcentajeFace=formatter.format(porcentFace);
             String sumaFace2=formatter.format(sumaFace);
-            jLabel29.setText(porcentajeFace+"%");
-            jLabel25.setText(sumaFace2+"$ en "+facebook+" compras");
+            jLabel82.setText(porcentajeFace+"%");
+            jLabel78.setText(sumaFace2+"$ en "+facebook+" compras");
                 if (facebook>Instagram && facebook>airTM) {
-                    jLabel14.setText("provienen de Facebook");
-                    jLabel13.setText(String.valueOf(porcentajeFace)+"%");
+                    jLabel67.setText("provienen de Facebook");
+                    jLabel66.setText(String.valueOf(porcentajeFace)+"%");
                 }
             }
             
@@ -1008,51 +1382,47 @@ public class Dashboard extends javax.swing.JFrame {
             double porcentInsta=((Instagram*100)/total);
             String porcentajeInsta=formatter.format(porcentInsta);
             String sumaInsta2=formatter.format(sumaInsta);
-            jLabel30.setText(porcentajeInsta+"%");
-            jLabel26.setText(sumaInsta2+"$ en "+Instagram+" compras");
+            jLabel83.setText(porcentajeInsta+"%");
+            jLabel79.setText(sumaInsta2+"$ en "+Instagram+" compras");
                 if (Instagram>airTM) {
-                    jLabel14.setText("provienen de Instagram");
-                    jLabel13.setText(String.valueOf(porcentajeInsta)+"%");
+                    jLabel67.setText("provienen de Instagram");
+                    jLabel66.setText(String.valueOf(porcentajeInsta)+"%");
                 }
             }
             if(airTM!=0){
             double porcentAIR=((airTM*100)/total);
             String porcentajeAIR=formatter.format(porcentAIR);
             String sumaAIR2=formatter.format(sumaAIR);
-            jLabel31.setText(porcentajeAIR+"%");
-            jLabel27.setText(sumaAIR2+"$ en "+airTM+" compras");
+            jLabel84.setText(porcentajeAIR+"%");
+            jLabel80.setText(sumaAIR2+"$ en "+airTM+" compras");
                 if (airTM>foroPtc && airTM>Instagram && airTM>facebook) {
-                    jLabel14.setText("provienen de AirTM");
-                    jLabel13.setText(String.valueOf(porcentajeAIR)+"%");
+                    jLabel67.setText("provienen de AirTM");
+                    jLabel66.setText(String.valueOf(porcentajeAIR)+"%");
                 } 
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
     private javax.swing.JPanel PanelCompras;
+    private javax.swing.JPanel PanelVentas;
     private javax.swing.JLabel headerTittle;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
+    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel111;
+    private javax.swing.JLabel jLabel112;
+    private javax.swing.JLabel jLabel113;
+    private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -1107,15 +1477,57 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel subPanelCompras1;
     private javax.swing.JPanel subPanelCompras2;
-    private javax.swing.JPanel subPanelCompras3;
+    private javax.swing.JPanel subPanelCompras6;
+    private javax.swing.JPanel subPanelVentas;
+    private javax.swing.JPanel subPanelVentas1;
+    private javax.swing.JPanel subPanelVentas2;
     private javax.swing.JLabel totalCompras;
+    private javax.swing.JLabel totalVentas;
     // End of variables declaration//GEN-END:variables
 }

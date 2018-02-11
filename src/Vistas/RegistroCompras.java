@@ -41,6 +41,7 @@ public class RegistroCompras extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Documentos=FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
         PlaceHolder();
+        
     }
     @Override
    public Image getIconImage() {
@@ -53,10 +54,6 @@ public class RegistroCompras extends javax.swing.JFrame {
     private void initComponents() {
 
         Screenshot = new javax.swing.JFileChooser();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -84,7 +81,6 @@ public class RegistroCompras extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         labelScreenshot = new javax.swing.JLabel();
@@ -100,21 +96,9 @@ public class RegistroCompras extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         comboProcesador = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        jDateChooser1 = new org.jdesktop.swingx.JXDatePicker();
 
         Screenshot.setFileFilter(new FileNameExtensionFilter("Imagenes", "jpg", "png", "gif", "bmp") );
-
-        jButton2.setText("jButton2");
-
-        jButton1.setText("Screenshot");
-        jButton1.setToolTipText("Añade el Screenshot de la transaccion, si son varios repite el proceso de selección");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Detalles de Usuario ");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -127,12 +111,14 @@ public class RegistroCompras extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(245, 245, 245));
         jPanel2.setForeground(new java.awt.Color(100, 181, 246));
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.setMaximumSize(new java.awt.Dimension(800, 600));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(66, 66, 66));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        comprasjLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        comprasjLabel.setFont(new java.awt.Font("Microsoft JhengHei", 1, 30)); // NOI18N
         comprasjLabel.setForeground(new java.awt.Color(255, 255, 255));
         comprasjLabel.setText("Registrar Compra");
         jPanel3.add(comprasjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 40));
@@ -155,8 +141,10 @@ public class RegistroCompras extends javax.swing.JFrame {
         });
         jPanel3.add(btnnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 30, 30));
 
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 530, 88));
+
         usuario.setBackground(new java.awt.Color(245, 245, 245));
-        usuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        usuario.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         usuario.setBorder(null);
         usuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -164,9 +152,10 @@ public class RegistroCompras extends javax.swing.JFrame {
                 usuarioKeyTyped(evt);
             }
         });
+        jPanel2.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 153, 100, -1));
 
         monto.setBackground(new java.awt.Color(245, 245, 245));
-        monto.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        monto.setFont(new java.awt.Font("Microsoft JhengHei", 1, 18)); // NOI18N
         monto.setForeground(new java.awt.Color(0, 102, 204));
         monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         monto.setBorder(null);
@@ -180,9 +169,10 @@ public class RegistroCompras extends javax.swing.JFrame {
                 montoKeyTyped(evt);
             }
         });
+        jPanel2.add(monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 283, 93, -1));
 
         nombre.setBackground(new java.awt.Color(245, 245, 245));
-        nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         nombre.setBorder(null);
         nombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -190,9 +180,10 @@ public class RegistroCompras extends javax.swing.JFrame {
                 Typed(evt);
             }
         });
+        jPanel2.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 392, 90, -1));
 
         apellido.setBackground(new java.awt.Color(245, 245, 245));
-        apellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        apellido.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         apellido.setBorder(null);
         apellido.setInheritsPopupMenu(true);
@@ -201,19 +192,22 @@ public class RegistroCompras extends javax.swing.JFrame {
                 apellidoKeyTyped(evt);
             }
         });
+        jPanel2.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 392, 91, -1));
 
         email.setBackground(new java.awt.Color(245, 245, 245));
-        email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        email.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         email.setBorder(null);
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 220, 99, -1));
 
-        origen.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        origen.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         origen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Foro-PTC", "Instagram", "Facebook", "AirTM" }));
         origen.setToolTipText("Se refiero al sitio web donde realizo la compra");
         origen.setBorder(null);
+        jPanel2.add(origen, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 153, -1, -1));
 
         ID.setBackground(new java.awt.Color(245, 245, 245));
-        ID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ID.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         ID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         ID.setToolTipText("ID de la transaccion generado por el procesador usado");
         ID.setBorder(null);
@@ -222,28 +216,36 @@ public class RegistroCompras extends javax.swing.JFrame {
                 IDKeyTyped(evt);
             }
         });
+        jPanel2.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 93, -1));
 
         jLabel2.setForeground(new java.awt.Color(100, 181, 246));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Geo-fence_24px.png"))); // NOI18N
         jLabel2.setLabelFor(jLabel1);
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 153, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(100, 181, 246));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_User_24px_3.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 153, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(100, 181, 246));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Contact_24px.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Contact_24px_1.png"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 392, 26, -1));
 
         jLabel6.setForeground(new java.awt.Color(100, 181, 246));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Check_24px.png"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(100, 181, 246));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Identification_Documents_24px.png"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 392, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(100, 181, 246));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Contact_24px.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Contact_24px_1.png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 392, -1, -1));
 
         jLabel9.setForeground(new java.awt.Color(100, 181, 246));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Email_24px_3.png"))); // NOI18N
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, -1));
 
         BotonGuardar.setForeground(new java.awt.Color(100, 181, 246));
         BotonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Save_30px.png"))); // NOI18N
@@ -253,6 +255,7 @@ public class RegistroCompras extends javax.swing.JFrame {
                 BotonGuardarMousePressed(evt);
             }
         });
+        jPanel2.add(BotonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 546, -1, -1));
 
         BotonLimpiar.setForeground(new java.awt.Color(100, 181, 246));
         BotonLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Broom_30px.png"))); // NOI18N
@@ -263,26 +266,34 @@ public class RegistroCompras extends javax.swing.JFrame {
                 BotonLimpiarMousePressed(evt);
             }
         });
+        jPanel2.add(BotonLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 546, -1, -1));
 
         jSeparator2.setForeground(new java.awt.Color(66, 66, 66));
+        jSeparator2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 415, 90, 10));
 
         jSeparator3.setForeground(new java.awt.Color(66, 66, 66));
+        jSeparator3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 415, 91, 10));
 
         jSeparator5.setForeground(new java.awt.Color(66, 66, 66));
+        jSeparator5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 243, 93, 10));
 
         jSeparator6.setForeground(new java.awt.Color(66, 66, 66));
+        jSeparator6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 240, 99, 10));
 
         jSeparator7.setForeground(new java.awt.Color(66, 66, 66));
-
-        jDateChooser1.setBackground(new java.awt.Color(245, 245, 245));
-        jDateChooser1.setDateFormatString("MMMM d yyyy"); // NOI18N
-        jDateChooser1.setFocusable(false);
-        jDateChooser1.setMinSelectableDate(new java.util.Date(-62135751496000L));
-        jDateChooser1.setOpaque(false);
+        jSeparator7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 319, 93, 8));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Calendar_1_24px.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 153, -1, -1));
 
         jSeparator9.setForeground(new java.awt.Color(66, 66, 66));
+        jSeparator9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 176, 100, 10));
 
         labelScreenshot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Unsplash_24px.png"))); // NOI18N
         labelScreenshot.setToolTipText("Añade una captura desde una carpeta local");
@@ -292,6 +303,7 @@ public class RegistroCompras extends javax.swing.JFrame {
                 labelScreenshotMousePressed(evt);
             }
         });
+        jPanel2.add(labelScreenshot, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 546, -1, -1));
 
         jLabelAddLinks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Link_24px.png"))); // NOI18N
         jLabelAddLinks.setToolTipText("Añade enlaces externos, comentarios, etc");
@@ -301,206 +313,59 @@ public class RegistroCompras extends javax.swing.JFrame {
                 jLabelAddLinksMousePressed(evt);
             }
         });
+        jPanel2.add(jLabelAddLinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 546, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Museum_24px.png"))); // NOI18N
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 462, -1, -1));
 
-        comboBanco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboBanco.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         comboBanco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banco", "Banesco", "Mercantil", "Venezuela", "Provincial", "Exterior" }));
         comboBanco.setBorder(null);
+        jPanel2.add(comboBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 462, 90, -1));
 
         txtDocumento.setBackground(new java.awt.Color(245, 245, 245));
-        txtDocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDocumento.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         txtDocumento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDocumento.setBorder(null);
+        jPanel2.add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 392, 91, -1));
 
         jSeparator4.setForeground(new java.awt.Color(66, 66, 66));
+        jSeparator4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 415, 91, 11));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Decrease_Decimal_24px_1.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 462, -1, -1));
 
         txtCuenta.setBackground(new java.awt.Color(245, 245, 245));
-        txtCuenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtCuenta.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         txtCuenta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCuenta.setBorder(null);
+        jPanel2.add(txtCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 462, 252, -1));
 
         jSeparator8.setForeground(new java.awt.Color(66, 66, 66));
+        jSeparator8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 485, 252, 11));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel14.setText("Detalles de pago");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 336, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Wallet_24px_1.png"))); // NOI18N
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
-        comboProcesador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboProcesador.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         comboProcesador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paypal", "Payza", "Payoneer", "Neteller", "Skrill", "Bitcoin", "Ethereum", "Giftcard", "Payeer", "STP" }));
         comboProcesador.setBorder(null);
+        jPanel2.add(comboProcesador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 99, -1));
 
         jLabel10.setText("(Opcional)");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 341, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(jLabel2)
-                .addGap(6, 6, 6)
-                .addComponent(origen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel7)
-                .addGap(4, 4, 4)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel15)
-                .addGap(6, 6, 6)
-                .addComponent(comboProcesador, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jLabel6)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(jLabel9)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel8)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4))
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel12)
-                .addGap(4, 4, 4)
-                .addComponent(comboBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel1)
-                .addGap(4, 4, 4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(labelScreenshot)
-                .addGap(10, 10, 10)
-                .addComponent(jLabelAddLinks)
-                .addGap(154, 154, 154)
-                .addComponent(BotonLimpiar)
-                .addGap(10, 10, 10)
-                .addComponent(BotonGuardar))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2)
-                    .addComponent(origen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(comboProcesador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel9)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel10))
-                .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(comboBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonLimpiar)
-                    .addComponent(BotonGuardar)
-                    .addComponent(labelScreenshot)
-                    .addComponent(jLabelAddLinks)))
-        );
+        jDateChooser1.setBackground(new java.awt.Color(51, 51, 51));
+        jDateChooser1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 11)); // NOI18N
+        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 154, 99, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 510, 630));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 520, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -530,7 +395,7 @@ public class RegistroCompras extends javax.swing.JFrame {
                  
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d yyyy");
         String fecha1 = dateFormat.format(jDateChooser1.getDate());
-        String fecha2=fecha1.toUpperCase();
+        //char fecha2=fecha1.charAt(0);
         
         
         int n=JOptionPane.showConfirmDialog(rootPane, "Esta seguro de que todos los "
@@ -544,7 +409,7 @@ public class RegistroCompras extends javax.swing.JFrame {
             ControlCompras controlCompras=new ControlCompras();
         
             controlCompras.agregarPersona(usuario.getText(), anadirOrigen,procesador, nombre.getText(),
-                    apellido.getText(),Ruta,email.getText(),ID.getText().toUpperCase(),monto.getText(),fecha2);
+                    apellido.getText(),Ruta,email.getText(),ID.getText().toUpperCase(),monto.getText(),fecha1);
             
             
                
@@ -623,10 +488,6 @@ public class RegistroCompras extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnnHistorialMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void Typed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Typed
         char c=evt.getKeyChar();
 
@@ -679,6 +540,7 @@ public class RegistroCompras extends javax.swing.JFrame {
             getToolkit().beep();
             evt.consume();
         }
+        toUpperCase(usuario, evt);
     }//GEN-LAST:event_usuarioKeyTyped
 
     private void IDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDKeyTyped
@@ -772,13 +634,10 @@ public class RegistroCompras extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboProcesador;
     private javax.swing.JLabel comprasjLabel;
     private javax.swing.JTextField email;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private org.jdesktop.swingx.JXDatePicker jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -793,7 +652,6 @@ public class RegistroCompras extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;

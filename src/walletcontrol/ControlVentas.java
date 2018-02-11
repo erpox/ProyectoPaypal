@@ -9,14 +9,13 @@ import java.util.ArrayList;
  private File fichero=new File("C:\\ProgramData\\WalletControlVentas.dat");
 
 
-    public void agregarVenta(String usuario, String origen, String nombre, String apellido, 
-            String correo, String ID, String monto, String fecha){
+    public void agregarVenta(String usuario, String origen, String procesador, 
+            String correo, String monto, String fecha, String ID){
         ArrayList<Persona> listaVentas=new ArrayList<>();
         //se recibe como para parametro las variables de la clase principal
         try {
-            //se llena el array con un objeto de dicha clase
-            listaVentas.add(new Persona(usuario,origen,nombre,apellido,correo,ID,monto,fecha));
 
+            listaVentas.add(new Persona(usuario,origen,procesador,correo,monto,fecha,ID));
             if (fichero.exists()) { //si ya existe el fichero, añade el listaVentas despues de array existente sin sobreecribir el header
 
                 //se llama a la clase modificada de ObjetOutputStream llamada MiObjectOutputStream
@@ -48,8 +47,8 @@ import java.util.ArrayList;
 
                     listaVentas = (ArrayList) ois.readObject();
                     for (Persona p : listaVentas) { //se llena un nuevo listaVentas con cada Array del fichero
-                        listaVentasReturn.add(new Persona(p.getUsuario(),p.getNombre(),p.getOrigen(),
-                                p.getApellido(),p.getCorreo(),p.getID(),p.getMonto(),p.getFecha()));
+                        listaVentasReturn.add(new Persona(p.getUsuario(),p.getOrigen(),
+                                p.getProcesador(),p.getCorreo(),p.getMonto(),p.getFecha(),p.getID()));
                     }
                    
 

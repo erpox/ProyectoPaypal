@@ -39,16 +39,15 @@ private String procesador;
         this.procesador=procesador;
     }
 
-    public Persona(String usuario, String origen, String nombre, String apellido, 
+    public Persona(String usuario, String origen, String procesador, 
             String correo, String monto, String fecha, String ID) {
         this.usuario = usuario;
         this.origen = origen;
-        this.nombre = nombre;
-        this.apellido = apellido;
         this.correo = correo;
         this.monto = monto;
         this.ID = ID;
         this.fecha = fecha;
+        this.procesador=procesador;
         
     }
 

@@ -50,16 +50,13 @@ public class Historial extends javax.swing.JFrame {
                 cargarTablaCompras();                                
                 cargarTablaVentas();
                 
-                centrar(1,TablaCompras);
-                centrar(4,TablaCompras);
-                centrar(6,TablaCompras);
-                centrar(7,TablaCompras);
+               // centrar(1,TablaCompras);
+                centrar(3,jXTable1);
+                //centrar(4,TablaCompras);
+                //centrar(7,TablaCompras);
                 
-                centrar(1,TablaVentas);
-                centrar(4,TablaVentas);
-                centrar(5,TablaVentas);
-                centrar(6,TablaVentas);
-                centrar(7,TablaVentas);
+                centrar(3,TablaVentas);
+             
     }
     
     
@@ -94,19 +91,22 @@ public class Historial extends javax.swing.JFrame {
         jLabeltotalVentas = new javax.swing.JLabel();
         tabVentas = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        tabCompras = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         BuscarVentas = new javax.swing.JTextField();
         VentasBorrar = new javax.swing.JLabel();
         AñadirVenta = new javax.swing.JLabel();
+        tabCompras = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        tabExchange = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TablaVentas = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaCompras = new javax.swing.JTable();
+        TablaVentas = new org.jdesktop.swingx.JXTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jXTable1 = new org.jdesktop.swingx.JXTable();
 
-        Abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Open_18px.png"))); // NOI18N
+        Abrir.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Open_24px.png"))); // NOI18N
         Abrir.setText("Abrir");
         Abrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,10 +124,10 @@ public class Historial extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(30, 136, 229));
+        jPanel2.setBackground(new java.awt.Color(66, 66, 66));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px.png"))); // NOI18N
+        BotonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px_1.png"))); // NOI18N
         BotonInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -141,7 +141,7 @@ public class Historial extends javax.swing.JFrame {
         TituloVentana.setText("Historico de transacciones");
         jPanel2.add(TituloVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        AñadirCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_List_24px_1.png"))); // NOI18N
+        AñadirCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_List_24px_1_1.png"))); // NOI18N
         AñadirCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AñadirCompra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -150,7 +150,7 @@ public class Historial extends javax.swing.JFrame {
         });
         jPanel2.add(AñadirCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(1026, 11, -1, -1));
 
-        ComprasBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Trash_Can_24px_1.png"))); // NOI18N
+        ComprasBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Waste_24px.png"))); // NOI18N
         ComprasBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ComprasBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -167,7 +167,7 @@ public class Historial extends javax.swing.JFrame {
         montoTotalCompras.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(montoTotalCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 100, 90, 30));
 
-        BuscarCompras.setBackground(new java.awt.Color(30, 136, 229));
+        BuscarCompras.setBackground(new java.awt.Color(66, 66, 66));
         BuscarCompras.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         BuscarCompras.setForeground(new java.awt.Color(255, 255, 255));
         BuscarCompras.setText("Buscar...");
@@ -201,7 +201,7 @@ public class Historial extends javax.swing.JFrame {
         jComboBox2.setLightWeightPopupEnabled(false);
         jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
 
-        buscarIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Search_24px.png"))); // NOI18N
+        buscarIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Search_24px_1_1.png"))); // NOI18N
         jPanel2.add(buscarIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 110, 10));
 
@@ -221,25 +221,25 @@ public class Historial extends javax.swing.JFrame {
         });
         jPanel2.add(jLabeltotalVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 200, 30));
 
-        tabVentas.setBackground(new java.awt.Color(30, 136, 229));
+        tabVentas.setBackground(new java.awt.Color(66, 66, 66));
         tabVentas.setToolTipText("Mientras esta pestaña este activa, las funciones de los botones agregar, borrar y buscar estan vinculadas a las Ventas");
         tabVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tabVentas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabVentasMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tabVentasMousePressed(evt);
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Return_Purchase_24px_1.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Money_Bag_24px.png"))); // NOI18N
 
         javax.swing.GroupLayout tabVentasLayout = new javax.swing.GroupLayout(tabVentas);
         tabVentas.setLayout(tabVentasLayout);
         tabVentasLayout.setHorizontalGroup(
             tabVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabVentasLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         tabVentasLayout.setVerticalGroup(
             tabVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,39 +249,9 @@ public class Historial extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(tabVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 50, 50));
+        jPanel2.add(tabVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 60, 50));
 
-        tabCompras.setBackground(new java.awt.Color(21, 101, 192));
-        tabCompras.setToolTipText("Mientras esta pestaña esta activa, las funciones de agregar, borrar y buscar estan vinculadas a las Compras");
-        tabCompras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tabCompras.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabComprasMouseClicked(evt);
-            }
-        });
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Shopping_Cart_24px_1.png"))); // NOI18N
-
-        javax.swing.GroupLayout tabComprasLayout = new javax.swing.GroupLayout(tabCompras);
-        tabCompras.setLayout(tabComprasLayout);
-        tabComprasLayout.setHorizontalGroup(
-            tabComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabComprasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(35, 35, 35))
-        );
-        tabComprasLayout.setVerticalGroup(
-            tabComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabComprasLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addContainerGap())
-        );
-
-        jPanel2.add(tabCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 50, 50));
-
-        BuscarVentas.setBackground(new java.awt.Color(30, 136, 229));
+        BuscarVentas.setBackground(new java.awt.Color(66, 66, 66));
         BuscarVentas.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         BuscarVentas.setForeground(new java.awt.Color(255, 255, 255));
         BuscarVentas.setText("Buscar...");
@@ -296,6 +266,11 @@ public class Historial extends javax.swing.JFrame {
                 BuscarVentasMouseClicked(evt);
             }
         });
+        BuscarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarVentasActionPerformed(evt);
+            }
+        });
         BuscarVentas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 BuscarVentasKeyTyped(evt);
@@ -303,7 +278,7 @@ public class Historial extends javax.swing.JFrame {
         });
         jPanel2.add(BuscarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 134, -1));
 
-        VentasBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Trash_Can_24px_1.png"))); // NOI18N
+        VentasBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Waste_24px.png"))); // NOI18N
         VentasBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         VentasBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -312,7 +287,7 @@ public class Historial extends javax.swing.JFrame {
         });
         jPanel2.add(VentasBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(996, 11, -1, -1));
 
-        AñadirVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_List_24px_1.png"))); // NOI18N
+        AñadirVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_List_24px_1_1.png"))); // NOI18N
         AñadirVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AñadirVenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -320,6 +295,66 @@ public class Historial extends javax.swing.JFrame {
             }
         });
         jPanel2.add(AñadirVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1026, 11, -1, -1));
+
+        tabCompras.setBackground(new java.awt.Color(0, 120, 215));
+        tabCompras.setToolTipText("Mientras esta pestaña este activa, las funciones de los botones agregar, borrar y buscar estan vinculadas a las Ventas");
+        tabCompras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabCompras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tabComprasMousePressed(evt);
+            }
+        });
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Shopping_Cart_24px_1.png"))); // NOI18N
+
+        javax.swing.GroupLayout tabComprasLayout = new javax.swing.GroupLayout(tabCompras);
+        tabCompras.setLayout(tabComprasLayout);
+        tabComprasLayout.setHorizontalGroup(
+            tabComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabComprasLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        tabComprasLayout.setVerticalGroup(
+            tabComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabComprasLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addContainerGap())
+        );
+
+        jPanel2.add(tabCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
+
+        tabExchange.setBackground(new java.awt.Color(66, 66, 66));
+        tabExchange.setToolTipText("Mientras esta pestaña este activa, las funciones de los botones agregar, borrar y buscar estan vinculadas a las Ventas");
+        tabExchange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabExchange.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tabExchangeMousePressed(evt);
+            }
+        });
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Currency_Exchange_24px_2.png"))); // NOI18N
+
+        javax.swing.GroupLayout tabExchangeLayout = new javax.swing.GroupLayout(tabExchange);
+        tabExchange.setLayout(tabExchangeLayout);
+        tabExchangeLayout.setHorizontalGroup(
+            tabExchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabExchangeLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        tabExchangeLayout.setVerticalGroup(
+            tabExchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabExchangeLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addContainerGap())
+        );
+
+        jPanel2.add(tabExchange, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, 50));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 140));
 
@@ -329,40 +364,22 @@ public class Historial extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(245, 245, 245));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane2.setBackground(new java.awt.Color(245, 245, 245));
-        jScrollPane2.setBorder(null);
-
-        TablaVentas.setAutoCreateRowSorter(true);
-        TablaVentas.setBackground(new java.awt.Color(245, 245, 245));
-        TablaVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Usuario", "Origen", "Nombre", "Apellido", "Correo", "ID", "Monto", "Fecha"
+                "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        TablaVentas.setAutoscrolls(false);
-        TablaVentas.setGridColor(new java.awt.Color(245, 245, 245));
+        ));
+        TablaVentas.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
+        TablaVentas.setGridColor(new java.awt.Color(255, 255, 255));
         TablaVentas.setRowHeight(30);
-        TablaVentas.setSelectionBackground(new java.awt.Color(30, 136, 229));
-        TablaVentas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        TablaVentas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TablaVentasKeyPressed(evt);
-            }
-        });
-        jScrollPane2.setViewportView(TablaVentas);
-        TablaVentas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TablaVentas.setSelectionBackground(new java.awt.Color(39, 174, 96));
+        jScrollPane1.setViewportView(TablaVentas);
         if (TablaVentas.getColumnModel().getColumnCount() > 0) {
             TablaVentas.getColumnModel().getColumn(0).setResizable(false);
             TablaVentas.getColumnModel().getColumn(1).setResizable(false);
@@ -371,57 +388,38 @@ public class Historial extends javax.swing.JFrame {
             TablaVentas.getColumnModel().getColumn(4).setResizable(false);
             TablaVentas.getColumnModel().getColumn(5).setResizable(false);
             TablaVentas.getColumnModel().getColumn(6).setResizable(false);
-            TablaVentas.getColumnModel().getColumn(7).setResizable(false);
         }
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 1040, 500));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 500));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jScrollPane1.setBackground(new java.awt.Color(245, 245, 245));
-        jScrollPane1.setBorder(null);
+        jScrollPane3.setBorder(null);
 
-        TablaCompras.setAutoCreateRowSorter(true);
-        TablaCompras.setBackground(new java.awt.Color(245, 245, 245));
-        TablaCompras.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        TablaCompras.setModel(new javax.swing.table.DefaultTableModel(
+        jXTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Usuario", "Origen", "Procesador", "Nombre", "Apellido", "Documento", "ID", "Correo", "Monto", "Fecha"
+                "Usuario", "Origen", "Procesador", "Monto", "ID", "Correo", "Fecha", "Directorio"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false, false, false, false, false
-            };
+        ));
+        jXTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jXTable1.setAutoStartEditOnKeyStroke(false);
+        jXTable1.setAutoscrolls(false);
+        jXTable1.setComponentPopupMenu(jPopupMenu1);
+        jXTable1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
+        jXTable1.setGridColor(new java.awt.Color(255, 255, 255));
+        jXTable1.setRowHeight(30);
+        jXTable1.setRowMargin(15);
+        jXTable1.setShowHorizontalLines(false);
+        jXTable1.setShowVerticalLines(false);
+        jScrollPane3.setViewportView(jXTable1);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        TablaCompras.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        TablaCompras.setAutoscrolls(false);
-        TablaCompras.setComponentPopupMenu(jPopupMenu1);
-        TablaCompras.setGridColor(new java.awt.Color(245, 245, 245));
-        TablaCompras.setRowHeight(30);
-        TablaCompras.setSelectionBackground(new java.awt.Color(30, 136, 229));
-        TablaCompras.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        TablaCompras.getTableHeader().setResizingAllowed(false);
-        TablaCompras.getTableHeader().setReorderingAllowed(false);
-        TablaCompras.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                TablaComprasKeyReleased(evt);
-            }
-        });
-        jScrollPane1.setViewportView(TablaCompras);
-        TablaCompras.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (TablaCompras.getColumnModel().getColumnCount() > 0) {
-            TablaCompras.getColumnModel().getColumn(0).setResizable(false);
-            TablaCompras.getColumnModel().getColumn(0).setPreferredWidth(15);
-        }
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 500));
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 500));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, -1));
 
@@ -452,8 +450,8 @@ public class Historial extends javax.swing.JFrame {
                 toUpperCase(BuscarVentas, evt);
             }
         });
-        trsfiltro = new TableRowSorter(TablaCompras.getModel());
-        TablaCompras.setRowSorter(trsfiltro);
+        trsfiltro = new TableRowSorter(jXTable1.getModel());
+        jXTable1.setRowSorter(trsfiltro);
 
     }//GEN-LAST:event_BuscarComprasKeyTyped
 
@@ -496,14 +494,6 @@ public class Historial extends javax.swing.JFrame {
     private void jLabeltotalVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabeltotalVentasMouseClicked
          
     }//GEN-LAST:event_jLabeltotalVentasMouseClicked
-
-    private void tabComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabComprasMouseClicked
-          comprasTab();
-    }//GEN-LAST:event_tabComprasMouseClicked
-
-    private void tabVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabVentasMouseClicked
-          ventasTab();
-    }//GEN-LAST:event_tabVentasMouseClicked
 
     private void BuscarVentasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BuscarVentasFocusGained
         // TODO add your handling code here:
@@ -553,16 +543,8 @@ public class Historial extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_AñadirVentaMousePressed
 
-    private void TablaVentasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaVentasKeyPressed
-       ClipboardKeyAdapter copiardeVentas=new ClipboardKeyAdapter(TablaVentas);
-    }//GEN-LAST:event_TablaVentasKeyPressed
-
-    private void TablaComprasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaComprasKeyReleased
-        ClipboardKeyAdapter CopiardeCompras=new ClipboardKeyAdapter(TablaCompras);
-    }//GEN-LAST:event_TablaComprasKeyReleased
-
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
-        String s=(String) TablaCompras.getValueAt(TablaCompras.getSelectedRow(), 9);
+        String s=(String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 9);
         File file=new File(s);
         Desktop desktop=Desktop.getDesktop();
         try {
@@ -571,6 +553,25 @@ public class Historial extends javax.swing.JFrame {
             Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AbrirActionPerformed
+
+    private void tabComprasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabComprasMousePressed
+       comprasTab();
+    }//GEN-LAST:event_tabComprasMousePressed
+
+    private void tabVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabVentasMousePressed
+       ventasTab();
+    }//GEN-LAST:event_tabVentasMousePressed
+
+    private void tabExchangeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabExchangeMousePressed
+       tabExchange.setBackground(new java.awt.Color(231,76,60));
+       tabCompras.setBackground(new java.awt.Color(66, 66, 66));
+       tabVentas.setBackground(new java.awt.Color(66,66,66));
+       
+    }//GEN-LAST:event_tabExchangeMousePressed
+
+    private void BuscarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarVentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscarVentasActionPerformed
         
    
     //<editor-fold defaultstate="collapsed" desc="comment">
@@ -612,22 +613,16 @@ public class Historial extends javax.swing.JFrame {
            trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
        }
     }
-    
-    /*
-    * Metodo para cargar tablaHistorialCompras
-    * desde la clase MatricesHistorial
-    *
-    */
     private void cargarTablaCompras() throws IOException, ClassNotFoundException, IOException{
 
         if(ficheroCompras.exists()){  
             MatricesHistorial tablaHistorialCompras = new MatricesHistorial(); 
             String [][]MatrizCompra=tablaHistorialCompras.cargarArrayTablaCompras();
         
-        TablaCompras.setModel(new javax.swing.table.DefaultTableModel(
+        jXTable1.setModel(new javax.swing.table.DefaultTableModel(
         MatrizCompra,
         new String [] {
-                "Usuario", "Origen","Procesador", "Nombre", "Apellido", "ID", "E-Mail", "Monto $", "Fecha", "Directorio"
+                "Usuario", "Origen","Procesador", "Monto $","ID", "E-Mail", "Fecha", "Directorio"
             }
         ){
                 private static final long serialVersionUID = 1L;
@@ -639,25 +634,20 @@ public class Historial extends javax.swing.JFrame {
             return canEdit [columnIndex];
             }
         });
-                TablaCompras.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
-                JTableHeader Theader=TablaCompras.getTableHeader();
+                jXTable1.getTableHeader().setFont(new Font("Microsoft jhenghei", Font.BOLD, 14));
+                JTableHeader Theader=jXTable1.getTableHeader();
                 ((JLabel)Theader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
-        if (TablaCompras.getColumnModel().getColumnCount() > 0) {
-    TablaCompras.getColumnModel().getColumn(0).setPreferredWidth(20);
-    TablaCompras.getColumnModel().getColumn(1).setPreferredWidth(30);
-    TablaCompras.getColumnModel().getColumn(2).setPreferredWidth(50);
-    TablaCompras.getColumnModel().getColumn(3).setPreferredWidth(40);
-    TablaCompras.getColumnModel().getColumn(6).setPreferredWidth(30);
+        
+        jXTable1.setShowGrid(false, false);
+        if (jXTable1.getColumnModel().getColumnCount() > 0) {
+    jXTable1.getColumnModel().getColumn(0).setPreferredWidth(40);
+    jXTable1.getColumnModel().getColumn(1).setPreferredWidth(40);
+    jXTable1.getColumnModel().getColumn(2).setPreferredWidth(40);
+    jXTable1.getColumnModel().getColumn(3).setPreferredWidth(20);
 }
         sumarSaldoCompras();
 } 
-    
-    /*
-    * Metodo para cargar tablaHistorialVentas 
-    * desde la clase MatricesHistorial
-    *
-    */
     private void cargarTablaVentas() throws ClassNotFoundException, IOException{
         
         if (ficheroVentas.exists()){
@@ -667,7 +657,7 @@ public class Historial extends javax.swing.JFrame {
          TablaVentas.setModel(new javax.swing.table.DefaultTableModel(
         datosVentas,
     new String [] {
-        "Usuario", "Origen", "Nombre", "Apellido", "Correo", "ID", "Monto $", "Fecha"
+        "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha"
     }
 ) {
             private static final long serialVersionUID = 1L;
@@ -679,23 +669,23 @@ public class Historial extends javax.swing.JFrame {
         return canEdit [columnIndex];
     }
         });
-        TablaVentas.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));     
-        }
+        TablaVentas.getTableHeader().setFont(new Font("Microsoft jhenghei", Font.BOLD, 14));     
+        }       
+                 TablaVentas.setShowGrid(false, false);
                 JTableHeader Theader=TablaVentas.getTableHeader();
                 ((JLabel)Theader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
         sumarSaldoVentas();
     }    
-    
     private void limpiarTableCompras(){
        
-    TablaCompras.setModel(new javax.swing.table.DefaultTableModel(
+    jXTable1.setModel(new javax.swing.table.DefaultTableModel(
     new Object [][] {
         },
     new String [] {
-        "Usuario", "Nombre", "Apellido", "Nombre", "Documento", "ID", "Correo", "Monto", "Fecha"
+        "Usuario", "Origen","Procesador", "Monto $","ID", "E-Mail", "Fecha", "Directorio"
     }
 ));
-    TablaCompras.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 14));
+    jXTable1.getTableHeader().setFont(new Font("Microsoft jhenghei", Font.BOLD, 14));
     montoTotalCompras.setText("");
 }
     private void limpiarTableVentas(){
@@ -704,21 +694,17 @@ public class Historial extends javax.swing.JFrame {
 
     },
     new String [] {
-        "Usuario", "Origen", "Nombre", "Apellido", "Correo", "ID", "Monto", "Fecha"
+        "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha"
     }
 ));
     montoTotalVentas.setText("");
     }
-    
-    
     private void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(21, 101, 192));
     }
     private void resetColor(JPanel panel){
         panel.setBackground(new java.awt.Color(30,136,229));
     }
-    
-    
     private void toUpperCase(JTextField field,java.awt.event.KeyEvent evt){
         field= (JTextField)evt.getComponent();
 
@@ -729,7 +715,6 @@ public class Historial extends javax.swing.JFrame {
     field.setText(texto);
     }
     }
-   
     private void tabConfigIni(){
         jPanel5.setVisible(false);
         jLabeltotalVentas.setVisible(false);
@@ -738,12 +723,13 @@ public class Historial extends javax.swing.JFrame {
         VentasBorrar.setVisible(false);
         AñadirVenta.setVisible(false);
 }
-    
     private void comprasTab(){
-       setColor(tabCompras);
-       resetColor(tabVentas);
+       tabCompras.setBackground(new java.awt.Color(0,120,215));
+       tabVentas.setBackground(new java.awt.Color(66,66,66));
+       tabExchange.setBackground(new java.awt.Color(66,66,66));
+       
        jPanel5.setVisible(false);
-       jScrollPane1.setVisible(true);
+       jScrollPane3.setVisible(true);
        jLabeltotalCompra.setVisible(true);
        jLabeltotalVentas.setVisible(false);
        BuscarVentas.setVisible(false);
@@ -756,9 +742,10 @@ public class Historial extends javax.swing.JFrame {
        AñadirVenta.setVisible(false);
     }
     private void ventasTab(){
-        setColor(tabVentas);
-       resetColor(tabCompras);
-       jScrollPane1.setVisible(false);
+       tabVentas.setBackground(new java.awt.Color(39,174,96));
+       tabCompras.setBackground(new java.awt.Color(66, 66, 66));
+       tabExchange.setBackground(new java.awt.Color(66,66,66));
+       jScrollPane3.setVisible(false);
        jPanel5.setVisible(true);
        jLabeltotalVentas.setVisible(true);
        jLabeltotalCompra.setVisible(false);
@@ -778,7 +765,7 @@ public class Historial extends javax.swing.JFrame {
         totalRow-=1;
         for(int i=0;i<=(totalRow);i++)
         {
-             double sumatoria= Double.parseDouble(String.valueOf(TablaVentas.getValueAt(i,6)));
+             double sumatoria= Double.parseDouble(String.valueOf(TablaVentas.getValueAt(i,3)));
 //en la parte de arriba indica el primer parametro la fila y el segundo la columna la cual estaras //manejando
              sumatoria1+=sumatoria;
              String sumatoria2=String.valueOf(sumatoria1);
@@ -790,11 +777,11 @@ public class Historial extends javax.swing.JFrame {
     
     public void sumarSaldoCompras(){
         double sumatoria1=0.0;
-        int totalRow= TablaCompras.getRowCount();
+        int totalRow= jXTable1.getRowCount();
         totalRow-=1;
         for(int i=0;i<=(totalRow);i++)
         {
-             double sumatoria= Double.parseDouble(String.valueOf(TablaCompras.getValueAt(i,7)));
+             double sumatoria= Double.parseDouble(String.valueOf(jXTable1.getValueAt(i,3)));
 //en la parte de arriba indica el primer parametro la fila y el segundo la columna la cual estaras //manejando
              sumatoria1+=sumatoria;
              String sumatoria2=String.valueOf(sumatoria1);
@@ -817,13 +804,13 @@ table.getColumnModel().getColumn(column).setCellRenderer(tcr);
     private javax.swing.JTextField BuscarCompras;
     private javax.swing.JTextField BuscarVentas;
     private javax.swing.JLabel ComprasBorrar;
-    private javax.swing.JTable TablaCompras;
-    private javax.swing.JTable TablaVentas;
+    private org.jdesktop.swingx.JXTable TablaVentas;
     private javax.swing.JLabel TituloVentana;
     private javax.swing.JLabel VentasBorrar;
     private javax.swing.JLabel buscarIcono;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabeltotalCompra;
     private javax.swing.JLabel jLabeltotalVentas;
@@ -833,11 +820,13 @@ table.getColumnModel().getColumn(column).setCellRenderer(tcr);
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private org.jdesktop.swingx.JXTable jXTable1;
     private javax.swing.JLabel montoTotalCompras;
     private javax.swing.JLabel montoTotalVentas;
     private javax.swing.JPanel tabCompras;
+    private javax.swing.JPanel tabExchange;
     private javax.swing.JPanel tabVentas;
     // End of variables declaration//GEN-END:variables
 }
