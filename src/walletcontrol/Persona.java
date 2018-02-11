@@ -22,8 +22,9 @@ private String correo;
 private String monto;
 private String fecha;
 private String ID;
+private String procesador;
 
-        public Persona(String usuario,String origen, String nombre, String apellido, 
+        public Persona(String usuario,String origen,String procesador, String nombre, String apellido, 
                 String documento, String correo, String ID, String monto,String fecha) {
             
         this.usuario = usuario;
@@ -35,6 +36,7 @@ private String ID;
         this.monto = monto;
         this.ID = ID;
         this.fecha=fecha;
+        this.procesador=procesador;
     }
 
     public Persona(String usuario, String origen, String nombre, String apellido, 
@@ -120,6 +122,22 @@ private String ID;
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public String getProcesador() {
+        return procesador;
+    }
+
+    public void setProcesador(String procesador) {
+        this.procesador = procesador;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "usuario=" + usuario + ", origen=" + origen + 
+                ", nombre=" + nombre + ", apellido=" + apellido + ", documento=" + 
+                documento + ", correo=" + correo + ", monto=" + monto + ", fecha=" + 
+                fecha + ", ID=" + ID + ", procesador=" + procesador + '}';
     }
 
    

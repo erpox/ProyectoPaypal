@@ -63,7 +63,7 @@ public class Home1 extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanelExportar = new javax.swing.JPanel();
-        Exportar = new javax.swing.JLabel();
+        Resumen = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,7 +72,7 @@ public class Home1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(245, 245, 245));
 
-        jPanel4.setBackground(new java.awt.Color(30, 136, 229));
+        jPanel4.setBackground(new java.awt.Color(66, 66, 66));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,13 +115,14 @@ public class Home1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_48px_1.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_48px.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel2.setBackground(new java.awt.Color(33, 150, 243));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(33, 150, 243));
+        jLabel2.setForeground(new java.awt.Color(66, 66, 66));
         jLabel2.setText("     Historial");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanelHistorialLayout = new javax.swing.GroupLayout(jPanelHistorial);
         jPanelHistorial.setLayout(jPanelHistorialLayout);
@@ -161,13 +162,14 @@ public class Home1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Buy_48px_3.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Buy_48px.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setBackground(new java.awt.Color(33, 150, 243));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(33, 150, 243));
+        jLabel4.setForeground(new java.awt.Color(66, 66, 66));
         jLabel4.setText("    Compras ");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanelComprasLayout = new javax.swing.GroupLayout(jPanelCompras);
         jPanelCompras.setLayout(jPanelComprasLayout);
@@ -209,10 +211,11 @@ public class Home1 extends javax.swing.JFrame {
 
         jLabel6.setBackground(new java.awt.Color(33, 150, 243));
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(33, 150, 243));
+        jLabel6.setForeground(new java.awt.Color(66, 66, 66));
         jLabel6.setText("Ventas");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Money_Bag_48px_1.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Money_Bag_48px.png"))); // NOI18N
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanelVentasLayout = new javax.swing.GroupLayout(jPanelVentas);
@@ -250,13 +253,14 @@ public class Home1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Currency_Exchange_48px.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Cashflow_48px.png"))); // NOI18N
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel11.setBackground(new java.awt.Color(33, 150, 243));
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(33, 150, 243));
+        jLabel11.setForeground(new java.awt.Color(66, 66, 66));
         jLabel11.setText("Exchange");
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanelExcangeLayout = new javax.swing.GroupLayout(jPanelExcange);
         jPanelExcange.setLayout(jPanelExcangeLayout);
@@ -278,11 +282,11 @@ public class Home1 extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelconfig.setBackground(new java.awt.Color(245, 245, 245));
-        jPanelconfig.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanelconfig.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelconfig.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanelconfigMouseEntered(evt);
@@ -295,13 +299,14 @@ public class Home1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Settings_48px_2.png"))); // NOI18N
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Settings_48px.png"))); // NOI18N
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel13.setBackground(new java.awt.Color(33, 150, 243));
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(33, 150, 243));
+        jLabel13.setForeground(new java.awt.Color(66, 66, 66));
         jLabel13.setText("Configuración");
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanelconfigLayout = new javax.swing.GroupLayout(jPanelconfig);
         jPanelconfig.setLayout(jPanelconfigLayout);
@@ -328,7 +333,7 @@ public class Home1 extends javax.swing.JFrame {
         );
 
         jPanelExportar.setBackground(new java.awt.Color(245, 245, 245));
-        jPanelExportar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanelExportar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelExportar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanelExportarMouseEntered(evt);
@@ -341,13 +346,14 @@ public class Home1 extends javax.swing.JFrame {
             }
         });
 
-        Exportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Upload_to_the_Cloud_48px.png"))); // NOI18N
-        Exportar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Resumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Combo_Chart_48px_2.png"))); // NOI18N
+        Resumen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel15.setBackground(new java.awt.Color(33, 150, 243));
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel15.setText("    Exportar");
+        jLabel15.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel15.setText("    Resumen");
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanelExportarLayout = new javax.swing.GroupLayout(jPanelExportar);
         jPanelExportar.setLayout(jPanelExportarLayout);
@@ -357,7 +363,7 @@ public class Home1 extends javax.swing.JFrame {
                 .addGroup(jPanelExportarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelExportarLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(Exportar))
+                        .addComponent(Resumen))
                     .addGroup(jPanelExportarLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel15)))
@@ -367,7 +373,7 @@ public class Home1 extends javax.swing.JFrame {
             jPanelExportarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelExportarLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(Exportar)
+                .addComponent(Resumen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -386,7 +392,7 @@ public class Home1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelExportar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelconfig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -514,7 +520,8 @@ public class Home1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelExportarMouseExited
 
     private void jPanelExportarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelExportarMousePressed
-        // TODO add your handling code here:
+       new Dashboard().setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_jPanelExportarMousePressed
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(224, 224, 224));
@@ -553,7 +560,7 @@ public class Home1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Exportar;
+    private javax.swing.JLabel Resumen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

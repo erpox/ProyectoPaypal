@@ -49,7 +49,7 @@ import java.util.ArrayList;
                     listaVentas = (ArrayList) ois.readObject();
                     for (Persona p : listaVentas) { //se llena un nuevo listaVentas con cada Array del fichero
                         listaVentasReturn.add(new Persona(p.getUsuario(),p.getNombre(),p.getOrigen(),
-                                p.getApellido(),p.getDocumento(),p.getCorreo(),p.getID(),p.getMonto(),p.getFecha()));
+                                p.getApellido(),p.getCorreo(),p.getID(),p.getMonto(),p.getFecha()));
                     }
                    
 

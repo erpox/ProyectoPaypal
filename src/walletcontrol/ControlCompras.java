@@ -14,15 +14,15 @@ import java.util.ArrayList;
  private File fichero=new File("C:\\ProgramData\\WalletControl.dat");
 
 
-    public void agregarPersona(String usuario,String origen, String nombre, 
+    public void agregarPersona(String usuario,String origen,String procesador, String nombre, 
             String apellido, String documento, String correo, String ID, String monto,String fecha){
             
         ArrayList<Persona> arraylist=new ArrayList<>();
         //se recibe como para parametro las variables de la clase principal
         try {
             //se llena el array con un objeto de dicha clase
-            arraylist.add(new Persona(usuario,origen,nombre,apellido,documento,correo,ID,monto,fecha));
-
+            arraylist.add(new Persona(usuario,origen,procesador,nombre,apellido,documento,correo,ID,monto,fecha));
+            
             if (fichero.exists()) { //si ya existe el fichero, añade el arraylist despues de array existente sin sobreecribir el header
 
                 //se llama a la clase modificada de ObjetOutputStream llamada MiObjectOutputStream
@@ -55,10 +55,10 @@ import java.util.ArrayList;
 
                     arraylist2 = (ArrayList) ois.readObject();
                     for (Persona p : arraylist2) { //se llena un nuevo arraylist con cada Array del fichero
-                        estesi.add(new Persona(p.getUsuario(),p.getNombre(),p.getOrigen(),
-                                p.getApellido(),p.getDocumento(),p.getCorreo(),p.getID(),p.getMonto(),p.getFecha()));
+                        estesi.add(new Persona(p.getUsuario(),p.getOrigen(),p.getProcesador(),
+                                p.getNombre(),p.getApellido(),p.getDocumento(),p.getCorreo(),
+                                p.getID(),p.getMonto(),p.getFecha()));  
                     }
-                   
 
                 }
             }catch (EOFException e){

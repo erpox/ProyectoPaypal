@@ -35,17 +35,23 @@ public class MatricesHistorial {
         ControlCompras arrayCompras=new ControlCompras();
         arrayTablaCompras=arrayCompras.retornaPersona();
         
-        String[][] matrizTablaCompras=new String[arrayTablaCompras.size()][9];
+        String[][] matrizTablaCompras=new String[arrayTablaCompras.size()][10];
             for (int i = 0; i < arrayTablaCompras.size(); i++) {
                 matrizTablaCompras[i][0]=arrayTablaCompras.get(i).getUsuario();
-                matrizTablaCompras[i][1]=arrayTablaCompras.get(i).getNombre();
-                matrizTablaCompras[i][2]=arrayTablaCompras.get(i).getOrigen();
-                matrizTablaCompras[i][3]=arrayTablaCompras.get(i).getApellido();                
-                matrizTablaCompras[i][4]=arrayTablaCompras.get(i).getID();
-                matrizTablaCompras[i][5]=arrayTablaCompras.get(i).getCorreo();
-                matrizTablaCompras[i][6]=arrayTablaCompras.get(i).getMonto();
-                matrizTablaCompras[i][7]=arrayTablaCompras.get(i).getFecha();
-                matrizTablaCompras[i][8]=arrayTablaCompras.get(i).getDocumento();
+                matrizTablaCompras[i][1]=arrayTablaCompras.get(i).getOrigen();
+                matrizTablaCompras[i][2]=arrayTablaCompras.get(i).getProcesador();
+                matrizTablaCompras[i][3]=arrayTablaCompras.get(i).getNombre();
+                matrizTablaCompras[i][4]=arrayTablaCompras.get(i).getApellido();                
+                matrizTablaCompras[i][5]=arrayTablaCompras.get(i).getID();
+                matrizTablaCompras[i][6]=arrayTablaCompras.get(i).getCorreo();
+                matrizTablaCompras[i][7]=arrayTablaCompras.get(i).getMonto();
+                matrizTablaCompras[i][8]=arrayTablaCompras.get(i).getFecha();
+                matrizTablaCompras[i][9]=arrayTablaCompras.get(i).getDocumento();
+                System.err.print(arrayTablaCompras.get(i).getOrigen());
+                System.err.print(" ");
+                System.err.println(arrayTablaCompras.get(i).getProcesador());
+                
+                
             }            
     return matrizTablaCompras;
 }

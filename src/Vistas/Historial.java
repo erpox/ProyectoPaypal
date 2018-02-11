@@ -237,9 +237,9 @@ public class Historial extends javax.swing.JFrame {
         tabVentasLayout.setHorizontalGroup(
             tabVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabVentasLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
                 .addComponent(jLabel9)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         tabVentasLayout.setVerticalGroup(
             tabVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +249,7 @@ public class Historial extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(tabVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 90, 50));
+        jPanel2.add(tabVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 50, 50));
 
         tabCompras.setBackground(new java.awt.Color(21, 101, 192));
         tabCompras.setToolTipText("Mientras esta pestaña esta activa, las funciones de agregar, borrar y buscar estan vinculadas a las Compras");
@@ -267,7 +267,7 @@ public class Historial extends javax.swing.JFrame {
         tabComprasLayout.setHorizontalGroup(
             tabComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabComprasLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addGap(35, 35, 35))
         );
@@ -279,7 +279,7 @@ public class Historial extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(tabCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 90, 50));
+        jPanel2.add(tabCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 50, 50));
 
         BuscarVentas.setBackground(new java.awt.Color(30, 136, 229));
         BuscarVentas.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -389,11 +389,11 @@ public class Historial extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Usuario", "Origen", "Nombre", "Apellido", "Documento", "ID", "Correo", "Monto", "Fecha"
+                "Usuario", "Origen", "Procesador", "Nombre", "Apellido", "Documento", "ID", "Correo", "Monto", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, true, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -402,7 +402,6 @@ public class Historial extends javax.swing.JFrame {
         });
         TablaCompras.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         TablaCompras.setAutoscrolls(false);
-        TablaCompras.setColumnSelectionAllowed(false);
         TablaCompras.setComponentPopupMenu(jPopupMenu1);
         TablaCompras.setGridColor(new java.awt.Color(245, 245, 245));
         TablaCompras.setRowHeight(30);
@@ -563,7 +562,7 @@ public class Historial extends javax.swing.JFrame {
     }//GEN-LAST:event_TablaComprasKeyReleased
 
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
-        String s=(String) TablaCompras.getValueAt(TablaCompras.getSelectedRow(), 8);
+        String s=(String) TablaCompras.getValueAt(TablaCompras.getSelectedRow(), 9);
         File file=new File(s);
         Desktop desktop=Desktop.getDesktop();
         try {
@@ -628,7 +627,7 @@ public class Historial extends javax.swing.JFrame {
         TablaCompras.setModel(new javax.swing.table.DefaultTableModel(
         MatrizCompra,
         new String [] {
-                "Usuario", "Origen", "Nombre", "Apellido", "ID", "E-Mail", "Monto $", "Fecha", "Directorio"
+                "Usuario", "Origen","Procesador", "Nombre", "Apellido", "ID", "E-Mail", "Monto $", "Fecha", "Directorio"
             }
         ){
                 private static final long serialVersionUID = 1L;
@@ -647,7 +646,7 @@ public class Historial extends javax.swing.JFrame {
         if (TablaCompras.getColumnModel().getColumnCount() > 0) {
     TablaCompras.getColumnModel().getColumn(0).setPreferredWidth(20);
     TablaCompras.getColumnModel().getColumn(1).setPreferredWidth(30);
-    TablaCompras.getColumnModel().getColumn(2).setPreferredWidth(30);
+    TablaCompras.getColumnModel().getColumn(2).setPreferredWidth(50);
     TablaCompras.getColumnModel().getColumn(3).setPreferredWidth(40);
     TablaCompras.getColumnModel().getColumn(6).setPreferredWidth(30);
 }
@@ -795,7 +794,7 @@ public class Historial extends javax.swing.JFrame {
         totalRow-=1;
         for(int i=0;i<=(totalRow);i++)
         {
-             double sumatoria= Double.parseDouble(String.valueOf(TablaCompras.getValueAt(i,6)));
+             double sumatoria= Double.parseDouble(String.valueOf(TablaCompras.getValueAt(i,7)));
 //en la parte de arriba indica el primer parametro la fila y el segundo la columna la cual estaras //manejando
              sumatoria1+=sumatoria;
              String sumatoria2=String.valueOf(sumatoria1);
