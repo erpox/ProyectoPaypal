@@ -136,7 +136,7 @@ public class Historial extends javax.swing.JFrame {
         });
         jPanel2.add(BotonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
 
-        TituloVentana.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        TituloVentana.setFont(new java.awt.Font("Microsoft JhengHei", 1, 36)); // NOI18N
         TituloVentana.setForeground(new java.awt.Color(255, 255, 255));
         TituloVentana.setText("Historico de transacciones");
         jPanel2.add(TituloVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
@@ -190,7 +190,7 @@ public class Historial extends javax.swing.JFrame {
         jPanel2.add(BuscarCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 134, -1));
 
         jComboBox2.setBackground(new java.awt.Color(0, 102, 102));
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Origen", "Nombre", "Fecha" }));
         jComboBox2.setToolTipText("");
         jComboBox2.setAutoscrolls(true);
@@ -199,7 +199,7 @@ public class Historial extends javax.swing.JFrame {
         jComboBox2.setDoubleBuffered(true);
         jComboBox2.setFocusable(false);
         jComboBox2.setLightWeightPopupEnabled(false);
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 80, -1));
 
         buscarIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Search_24px_1_1.png"))); // NOI18N
         jPanel2.add(buscarIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
