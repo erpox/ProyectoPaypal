@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 /**
@@ -27,7 +28,6 @@ public class Addlinks extends javax.swing.JFrame {
     public Addlinks() {
         initComponents();
         setLocationRelativeTo(null);
-        documentos=FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
     }
 
     /**
@@ -48,7 +48,7 @@ public class Addlinks extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(30, 136, 229));
+        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -57,7 +57,7 @@ public class Addlinks extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Checkmark_24px_1.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel1MousePressed(evt);
@@ -65,7 +65,7 @@ public class Addlinks extends javax.swing.JFrame {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Delete_24px.png"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel2MousePressed(evt);
@@ -131,6 +131,7 @@ public class Addlinks extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MousePressed
 
     /**
+     * @param usuario
      * @param args the command line arguments
      */
 
@@ -142,16 +143,20 @@ public class Addlinks extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public void setID(String ID) {
-        this.ID = ID;
+        this.ID = ID; 
     }
+
+    public void setDocumentos(String documentos) {
+        Addlinks.documentos = documentos;
+    }
+    
+    
     public void escribir() throws IOException{
-        
-            File ruta=new File(documentos+"\\WalletControl"+"\\"+usuario+
-                    "\\"+ID);
+            if(usuario!="" && ID!=""){
+            File ruta=new File(documentos+usuario+"\\"+ID);
             ruta.mkdirs();
 
-            File fichero = new File(documentos+"\\WalletControl"+"\\"+usuario+
-                    "\\"+ID+"\\"+ID+".txt");
+            File fichero = new File(documentos+usuario+"\\"+ID+"\\"+ID+".txt");
             
             BufferedWriter bw = new BufferedWriter(new FileWriter(fichero,true));
             String texto=jTextArea1.getText();
@@ -160,6 +165,7 @@ public class Addlinks extends javax.swing.JFrame {
             bw.newLine();
             bw.newLine();
             bw.close();
+            }
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

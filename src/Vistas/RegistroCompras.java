@@ -115,7 +115,7 @@ public class RegistroCompras extends javax.swing.JFrame {
         jPanel2.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(66, 66, 66));
+        jPanel3.setBackground(new java.awt.Color(55, 71, 79));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         comprasjLabel.setFont(new java.awt.Font("Microsoft JhengHei", 1, 30)); // NOI18N
@@ -141,7 +141,7 @@ public class RegistroCompras extends javax.swing.JFrame {
         });
         jPanel3.add(btnnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 30, 30));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 530, 88));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 520, 88));
 
         usuario.setBackground(new java.awt.Color(245, 245, 245));
         usuario.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
@@ -155,7 +155,7 @@ public class RegistroCompras extends javax.swing.JFrame {
         jPanel2.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 153, 100, -1));
 
         monto.setBackground(new java.awt.Color(245, 245, 245));
-        monto.setFont(new java.awt.Font("Microsoft JhengHei", 1, 18)); // NOI18N
+        monto.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
         monto.setForeground(new java.awt.Color(0, 102, 204));
         monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         monto.setBorder(null);
@@ -169,7 +169,7 @@ public class RegistroCompras extends javax.swing.JFrame {
                 montoKeyTyped(evt);
             }
         });
-        jPanel2.add(monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 283, 93, -1));
+        jPanel2.add(monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 283, 110, -1));
 
         nombre.setBackground(new java.awt.Color(245, 245, 245));
         nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
@@ -286,7 +286,7 @@ public class RegistroCompras extends javax.swing.JFrame {
 
         jSeparator7.setForeground(new java.awt.Color(66, 66, 66));
         jSeparator7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 319, 93, 8));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 319, 110, 8));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Calendar_1_24px.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 153, -1, -1));
@@ -404,8 +404,7 @@ public class RegistroCompras extends javax.swing.JFrame {
         if(n==0){
             if(!verificarCamposCuenta()){
                  guardarCuenta();
-            }
-            
+            }            
             ControlCompras controlCompras=new ControlCompras();
         
             controlCompras.agregarPersona(usuario.getText(), anadirOrigen,procesador, nombre.getText(),
@@ -417,12 +416,12 @@ public class RegistroCompras extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
             
             
-//            usuario.setText("");
-//            monto.setText("");
-//            email.setText("");
-//            ID.setText("");
-//            apellido.setText("");
-//            nombre.setText("");    
+            usuario.setText("");
+            monto.setText("");
+            email.setText("");
+            ID.setText("");
+            apellido.setText("");
+            nombre.setText("");    
         }
         
         }catch(NullPointerException e){
@@ -508,10 +507,10 @@ public class RegistroCompras extends javax.swing.JFrame {
        int returnVal= Screenshot.showOpenDialog(this);
              if(returnVal==JFileChooser.APPROVE_OPTION){
                 String pathSC1=Screenshot.getSelectedFile().getPath();
-                String pathSC2=Documentos+"\\WalletControl"+"\\"+usuario.getText()+
+                String pathSC2=Documentos+"\\WalletControl\\Compras\\"+usuario.getText()+
                    "\\"+ID.getText()+"\\"+i+".jpg";
                 File directorioSC= new File(pathSC2);
-                Ruta=Documentos+"\\WalletControl"+"\\"+usuario.getText()+
+                Ruta=Documentos+"\\WalletControl\\Compras\\"+usuario.getText()+
                    "\\"+ID.getText()+"\\";
                 directorioSC.mkdirs();
                 i++;
@@ -529,8 +528,9 @@ public class RegistroCompras extends javax.swing.JFrame {
         Addlinks add = new Addlinks();
         add.setUsuario(usuario.getText());
         add.setID(ID.getText());
+        add.setDocumentos(Documentos+"\\WalletControl\\Compras\\");
         add.setVisible(true);
-        Ruta=Documentos+"\\WalletControl"+"\\"+usuario.getText()+
+        Ruta=Documentos+"\\WalletControl\\Compras\\"+usuario.getText()+
                    "\\"+ID.getText()+"\\";
     }//GEN-LAST:event_jLabelAddLinksMousePressed
 
@@ -552,76 +552,6 @@ public class RegistroCompras extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_IDKeyTyped
 
-    private void toUpperCase(JTextField field,java.awt.event.KeyEvent evt){
-    field=(JTextField)evt.getComponent();
-
-    String texto=field.getText().trim();//para evitar espacios en blanco antes y despues del texto
-    if(texto.length()>0){
-    char primero=texto.charAt(0);
-    texto=Character.toUpperCase(primero)+texto.substring(1, texto.length());
-    field.setText(texto);
-    }
-    }
-    private void PlaceHolder()    {
-    
-    TextPrompt user = new TextPrompt("     Usuario", usuario);
-    TextPrompt name = new TextPrompt("     Nombre",nombre);
-    name.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt lastName = new TextPrompt("     Apellido",apellido);
-    lastName.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt id= new TextPrompt ("         ID",ID);
-    id.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt mail=new TextPrompt("     Correo",email);
-    mail.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt monto2=new TextPrompt("    0.0$",monto);
-    monto2.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt cuenta=new TextPrompt("                Numero de cuenta", txtCuenta);
-    cuenta.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt documento=new TextPrompt("  Documento", txtDocumento);
-    documento.setShow(TextPrompt.Show.FOCUS_LOST);
-}  
-    
-    private void guardarCuenta() throws IOException{
-        
-            File ruta=new File(Documentos+"\\WalletControl"+"\\"+usuario.getText()+
-                    "\\"+ID.getText());
-            ruta.mkdirs();
-
-            File fichero = new File(Documentos+"\\WalletControl"+"\\"+usuario.getText()+
-                    "\\"+ID.getText()+"\\"+ID.getText()+".txt");
-            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(fichero,true));
-            bw.write("Datos de transferencia para esta operacion");
-            bw.newLine();
-            bw.write("Titular: "+nombre.getText()+" "+apellido.getText());
-            bw.newLine();
-            bw.write("C.I: "+txtDocumento.getText());
-            bw.newLine();
-            bw.write("Banco: "+comboBanco.getSelectedItem());
-            bw.newLine();
-            bw.write("Nro. cuenta: "+txtCuenta.getText());
-            bw.newLine();
-            bw.close();
-            Ruta=Documentos+"\\WalletControl"+"\\"+usuario.getText()+
-                   "\\"+ID.getText()+"\\";
-
-    }
-    
-    private boolean verificarCampos(){
-        boolean r=usuario.getText().isEmpty();
-        r|=ID.getText().isEmpty();
-        r|=email.getText().isEmpty();
-        r|=monto.getText().isEmpty();
-        
-        return r;
-    }
-    private boolean verificarCamposCuenta(){
-        boolean r=nombre.getText().isEmpty();
-        r|=apellido.getText().isEmpty();
-        r|=txtDocumento.getText().isEmpty();
-        
-        return r;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BotonGuardar;
     private javax.swing.JLabel BotonLimpiar;
@@ -668,6 +598,75 @@ public class RegistroCompras extends javax.swing.JFrame {
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
+    private void toUpperCase(JTextField field,java.awt.event.KeyEvent evt){
+    field=(JTextField)evt.getComponent();
 
+    String texto=field.getText().trim();//para evitar espacios en blanco antes y despues del texto
+    if(texto.length()>0){
+    char primero=texto.charAt(0);
+    texto=Character.toUpperCase(primero)+texto.substring(1, texto.length());
+    field.setText(texto);
+    }
+    }
+    private void PlaceHolder()    {
+    
+    TextPrompt user = new TextPrompt("      Usuario", usuario);
+    TextPrompt name = new TextPrompt("    Nombre",nombre);
+    name.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt lastName = new TextPrompt("    Apellido",apellido);
+    lastName.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt id= new TextPrompt ("         ID",ID);
+    id.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt mail=new TextPrompt("       Correo",email);
+    mail.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt monto2=new TextPrompt("  Monto",monto);
+    monto2.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt cuenta=new TextPrompt("                Numero de cuenta", txtCuenta);
+    cuenta.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt documento=new TextPrompt(" Documento", txtDocumento);
+    documento.setShow(TextPrompt.Show.FOCUS_LOST);
+}  
+    
+    private void guardarCuenta() throws IOException{
+        
+            File ruta=new File(Documentos+"\\WalletControl\\Compras\\"+usuario.getText()+
+                    "\\"+ID.getText());
+            ruta.mkdirs();
+
+            File fichero = new File(Documentos+"\\WalletControl\\Compras\\"+usuario.getText()+
+                    "\\"+ID.getText()+"\\"+ID.getText()+".txt");
+            
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fichero,true));
+            bw.write("Datos de transferencia para esta operacion");
+            bw.newLine();
+            bw.write("Titular: "+nombre.getText()+" "+apellido.getText());
+            bw.newLine();
+            bw.write("C.I: "+txtDocumento.getText());
+            bw.newLine();
+            bw.write("Banco: "+comboBanco.getSelectedItem());
+            bw.newLine();
+            bw.write("Nro. cuenta: "+txtCuenta.getText());
+            bw.newLine();
+            bw.close();
+            Ruta=Documentos+"\\WalletControl\\Compras\\"+usuario.getText()+
+                   "\\"+ID.getText()+"\\";
+
+    }
+    
+    private boolean verificarCampos(){
+        boolean r=usuario.getText().isEmpty();
+        r|=ID.getText().isEmpty();
+        r|=email.getText().isEmpty();
+        r|=monto.getText().isEmpty();
+        
+        return r;
+    }
+    private boolean verificarCamposCuenta(){
+        boolean r=nombre.getText().isEmpty();
+        r|=apellido.getText().isEmpty();
+        r|=txtDocumento.getText().isEmpty();
+        
+        return r;
+    }
 }
 

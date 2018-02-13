@@ -72,7 +72,7 @@ public class Home1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(245, 245, 245));
 
-        jPanel4.setBackground(new java.awt.Color(66, 66, 66));
+        jPanel4.setBackground(new java.awt.Color(55, 71, 79));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

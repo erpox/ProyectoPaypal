@@ -11,8 +11,6 @@ public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1185940963547149254L;
 
-
-    
 private String usuario;
 private String origen;
 private String nombre;
@@ -20,9 +18,11 @@ private String apellido;
 private String documento;
 private String correo;
 private String monto;
+private String montoRecibido;
 private String fecha;
 private String ID;
 private String procesador;
+private String procesadorRecibido;
 
         public Persona(String usuario,String origen,String procesador, String nombre, String apellido, 
                 String documento, String correo, String ID, String monto,String fecha) {
@@ -40,7 +40,7 @@ private String procesador;
     }
 
     public Persona(String usuario, String origen, String procesador, 
-            String correo, String monto, String fecha, String ID) {
+            String correo, String monto, String fecha, String ID,String documento) {
         this.usuario = usuario;
         this.origen = origen;
         this.correo = correo;
@@ -48,8 +48,25 @@ private String procesador;
         this.ID = ID;
         this.fecha = fecha;
         this.procesador=procesador;
+        this.documento=documento;
         
     }
+
+    public Persona(String usuario, String origen, String correo, String monto, 
+            String montoRecibido, String fecha, String ID, String procesador,
+            String procesadorRecibido,String documento,String nombre) {
+        this.usuario = usuario;
+        this.origen = origen;
+        this.correo = correo;
+        this.monto = monto;
+        this.fecha = fecha;
+        this.ID = ID;
+        this.procesador = procesador;
+        this.montoRecibido=montoRecibido;
+        this.procesadorRecibido=procesadorRecibido;
+        this.documento=documento;
+    }
+    
 
     public String getUsuario() {
         return usuario;
@@ -73,6 +90,22 @@ private String procesador;
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getMontoRecibido() {
+        return montoRecibido;
+    }
+
+    public void setMontoRecibido(String montoRecibido) {
+        this.montoRecibido = montoRecibido;
+    }
+
+    public String getProcesadorRecibido() {
+        return procesadorRecibido;
+    }
+
+    public void setProcesadorRecibido(String procesadorRecibido) {
+        this.procesadorRecibido = procesadorRecibido;
     }
 
     public String getApellido() {

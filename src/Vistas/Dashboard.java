@@ -21,8 +21,8 @@ import walletcontrol.Persona;
  */
 public class Dashboard extends javax.swing.JFrame {
 
-         ControlCompras controlBreakdown=new ControlCompras();
-         ControlVentas ventasBreakdown=new ControlVentas();
+           ControlCompras controlBreakdown=new ControlCompras();
+           ControlVentas ventasBreakdown=new ControlVentas();
            ArrayList<Persona> arrayBreak=new ArrayList<>();
            ArrayList<Persona> arrayVentas=new ArrayList<>();
            
@@ -35,6 +35,7 @@ public class Dashboard extends javax.swing.JFrame {
             double sumaForo = 0,sumaFace = 0, sumaInsta = 0,sumaAIR = 0;
             double parseSuma;
             int foroPtc = 0,facebook = 0,Instagram = 0,airTM=0;
+            
             DecimalFormat formatter = new DecimalFormat("#0.00");
             
     public Dashboard() {
@@ -45,6 +46,7 @@ public class Dashboard extends javax.swing.JFrame {
         PanelVentas.setVisible(false);
         ventasBreakDown();
         origenVentasBreak();
+        procesadorVentasBreak();
         setLocationRelativeTo(null);
     }
 
@@ -62,11 +64,11 @@ public class Dashboard extends javax.swing.JFrame {
         headerTittle = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        tabCompras = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        tabVentas = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        tabExchange = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         PanelCompras = new javax.swing.JPanel();
         subPanelCompras1 = new javax.swing.JPanel();
@@ -87,11 +89,11 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        jLabelForo = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
+        jLabelForoP = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -106,26 +108,26 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel92 = new javax.swing.JLabel();
         jLabel93 = new javax.swing.JLabel();
         jLabel94 = new javax.swing.JLabel();
-        jLabel95 = new javax.swing.JLabel();
-        jLabel96 = new javax.swing.JLabel();
-        jLabel97 = new javax.swing.JLabel();
-        jLabel98 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
-        jLabel100 = new javax.swing.JLabel();
-        jLabel101 = new javax.swing.JLabel();
-        jLabel102 = new javax.swing.JLabel();
-        jLabel103 = new javax.swing.JLabel();
-        jLabel104 = new javax.swing.JLabel();
-        jLabel105 = new javax.swing.JLabel();
-        jLabel106 = new javax.swing.JLabel();
-        jLabel107 = new javax.swing.JLabel();
-        jLabel108 = new javax.swing.JLabel();
-        jLabel109 = new javax.swing.JLabel();
-        jLabel110 = new javax.swing.JLabel();
-        jLabel111 = new javax.swing.JLabel();
-        jLabel112 = new javax.swing.JLabel();
-        jLabel113 = new javax.swing.JLabel();
-        jLabel114 = new javax.swing.JLabel();
+        jLabelComprasPaypal = new javax.swing.JLabel();
+        jLabelComprasPayza = new javax.swing.JLabel();
+        jLabelComprasPayoneer = new javax.swing.JLabel();
+        jLabelComprasPayeer = new javax.swing.JLabel();
+        jLabelComprasBitcoint = new javax.swing.JLabel();
+        jLabelPaypalP = new javax.swing.JLabel();
+        jLabelComprasPayzaP = new javax.swing.JLabel();
+        jLabelComprasPayoneerP = new javax.swing.JLabel();
+        jLabelComprasPayeerP = new javax.swing.JLabel();
+        jLabelComprasBitcointP = new javax.swing.JLabel();
+        jLabelComprasEthereum = new javax.swing.JLabel();
+        jLabelComprasGiftcard = new javax.swing.JLabel();
+        jLabelComprasNeteller = new javax.swing.JLabel();
+        jLabelComprasSkrill = new javax.swing.JLabel();
+        jLabelComprasSTP = new javax.swing.JLabel();
+        jLabelComprasEthereumP = new javax.swing.JLabel();
+        jLabelComprasGiftcardP = new javax.swing.JLabel();
+        jLabelComprasNetellerP = new javax.swing.JLabel();
+        jLabelComprasSkrillP = new javax.swing.JLabel();
+        jLabelComprasSTPP = new javax.swing.JLabel();
         PanelVentas = new javax.swing.JPanel();
         subPanelVentas1 = new javax.swing.JPanel();
         totalVentas = new javax.swing.JLabel();
@@ -164,12 +166,12 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
+        jLabelVentasPaypal = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
+        jLabelVentasPaypalP = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
@@ -191,7 +193,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Header.setBackground(new java.awt.Color(66, 66, 66));
+        Header.setBackground(new java.awt.Color(55, 71, 79));
         Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         headerTittle.setFont(new java.awt.Font("Microsoft JhengHei", 1, 30)); // NOI18N
@@ -217,78 +219,78 @@ public class Dashboard extends javax.swing.JFrame {
         });
         Header.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 11, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(66, 66, 66));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabCompras.setBackground(new java.awt.Color(52, 152, 219));
+        tabCompras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabCompras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel3MousePressed(evt);
+                tabComprasMousePressed(evt);
             }
         });
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        tabCompras.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Shopping_Cart_24px_1.png"))); // NOI18N
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        tabCompras.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        Header.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 60, 45));
+        Header.add(tabCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 60, 45));
 
-        jPanel4.setBackground(new java.awt.Color(39, 174, 96));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabVentas.setBackground(new java.awt.Color(55, 71, 79));
+        tabVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel4MousePressed(evt);
+                tabVentasMousePressed(evt);
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Return_Purchase_24px_1.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Money_Bag_24px.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout tabVentasLayout = new javax.swing.GroupLayout(tabVentas);
+        tabVentas.setLayout(tabVentasLayout);
+        tabVentasLayout.setHorizontalGroup(
+            tabVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabVentasLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        tabVentasLayout.setVerticalGroup(
+            tabVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVentasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(20, 20, 20))
         );
 
-        Header.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 45));
+        Header.add(tabVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 45));
 
-        jPanel5.setBackground(new java.awt.Color(231, 76, 60));
-        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel5.setPreferredSize(new java.awt.Dimension(55, 55));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabExchange.setBackground(new java.awt.Color(55, 71, 79));
+        tabExchange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabExchange.setPreferredSize(new java.awt.Dimension(55, 55));
+        tabExchange.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel5MousePressed(evt);
+                tabExchangeMousePressed(evt);
             }
         });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Currency_Exchange_24px_2.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout tabExchangeLayout = new javax.swing.GroupLayout(tabExchange);
+        tabExchange.setLayout(tabExchangeLayout);
+        tabExchangeLayout.setHorizontalGroup(
+            tabExchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabExchangeLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        tabExchangeLayout.setVerticalGroup(
+            tabExchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabExchangeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addGap(20, 20, 20))
         );
 
-        Header.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 60, 45));
+        Header.add(tabExchange, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 60, 45));
 
         jPanel1.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 841, 154));
 
@@ -439,8 +441,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(30, 136, 229));
         jLabel23.setText("AirTM");
 
-        jLabel24.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel24.setText("171.98$ en 12 compras");
+        jLabelForo.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelForo.setText("171.98$ en 12 compras");
 
         jLabel25.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel25.setText("No se han registrado ");
@@ -451,9 +453,9 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel27.setText("No se han registrado compras");
 
-        jLabel28.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel28.setText("0.0%");
+        jLabelForoP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelForoP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelForoP.setText("0.0%");
 
         jLabel29.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(39, 174, 96));
@@ -489,10 +491,10 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGroup(subPanelCompras2Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel24)))
+                        .addComponent(jLabelForo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(subPanelCompras2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel28)
+                    .addComponent(jLabelForoP)
                     .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -504,8 +506,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(subPanelCompras2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel28))
+                    .addComponent(jLabelForo)
+                    .addComponent(jLabelForoP))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(subPanelCompras2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
@@ -583,95 +585,95 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel94.setText("Skrill");
         subPanelCompras6.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
-        jLabel95.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel95.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 27, -1, -1));
+        jLabelComprasPaypal.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasPaypal.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasPaypal, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 27, -1, -1));
 
-        jLabel96.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel96.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
+        jLabelComprasPayza.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasPayza.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasPayza, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
 
-        jLabel97.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel97.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 91, -1, -1));
+        jLabelComprasPayoneer.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasPayoneer.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasPayoneer, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 91, -1, -1));
 
-        jLabel98.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel98.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 124, -1, -1));
+        jLabelComprasPayeer.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasPayeer.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasPayeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 124, -1, -1));
 
-        jLabel99.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel99.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 157, -1, -1));
+        jLabelComprasBitcoint.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasBitcoint.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasBitcoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 157, -1, -1));
 
-        jLabel100.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel100.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel100.setText("0.0%");
-        subPanelCompras6.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 27, -1, -1));
+        jLabelPaypalP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelPaypalP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelPaypalP.setText("0.0%");
+        subPanelCompras6.add(jLabelPaypalP, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 27, -1, -1));
 
-        jLabel101.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel101.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel101.setText("0.0%");
-        subPanelCompras6.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 60, -1, -1));
+        jLabelComprasPayzaP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasPayzaP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasPayzaP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasPayzaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 60, -1, -1));
 
-        jLabel102.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel102.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel102.setText("0.0%");
-        subPanelCompras6.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 95, -1, -1));
+        jLabelComprasPayoneerP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasPayoneerP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasPayoneerP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasPayoneerP, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 95, -1, -1));
 
-        jLabel103.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel103.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel103.setText("0.0%");
-        subPanelCompras6.add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 125, -1, -1));
+        jLabelComprasPayeerP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasPayeerP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasPayeerP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasPayeerP, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 125, -1, -1));
 
-        jLabel104.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel104.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel104.setText("0.0%");
-        subPanelCompras6.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 157, -1, -1));
+        jLabelComprasBitcointP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasBitcointP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasBitcointP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasBitcointP, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 157, -1, -1));
 
-        jLabel105.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel105.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 27, -1, -1));
+        jLabelComprasEthereum.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasEthereum.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasEthereum, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 27, -1, -1));
 
-        jLabel106.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel106.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 59, -1, -1));
+        jLabelComprasGiftcard.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasGiftcard.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasGiftcard, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 59, -1, -1));
 
-        jLabel107.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel107.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 91, -1, -1));
+        jLabelComprasNeteller.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasNeteller.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasNeteller, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 91, -1, -1));
 
-        jLabel108.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel108.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 124, -1, -1));
+        jLabelComprasSkrill.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasSkrill.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasSkrill, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 124, -1, -1));
 
-        jLabel109.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel109.setText("No se han registrado compras");
-        subPanelCompras6.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 157, -1, -1));
+        jLabelComprasSTP.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelComprasSTP.setText("No se han registrado compras");
+        subPanelCompras6.add(jLabelComprasSTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 157, -1, -1));
 
-        jLabel110.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel110.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel110.setText("0.0%");
-        subPanelCompras6.add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 27, -1, -1));
+        jLabelComprasEthereumP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasEthereumP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasEthereumP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasEthereumP, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 27, -1, -1));
 
-        jLabel111.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel111.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel111.setText("0.0%");
-        subPanelCompras6.add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 60, -1, -1));
+        jLabelComprasGiftcardP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasGiftcardP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasGiftcardP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasGiftcardP, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 60, -1, -1));
 
-        jLabel112.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel112.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel112.setText("0.0%");
-        subPanelCompras6.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 95, -1, -1));
+        jLabelComprasNetellerP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasNetellerP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasNetellerP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasNetellerP, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 95, -1, -1));
 
-        jLabel113.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel113.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel113.setText("0.0%");
-        subPanelCompras6.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 125, -1, -1));
+        jLabelComprasSkrillP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasSkrillP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasSkrillP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasSkrillP, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 125, -1, -1));
 
-        jLabel114.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel114.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel114.setText("0.0%");
-        subPanelCompras6.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 157, -1, 22));
+        jLabelComprasSTPP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelComprasSTPP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelComprasSTPP.setText("0.0%");
+        subPanelCompras6.add(jLabelComprasSTPP, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 157, -1, 22));
 
         PanelCompras.add(subPanelCompras6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 790, 200));
 
@@ -686,61 +688,120 @@ public class Dashboard extends javax.swing.JFrame {
         dropShadowBorder4.setShowLeftShadow(true);
         dropShadowBorder4.setShowTopShadow(true);
         subPanelVentas1.setBorder(dropShadowBorder4);
-        subPanelVentas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         totalVentas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         totalVentas.setForeground(new java.awt.Color(39, 174, 96));
         totalVentas.setText("30");
-        subPanelVentas1.add(totalVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, -1, -1));
 
         jLabel62.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel62.setText("Ventas concretadas");
-        subPanelVentas1.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 20, -1, -1));
 
         jLabel63.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 24)); // NOI18N
         jLabel63.setForeground(new java.awt.Color(39, 174, 96));
         jLabel63.setText("10");
-        subPanelVentas1.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 47, -1, -1));
 
         jLabel64.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel64.setText("realizadas esta semana");
-        subPanelVentas1.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 55, -1, -1));
 
         jLabel65.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel65.setText("El");
-        subPanelVentas1.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 88, -1, -1));
 
         jLabel66.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jLabel66.setForeground(new java.awt.Color(255, 87, 34));
         jLabel66.setText("70%");
-        subPanelVentas1.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 85, -1, -1));
 
         jLabel67.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel67.setText("proviene de Instagram");
-        subPanelVentas1.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 88, -1, -1));
 
         jLabel68.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jLabel68.setForeground(new java.awt.Color(30, 136, 229));
         jLabel68.setText("Paypal");
-        subPanelVentas1.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 119, -1, -1));
 
         jLabel69.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel69.setText("es el procesador mas usado");
-        subPanelVentas1.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 123, -1, -1));
 
         jLabel70.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel70.setText("Procesador con mas ingresos");
-        subPanelVentas1.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 153, -1, -1));
 
         jLabel71.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jLabel71.setForeground(new java.awt.Color(255, 87, 34));
         jLabel71.setText("Payoneer");
-        subPanelVentas1.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 149, -1, -1));
 
         jLabel72.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jLabel72.setForeground(new java.awt.Color(255, 87, 34));
         jLabel72.setText("$315");
-        subPanelVentas1.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 149, -1, -1));
+
+        javax.swing.GroupLayout subPanelVentas1Layout = new javax.swing.GroupLayout(subPanelVentas1);
+        subPanelVentas1.setLayout(subPanelVentas1Layout);
+        subPanelVentas1Layout.setHorizontalGroup(
+            subPanelVentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(totalVentas)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel62))
+            .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel63)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel64))
+            .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel65)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel66)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel67))
+            .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel68)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel69))
+            .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel70)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel71)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel72))
+        );
+        subPanelVentas1Layout.setVerticalGroup(
+            subPanelVentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(subPanelVentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totalVentas)
+                    .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel62)))
+                .addGap(6, 6, 6)
+                .addGroup(subPanelVentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel63)
+                    .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel64)))
+                .addGap(6, 6, 6)
+                .addGroup(subPanelVentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel66)
+                    .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(subPanelVentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel65)
+                            .addComponent(jLabel67))))
+                .addGap(10, 10, 10)
+                .addGroup(subPanelVentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel68)
+                    .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel69)))
+                .addGap(6, 6, 6)
+                .addGroup(subPanelVentas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(subPanelVentas1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel70))
+                    .addComponent(jLabel71)
+                    .addComponent(jLabel72)))
+        );
 
         PanelVentas.add(subPanelVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 390, 190));
 
@@ -790,22 +851,22 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel81.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel81.setForeground(new java.awt.Color(39, 174, 96));
         jLabel81.setText("0.0%");
-        subPanelVentas.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 29, -1, -1));
+        subPanelVentas.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 29, -1, -1));
 
         jLabel82.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel82.setForeground(new java.awt.Color(39, 174, 96));
         jLabel82.setText("0.0%");
-        subPanelVentas.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 65, -1, -1));
+        subPanelVentas.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 65, -1, -1));
 
         jLabel83.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel83.setForeground(new java.awt.Color(39, 174, 96));
         jLabel83.setText("0.0%");
-        subPanelVentas.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 101, -1, -1));
+        subPanelVentas.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
 
         jLabel84.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel84.setForeground(new java.awt.Color(39, 174, 96));
         jLabel84.setText("0.0%");
-        subPanelVentas.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 137, -1, -1));
+        subPanelVentas.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
 
         PanelVentas.add(subPanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 390, 190));
 
@@ -866,9 +927,9 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel41.setText("Skrill");
         subPanelVentas2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
-        jLabel42.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel42.setText("No se han registrado ventas");
-        subPanelVentas2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 27, -1, -1));
+        jLabelVentasPaypal.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabelVentasPaypal.setText("No se han registrado ventas");
+        subPanelVentas2.add(jLabelVentasPaypal, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 27, -1, -1));
 
         jLabel43.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel43.setText("No se han registrado ventas");
@@ -886,10 +947,10 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel46.setText("No se han registrado ventas");
         subPanelVentas2.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 157, -1, -1));
 
-        jLabel47.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(39, 174, 96));
-        jLabel47.setText("0.0%");
-        subPanelVentas2.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 27, -1, -1));
+        jLabelVentasPaypalP.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
+        jLabelVentasPaypalP.setForeground(new java.awt.Color(39, 174, 96));
+        jLabelVentasPaypalP.setText("0.0%");
+        subPanelVentas2.add(jLabelVentasPaypalP, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 27, -1, -1));
 
         jLabel48.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(39, 174, 96));
@@ -981,29 +1042,29 @@ public class Dashboard extends javax.swing.JFrame {
              }
     }//GEN-LAST:event_jLabel2MousePressed
 
-    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-       jPanel4.setBackground(new java.awt.Color(66, 66, 66));
-       jPanel3.setBackground(new java.awt.Color(52, 152, 219));
-       jPanel5.setBackground(new java.awt.Color(231,76,60));
+    private void tabVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabVentasMousePressed
+       tabVentas.setBackground(new java.awt.Color(39,174,96));
+       tabCompras.setBackground(new java.awt.Color(55,71,79));
+       tabExchange.setBackground(new java.awt.Color(55,71,79));
        PanelVentas.setVisible(true);
        PanelCompras.setVisible(false);
        
-    }//GEN-LAST:event_jPanel4MousePressed
+    }//GEN-LAST:event_tabVentasMousePressed
 
-    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-       jPanel3.setBackground(new java.awt.Color(66, 66, 66));
-       jPanel4.setBackground(new java.awt.Color(39,174,96));
-       jPanel5.setBackground(new java.awt.Color(231,76,60));
+    private void tabComprasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabComprasMousePressed
+       tabCompras.setBackground(new java.awt.Color(52, 152, 219));
+       tabVentas.setBackground(new java.awt.Color(55,71,79));
+       tabExchange.setBackground(new java.awt.Color(55,71,79));
        PanelCompras.setVisible(true);
        PanelVentas.setVisible(false);
-    }//GEN-LAST:event_jPanel3MousePressed
+    }//GEN-LAST:event_tabComprasMousePressed
 
-    private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
-       jPanel5.setBackground(new java.awt.Color(66,66,66));
-       jPanel3.setBackground(new java.awt.Color(52, 152, 219));
-       jPanel4.setBackground(new java.awt.Color(39,174,96));
+    private void tabExchangeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabExchangeMousePressed
+       tabExchange.setBackground(new java.awt.Color(231,76,60));
+       tabCompras.setBackground(new java.awt.Color(55,71,79));
+       tabVentas.setBackground(new java.awt.Color(55,71,79));
        
-    }//GEN-LAST:event_jPanel5MousePressed
+    }//GEN-LAST:event_tabExchangeMousePressed
 
     
     
@@ -1013,7 +1074,8 @@ public class Dashboard extends javax.swing.JFrame {
             arrayBreak=controlBreakdown.retornaPersona();
                         
             total = arrayBreak.size();
-            totalCompras.setText(String.valueOf(total));
+            int total2=(int) total;
+            totalCompras.setText(String.valueOf(total2));
             
             
             
@@ -1087,8 +1149,7 @@ public class Dashboard extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }  
-    }
-    
+    } 
     private void orgienComprasBreak(){
         if(foroPtc!=0){
            
@@ -1096,8 +1157,8 @@ public class Dashboard extends javax.swing.JFrame {
             double porcentForo=((foroPtc*100)/total);
             String porcentajeForo=String.format( "%.2f", porcentForo );
             String sumaForo2=formatter.format(sumaForo);
-            jLabel28.setText(porcentajeForo+"%");
-            jLabel24.setText(sumaForo2+"$ en "+foroPtc+" compras");
+            jLabelForoP.setText(porcentajeForo+"%");
+            jLabelForo.setText(sumaForo2+"$ en "+foroPtc+" compras");
 
                 if(foroPtc>facebook && foroPtc>Instagram && foroPtc>airTM){
                     jLabel14.setText("provienen de Foro-PTC");
@@ -1147,8 +1208,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentPaypal=((paypal*100)/total);
                 String porcentajePaypal=formatter.format(porcentPaypal);
                 String sumaPaypal2=formatter.format(sumaPaypal);
-                jLabel47.setText(porcentajePaypal+"%");
-                jLabel42.setText(sumaPaypal2+"$ en "+paypal+" compras");
+                jLabelPaypalP.setText(porcentajePaypal+"%");
+                jLabelComprasPaypal.setText(sumaPaypal2+"$ en "+paypal+" compras");
                 
                 if(paypal>=payza && paypal>=payeer && paypal>=payoneer && paypal>=skrill 
                         && paypal>=stp && paypal>=bitcoin && paypal>=ethereum 
@@ -1161,8 +1222,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentPayza=((payza*100)/total);
                 String porcentajePayza=formatter.format(porcentPayza);
                 String sumaPayza2=formatter.format(sumaPayza);
-                jLabel48.setText(porcentajePayza+"%");
-                jLabel43.setText(sumaPayza2+"$ en "+payza+" compras");
+                jLabelComprasPayzaP.setText(porcentajePayza+"%");
+                jLabelComprasPayza.setText(sumaPayza2+"$ en "+payza+" compras");
                 if(payza>=payeer && payza>=payoneer && payza>=skrill 
                         && payza>=stp && payza>=bitcoin && payza>=ethereum 
                         && payza>=giftcard && payza>=neteller && payza>=paypal){
@@ -1174,8 +1235,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentPayeer=((payeer*100)/total);
                 String porcentajePayeer=formatter.format(porcentPayeer);
                 String sumaPayeer2=formatter.format(sumaPayeer);
-                jLabel50.setText(porcentajePayeer+"%");
-                jLabel45.setText(sumaPayeer2+"$ en "+payeer+" compras");
+                jLabelComprasPayeerP.setText(porcentajePayeer+"%");
+                jLabelComprasPayeer.setText(sumaPayeer2+"$ en "+payeer+" compras");
                 if(payeer>=payza && payeer>=payoneer && payeer>=skrill 
                         && payeer>=stp && payeer>=bitcoin && payeer>=ethereum 
                         && payeer>=giftcard && payeer>=neteller && payeer>=paypal){
@@ -1187,8 +1248,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentPayoneer=((payoneer*100)/total);
                 String porcentajePayoneer=formatter.format(porcentPayoneer);
                 String sumaPayoneer2=formatter.format(sumaPayoneer);
-                jLabel49.setText(porcentajePayoneer+"%");
-                jLabel44.setText(sumaPayoneer2+"$ en "+payoneer+" compras");         
+                jLabelComprasPayoneerP.setText(porcentajePayoneer+"%");
+                jLabelComprasPayoneer.setText(sumaPayoneer2+"$ en "+payoneer+" compras");         
                  if(payoneer>=payeer && payoneer>=payza && payoneer>=skrill 
                         && payoneer>=stp && payoneer>=bitcoin && payoneer>=ethereum 
                         && payoneer>=giftcard && payoneer>=neteller && payoneer>=paypal){           
@@ -1199,8 +1260,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentSkrill=((skrill*100)/total);
                 String porcentajeSkrill=formatter.format(porcentSkrill);
                 String sumaSkrill2=formatter.format(sumaSkrill);
-                jLabel60.setText(porcentajeSkrill+"%");
-                jLabel55.setText(sumaSkrill2+"$ en "+skrill+" compras");
+                jLabelComprasSkrillP.setText(porcentajeSkrill+"%");
+                jLabelComprasSkrill.setText(sumaSkrill2+"$ en "+skrill+" compras");
                  if(skrill>=payeer && skrill>=payoneer && skrill>=payza 
                         && skrill>=stp && skrill>=bitcoin && skrill>=ethereum 
                         && skrill>=giftcard && skrill>=neteller && skrill>=paypal){
@@ -1212,8 +1273,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentSTP=((stp*100)/total);
                 String porcentajeSTP=formatter.format(porcentSTP);
                 String sumaSTP2=formatter.format(sumaSTP);
-                jLabel61.setText(porcentajeSTP+"%");
-                jLabel56.setText(sumaSTP2+"$ en "+stp+" compras");
+                jLabelComprasSTPP.setText(porcentajeSTP+"%");
+                jLabelComprasSTP.setText(sumaSTP2+"$ en "+stp+" compras");
                  if(stp>=payeer && stp>=payoneer && stp>=skrill 
                         && stp>=payza && stp>=bitcoin && stp>=ethereum 
                         && stp>=giftcard && stp>=neteller && stp>=paypal){
@@ -1224,8 +1285,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentBitcoin=((bitcoin*100)/total);
                 String porcentajeBitcoin=formatter.format(porcentBitcoin);
                 String sumaBitcoin2=formatter.format(sumaBitcoin);
-                jLabel51.setText(porcentajeBitcoin+"%");
-                jLabel46.setText(sumaBitcoin2+"$ en "+bitcoin+" compras");
+                jLabelComprasBitcointP.setText(porcentajeBitcoin+"%");
+                jLabelComprasBitcoint.setText(sumaBitcoin2+"$ en "+bitcoin+" compras");
                  if(bitcoin>=payeer && bitcoin>=payoneer && bitcoin>=skrill 
                         && bitcoin>=stp && bitcoin>=payza && bitcoin>=ethereum 
                         && bitcoin>=giftcard && bitcoin>=neteller && bitcoin>=paypal){
@@ -1236,8 +1297,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentEthereum=((ethereum*100)/total);
                 String porcentajeEthereum=formatter.format(porcentEthereum);
                 String sumaEthereum2=formatter.format(sumaEthereum);
-                jLabel57.setText(porcentajeEthereum+"%");
-                jLabel52.setText(sumaEthereum2+"$ en "+ethereum+" compras");
+                jLabelComprasEthereumP.setText(porcentajeEthereum+"%");
+                jLabelComprasEthereum.setText(sumaEthereum2+"$ en "+ethereum+" compras");
                  if(ethereum>=payeer && ethereum>=payoneer && ethereum>=skrill 
                         && ethereum>=stp && ethereum>=bitcoin && ethereum>=payza 
                         && ethereum>=giftcard && ethereum>=neteller && ethereum>=paypal){
@@ -1248,8 +1309,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentGiftcard=((giftcard*100)/total);
                 String porcentajeGiftcard=formatter.format(porcentGiftcard);
                 String sumaGiftcard2=formatter.format(sumaGiftcard);
-                jLabel58.setText(porcentajeGiftcard+"%");
-                jLabel53.setText(sumaGiftcard2+"$ en "+giftcard+" compras");
+                jLabelComprasGiftcardP.setText(porcentajeGiftcard+"%");
+                jLabelComprasGiftcard.setText(sumaGiftcard2+"$ en "+giftcard+" compras");
                  if(giftcard>=payeer && giftcard>=payoneer && giftcard>=skrill 
                         && giftcard>=stp && giftcard>=bitcoin && giftcard>=ethereum 
                         && giftcard>=payza && giftcard>=neteller && giftcard>=paypal){
@@ -1260,8 +1321,8 @@ public class Dashboard extends javax.swing.JFrame {
                 double porcentNeteller=((neteller*100)/total);
                 String porcentajeNeteller=formatter.format(porcentNeteller);
                 String sumaNeteller2=formatter.format(sumaNeteller);
-                jLabel59.setText(porcentajeNeteller+"%");
-                jLabel54.setText(sumaNeteller2+"$ en "+neteller+" compras");
+                jLabelComprasNetellerP.setText(porcentajeNeteller+"%");
+                jLabelComprasNeteller.setText(sumaNeteller2+"$ en "+neteller+" compras");
                 
                 if(neteller>=payeer && neteller>=payoneer && neteller>=skrill 
                         && neteller>=stp && neteller>=neteller && neteller>=ethereum 
@@ -1273,80 +1334,86 @@ public class Dashboard extends javax.swing.JFrame {
     }
     
     private void ventasBreakDown(){
+sumaPaypal = 0;sumaPayza=0;sumaPayeer=0;sumaPayoneer=0;
+sumaNeteller=0;sumaBitcoin=0;sumaEthereum=0;sumaSTP=0;
+sumaGiftcard=0;sumaSkrill=0; paypal = 0; payza=0;
+payeer=0;payoneer=0;neteller=0;bitcoin=0;ethereum=0;
+stp=0;giftcard=0;skrill=0;sumaForo = 0;sumaFace = 0;
+sumaInsta = 0;sumaAIR = 0;foroPtc = 0;facebook = 0;
+Instagram = 0;airTM=0;
+
         try {
             
             arrayVentas=ventasBreakdown.retornaPersonaVentas();
                         
-            total = arrayVentas.size();
-            totalVentas.setText(String.valueOf(total));
+            total= arrayVentas.size();
+            int total2=(int) total;
+            totalVentas.setText(String.valueOf(total2));
 
-            for (int i = 0; i <arrayBreak.size(); i++) {
+            for (int i = 0; i <arrayVentas.size(); i++) {
                 
-                if(arrayBreak.get(i).getOrigen().equals("Foro-PTC")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                if(arrayVentas.get(i).getOrigen().equals("Foro-PTC")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaForo += parseSuma;
                     foroPtc++;
-                }else if(arrayBreak.get(i).getOrigen().equals("Facebook")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getOrigen().equals("Facebook")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaFace += parseSuma;
                     facebook++;
-                }else if(arrayBreak.get(i).getOrigen().equals("Instagram")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getOrigen().equals("Instagram")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaInsta +=parseSuma;
                     Instagram++; 
-                }else if(arrayBreak.get(i).getOrigen().equals("AirTM")) {
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getOrigen().equals("AirTM")) {
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaAIR += parseSuma;
                     airTM++;  
                 }
                 
-                if(arrayBreak.get(i).getProcesador().equals("Paypal")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                if(arrayVentas.get(i).getProcesador().equals("Paypal")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaPaypal+=parseSuma;
                     paypal++;
-                }else if(arrayBreak.get(i).getProcesador().equals("Payza")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("Payza")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaPayza+=parseSuma;
                     payza++;
-                }else if(arrayBreak.get(i).getProcesador().equals("Payoneer")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("Payoneer")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaPayoneer+=parseSuma;
                     payoneer++;
-                }else if(arrayBreak.get(i).getProcesador().equals("Bitcoin")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("Bitcoin")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaBitcoin+=parseSuma;
                     bitcoin++;
-                }else if(arrayBreak.get(i).getProcesador().equals("Ethereum")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("Ethereum")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaEthereum+=parseSuma;
                     ethereum++;
-                }else if(arrayBreak.get(i).getProcesador().equals("Skrill")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("Skrill")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaSkrill+=parseSuma;
                     skrill++;
-                }else if(arrayBreak.get(i).getProcesador().equals("Neteller")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("Neteller")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaNeteller+=parseSuma;
                     neteller++;
-                }else if(arrayBreak.get(i).getProcesador().equals("Giftcard")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("Giftcard")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaGiftcard+=parseSuma;
                     giftcard++;
-                }else if(arrayBreak.get(i).getProcesador().equals("STP")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("STP")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaSTP+=parseSuma;
                     stp++;
-                }else if(arrayBreak.get(i).getProcesador().equals("Payeer")){
-                    parseSuma = Double.parseDouble(arrayBreak.get(i).getMonto());
+                }else if(arrayVentas.get(i).getProcesador().equals("Payeer")){
+                    parseSuma = Double.parseDouble(arrayVentas.get(i).getMonto());
                     sumaPayeer+=parseSuma;
                     payeer++;
                 }
 
             }   
-            System.err.println(airTM);
-        } catch (IOException ex) {
-            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
@@ -1356,7 +1423,7 @@ public class Dashboard extends javax.swing.JFrame {
             String porcentajeForo=String.format( "%.2f", porcentForo );
             String sumaForo2=formatter.format(sumaForo);
             jLabel81.setText(porcentajeForo+"%");
-            jLabel77.setText(sumaForo2+"$ en "+foroPtc+" compras");
+            jLabel77.setText(sumaForo2+"$ en "+foroPtc+" ventas");
 
                 if(foroPtc>facebook && foroPtc>Instagram && foroPtc>airTM){
                     jLabel67.setText("provienen de Foro-PTC");
@@ -1383,7 +1450,7 @@ public class Dashboard extends javax.swing.JFrame {
             String porcentajeInsta=formatter.format(porcentInsta);
             String sumaInsta2=formatter.format(sumaInsta);
             jLabel83.setText(porcentajeInsta+"%");
-            jLabel79.setText(sumaInsta2+"$ en "+Instagram+" compras");
+            jLabel79.setText(sumaInsta+"$ en "+Instagram+" compras");
                 if (Instagram>airTM) {
                     jLabel67.setText("provienen de Instagram");
                     jLabel66.setText(String.valueOf(porcentajeInsta)+"%");
@@ -1401,28 +1468,142 @@ public class Dashboard extends javax.swing.JFrame {
                 } 
             }
     }
+    private void procesadorVentasBreak(){
+    if(paypal!=0){
+                double porcentPaypal=((paypal*100)/total);
+                String porcentajePaypal=formatter.format(porcentPaypal);
+                String sumaPaypal2=formatter.format(sumaPaypal);
+                jLabelVentasPaypalP.setText(porcentajePaypal+"%");
+                jLabelVentasPaypal.setText(sumaPaypal2+"$ en "+paypal+" ventas");
+                
+                if(paypal>=payza && paypal>=payeer && paypal>=payoneer && paypal>=skrill 
+                        && paypal>=stp && paypal>=bitcoin && paypal>=ethereum 
+                        && paypal>=giftcard && paypal>=neteller){
+                    
+                    jLabel68.setText("PayPal");
+                }
+            }
+            if(payza!=0){
+                double porcentPayza=((payza*100)/total);
+                String porcentajePayza=formatter.format(porcentPayza);
+                String sumaPayza2=formatter.format(sumaPayza);
+                jLabel48.setText(porcentajePayza+"%");
+                jLabel43.setText(sumaPayza2+"$ en "+payza+" ventas");
+                if(payza>=payeer && payza>=payoneer && payza>=skrill 
+                        && payza>=stp && payza>=bitcoin && payza>=ethereum 
+                        && payza>=giftcard && payza>=neteller && payza>=paypal){
+                    
+                    jLabel68.setText("Payza");
+                }
+            }
+            if(payeer!=0){
+                double porcentPayeer=((payeer*100)/total);
+                String porcentajePayeer=formatter.format(porcentPayeer);
+                String sumaPayeer2=formatter.format(sumaPayeer);
+               jLabel50.setText(porcentajePayeer+"%");
+                jLabel45.setText(sumaPayeer2+"$ en "+payeer+" ventas");
+                if(payeer>=payza && payeer>=payoneer && payeer>=skrill 
+                        && payeer>=stp && payeer>=bitcoin && payeer>=ethereum 
+                        && payeer>=giftcard && payeer>=neteller && payeer>=paypal){
+                    
+                    jLabel68.setText("Payeer");
+                }
+            }
+            if(payoneer!=0){
+                double porcentPayoneer=((payoneer*100)/total);
+                String porcentajePayoneer=formatter.format(porcentPayoneer);
+                String sumaPayoneer2=formatter.format(sumaPayoneer);
+                jLabel49.setText(porcentajePayoneer+"%");
+                jLabel44.setText(sumaPayoneer2+"$ en "+payoneer+" ventas");         
+                 if(payoneer>=payeer && payoneer>=payza && payoneer>=skrill 
+                        && payoneer>=stp && payoneer>=bitcoin && payoneer>=ethereum 
+                        && payoneer>=giftcard && payoneer>=neteller && payoneer>=paypal){           
+                    jLabel68.setText("Payoneer");
+                }
+            }
+            if(skrill!=0){
+                double porcentSkrill=((skrill*100)/total);
+                String porcentajeSkrill=formatter.format(porcentSkrill);
+                String sumaSkrill2=formatter.format(sumaSkrill);
+                jLabel60.setText(porcentajeSkrill+"%");
+                jLabel55.setText(sumaSkrill2+"$ en "+skrill+" ventas");
+                 if(skrill>=payeer && skrill>=payoneer && skrill>=payza 
+                        && skrill>=stp && skrill>=bitcoin && skrill>=ethereum 
+                        && skrill>=giftcard && skrill>=neteller && skrill>=paypal){
+                    jLabel68.setText("Skrill");
+                }
+            }
+            
+            if(stp!=0){
+                double porcentSTP=((stp*100)/total);
+                String porcentajeSTP=formatter.format(porcentSTP);
+                String sumaSTP2=formatter.format(sumaSTP);
+                jLabel61.setText(porcentajeSTP+"%");
+                jLabel56.setText(sumaSTP2+"$ en "+stp+" ventas");
+                 if(stp>=payeer && stp>=payoneer && stp>=skrill 
+                        && stp>=payza && stp>=bitcoin && stp>=ethereum 
+                        && stp>=giftcard && stp>=neteller && stp>=paypal){
+                    jLabel68.setText("STP");
+                }
+            }
+            if(bitcoin!=0){
+                double porcentBitcoin=((bitcoin*100)/total);
+                String porcentajeBitcoin=formatter.format(porcentBitcoin);
+                String sumaBitcoin2=formatter.format(sumaBitcoin);
+                jLabel51.setText(porcentajeBitcoin+"%");
+                jLabel46.setText(sumaBitcoin2+"$ en "+bitcoin+" ventas");
+                 if(bitcoin>=payeer && bitcoin>=payoneer && bitcoin>=skrill 
+                        && bitcoin>=stp && bitcoin>=payza && bitcoin>=ethereum 
+                        && bitcoin>=giftcard && bitcoin>=neteller && bitcoin>=paypal){
+                    jLabel68.setText("Bitcoin");
+                }
+            }
+            if(ethereum!=0){
+                double porcentEthereum=((ethereum*100)/total);
+                String porcentajeEthereum=formatter.format(porcentEthereum);
+                String sumaEthereum2=formatter.format(sumaEthereum);
+                jLabel57.setText(porcentajeEthereum+"%");
+                jLabel52.setText(sumaEthereum2+"$ en "+ethereum+" ventas");
+                 if(ethereum>=payeer && ethereum>=payoneer && ethereum>=skrill 
+                        && ethereum>=stp && ethereum>=bitcoin && ethereum>=payza 
+                        && ethereum>=giftcard && ethereum>=neteller && ethereum>=paypal){
+                    jLabel68.setText("Ethereum");
+                }
+            }
+            if(giftcard!=0){
+                double porcentGiftcard=((giftcard*100)/total);
+                String porcentajeGiftcard=formatter.format(porcentGiftcard);
+                String sumaGiftcard2=formatter.format(sumaGiftcard);
+                jLabel58.setText(porcentajeGiftcard+"%");
+                jLabel53.setText(sumaGiftcard2+"$ en "+giftcard+" ventas");
+                 if(giftcard>=payeer && giftcard>=payoneer && giftcard>=skrill 
+                        && giftcard>=stp && giftcard>=bitcoin && giftcard>=ethereum 
+                        && giftcard>=payza && giftcard>=neteller && giftcard>=paypal){
+                    jLabel68.setText("Giftcard");
+                }
+            }
+                if(neteller!=0){
+                double porcentNeteller=((neteller*100)/total);
+                String porcentajeNeteller=formatter.format(porcentNeteller);
+                String sumaNeteller2=formatter.format(sumaNeteller);
+                jLabel59.setText(porcentajeNeteller+"%");
+                jLabel54.setText(sumaNeteller2+"$ en "+neteller+" ventas");
+                
+                if(neteller>=payeer && neteller>=payoneer && neteller>=skrill 
+                        && neteller>=stp && neteller>=neteller && neteller>=ethereum 
+                        && neteller>=giftcard && neteller>=payza && neteller>=paypal){
+                    
+                    jLabel68.setText("Neteller");
+                }
+            }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Header;
     private javax.swing.JPanel PanelCompras;
     private javax.swing.JPanel PanelVentas;
     private javax.swing.JLabel headerTittle;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel100;
-    private javax.swing.JLabel jLabel101;
-    private javax.swing.JLabel jLabel102;
-    private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
-    private javax.swing.JLabel jLabel105;
-    private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
-    private javax.swing.JLabel jLabel108;
-    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel110;
-    private javax.swing.JLabel jLabel111;
-    private javax.swing.JLabel jLabel112;
-    private javax.swing.JLabel jLabel113;
-    private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -1436,11 +1617,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -1456,12 +1635,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel50;
@@ -1512,21 +1689,40 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
-    private javax.swing.JLabel jLabel95;
-    private javax.swing.JLabel jLabel96;
-    private javax.swing.JLabel jLabel97;
-    private javax.swing.JLabel jLabel98;
-    private javax.swing.JLabel jLabel99;
+    private javax.swing.JLabel jLabelComprasBitcoint;
+    private javax.swing.JLabel jLabelComprasBitcointP;
+    private javax.swing.JLabel jLabelComprasEthereum;
+    private javax.swing.JLabel jLabelComprasEthereumP;
+    private javax.swing.JLabel jLabelComprasGiftcard;
+    private javax.swing.JLabel jLabelComprasGiftcardP;
+    private javax.swing.JLabel jLabelComprasNeteller;
+    private javax.swing.JLabel jLabelComprasNetellerP;
+    private javax.swing.JLabel jLabelComprasPayeer;
+    private javax.swing.JLabel jLabelComprasPayeerP;
+    private javax.swing.JLabel jLabelComprasPayoneer;
+    private javax.swing.JLabel jLabelComprasPayoneerP;
+    private javax.swing.JLabel jLabelComprasPaypal;
+    private javax.swing.JLabel jLabelComprasPayza;
+    private javax.swing.JLabel jLabelComprasPayzaP;
+    private javax.swing.JLabel jLabelComprasSTP;
+    private javax.swing.JLabel jLabelComprasSTPP;
+    private javax.swing.JLabel jLabelComprasSkrill;
+    private javax.swing.JLabel jLabelComprasSkrillP;
+    private javax.swing.JLabel jLabelForo;
+    private javax.swing.JLabel jLabelForoP;
+    private javax.swing.JLabel jLabelPaypalP;
+    private javax.swing.JLabel jLabelVentasPaypal;
+    private javax.swing.JLabel jLabelVentasPaypalP;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel subPanelCompras1;
     private javax.swing.JPanel subPanelCompras2;
     private javax.swing.JPanel subPanelCompras6;
     private javax.swing.JPanel subPanelVentas;
     private javax.swing.JPanel subPanelVentas1;
     private javax.swing.JPanel subPanelVentas2;
+    private javax.swing.JPanel tabCompras;
+    private javax.swing.JPanel tabExchange;
+    private javax.swing.JPanel tabVentas;
     private javax.swing.JLabel totalCompras;
     private javax.swing.JLabel totalVentas;
     // End of variables declaration//GEN-END:variables

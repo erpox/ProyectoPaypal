@@ -27,6 +27,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import walletcontrol.MatricesHistorial;
+import walletcontrol.TextPrompt;
 
 /**
  *
@@ -40,6 +41,7 @@ public class Historial extends javax.swing.JFrame {
     private final ControlCompras control;
     private final File ficheroCompras=new File("C:\\ProgramData\\WalletControl.dat");
     private final File ficheroVentas=new File("C:\\ProgramData\\WalletControlVentas.dat");
+    private final File ficheroExchange=new File("C:\\ProgramData\\WalletControlExchange.dat");
     
     //Cosntructor
     public Historial() throws IOException, ClassNotFoundException {
@@ -49,13 +51,10 @@ public class Historial extends javax.swing.JFrame {
                 tabConfigIni();
                 cargarTablaCompras();                                
                 cargarTablaVentas();
-                
-               // centrar(1,TablaCompras);
+                cargarTablaExchange();
                 centrar(3,jXTable1);
-                //centrar(4,TablaCompras);
-                //centrar(7,TablaCompras);
-                
                 centrar(3,TablaVentas);
+                placeHolder();
              
     }
     
@@ -73,8 +72,12 @@ public class Historial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        Abrir = new javax.swing.JMenuItem();
+        jPopupMenuCompras = new javax.swing.JPopupMenu();
+        AbrirCompras = new javax.swing.JMenuItem();
+        jPopupMenuVentas = new javax.swing.JPopupMenu();
+        AbrirVenta = new javax.swing.JMenuItem();
+        jPopupExchange = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         BotonInicio = new javax.swing.JLabel();
@@ -104,16 +107,38 @@ public class Historial extends javax.swing.JFrame {
         TablaVentas = new org.jdesktop.swingx.JXTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaExchange = new org.jdesktop.swingx.JXTable();
 
-        Abrir.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Open_24px.png"))); // NOI18N
-        Abrir.setText("Abrir");
-        Abrir.addActionListener(new java.awt.event.ActionListener() {
+        AbrirCompras.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        AbrirCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Open_24px.png"))); // NOI18N
+        AbrirCompras.setText("Abrir");
+        AbrirCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AbrirActionPerformed(evt);
+                AbrirComprasActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(Abrir);
+        jPopupMenuCompras.add(AbrirCompras);
+
+        AbrirVenta.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        AbrirVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Open_24px.png"))); // NOI18N
+        AbrirVenta.setText("Abrir");
+        AbrirVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AbrirVentaMousePressed(evt);
+            }
+        });
+        jPopupMenuVentas.add(AbrirVenta);
+
+        jMenuItem1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Open_24px.png"))); // NOI18N
+        jMenuItem1.setText("Abrir");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem1MousePressed(evt);
+            }
+        });
+        jPopupExchange.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -124,7 +149,7 @@ public class Historial extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(66, 66, 66));
+        jPanel2.setBackground(new java.awt.Color(55, 71, 79));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BotonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px_1.png"))); // NOI18N
@@ -167,21 +192,10 @@ public class Historial extends javax.swing.JFrame {
         montoTotalCompras.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(montoTotalCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 100, 90, 30));
 
-        BuscarCompras.setBackground(new java.awt.Color(66, 66, 66));
-        BuscarCompras.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        BuscarCompras.setBackground(new java.awt.Color(55, 71, 79));
+        BuscarCompras.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         BuscarCompras.setForeground(new java.awt.Color(255, 255, 255));
-        BuscarCompras.setText("Buscar...");
         BuscarCompras.setBorder(null);
-        BuscarCompras.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                BuscarComprasFocusGained(evt);
-            }
-        });
-        BuscarCompras.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BuscarComprasMouseClicked(evt);
-            }
-        });
         BuscarCompras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 BuscarComprasKeyTyped(evt);
@@ -191,7 +205,7 @@ public class Historial extends javax.swing.JFrame {
 
         jComboBox2.setBackground(new java.awt.Color(0, 102, 102));
         jComboBox2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Origen", "Nombre", "Fecha" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Origen", "ID", "Fecha" }));
         jComboBox2.setToolTipText("");
         jComboBox2.setAutoscrolls(true);
         jComboBox2.setBorder(null);
@@ -221,7 +235,7 @@ public class Historial extends javax.swing.JFrame {
         });
         jPanel2.add(jLabeltotalVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 200, 30));
 
-        tabVentas.setBackground(new java.awt.Color(66, 66, 66));
+        tabVentas.setBackground(new java.awt.Color(55, 71, 79));
         tabVentas.setToolTipText("Mientras esta pestaña este activa, las funciones de los botones agregar, borrar y buscar estan vinculadas a las Ventas");
         tabVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tabVentas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -251,26 +265,10 @@ public class Historial extends javax.swing.JFrame {
 
         jPanel2.add(tabVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 60, 50));
 
-        BuscarVentas.setBackground(new java.awt.Color(66, 66, 66));
-        BuscarVentas.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        BuscarVentas.setBackground(new java.awt.Color(55, 71, 79));
+        BuscarVentas.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         BuscarVentas.setForeground(new java.awt.Color(255, 255, 255));
-        BuscarVentas.setText("Buscar...");
         BuscarVentas.setBorder(null);
-        BuscarVentas.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                BuscarVentasFocusGained(evt);
-            }
-        });
-        BuscarVentas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BuscarVentasMouseClicked(evt);
-            }
-        });
-        BuscarVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarVentasActionPerformed(evt);
-            }
-        });
         BuscarVentas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 BuscarVentasKeyTyped(evt);
@@ -326,7 +324,7 @@ public class Historial extends javax.swing.JFrame {
 
         jPanel2.add(tabCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
 
-        tabExchange.setBackground(new java.awt.Color(66, 66, 66));
+        tabExchange.setBackground(new java.awt.Color(55, 71, 79));
         tabExchange.setToolTipText("Mientras esta pestaña este activa, las funciones de los botones agregar, borrar y buscar estan vinculadas a las Ventas");
         tabExchange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tabExchange.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -364,17 +362,28 @@ public class Historial extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(245, 245, 245));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setBorder(null);
+
         TablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha"
+                "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha", "Directorio"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaVentas.setComponentPopupMenu(jPopupMenuVentas);
         TablaVentas.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
         TablaVentas.setGridColor(new java.awt.Color(255, 255, 255));
         TablaVentas.setRowHeight(30);
@@ -410,7 +419,7 @@ public class Historial extends javax.swing.JFrame {
         jXTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jXTable1.setAutoStartEditOnKeyStroke(false);
         jXTable1.setAutoscrolls(false);
-        jXTable1.setComponentPopupMenu(jPopupMenu1);
+        jXTable1.setComponentPopupMenu(jPopupMenuCompras);
         jXTable1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
         jXTable1.setGridColor(new java.awt.Color(255, 255, 255));
         jXTable1.setRowHeight(30);
@@ -420,6 +429,29 @@ public class Historial extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jXTable1);
 
         jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 500));
+
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
+
+        TablaExchange.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Usuario", "Origen", "Enviaste P", "Recibiste P", "Enviaste M", "Recibiste M", "ID", "Correo", "Fecha", "Directorio"
+            }
+        ));
+        TablaExchange.setComponentPopupMenu(jPopupExchange);
+        TablaExchange.setFont(new java.awt.Font("Microsoft JhengHei", 0, 13)); // NOI18N
+        TablaExchange.setGridColor(new java.awt.Color(255, 255, 255));
+        TablaExchange.setRowHeight(30);
+        TablaExchange.setSelectionBackground(new java.awt.Color(231, 76, 60));
+        jScrollPane2.setViewportView(TablaExchange);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 500));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, -1));
 
@@ -455,14 +487,6 @@ public class Historial extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BuscarComprasKeyTyped
 
-    private void BuscarComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarComprasMouseClicked
-        BuscarCompras.setText("");
-    }//GEN-LAST:event_BuscarComprasMouseClicked
-
-    private void BuscarComprasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BuscarComprasFocusGained
-        BuscarCompras.setText("");
-    }//GEN-LAST:event_BuscarComprasFocusGained
-
     private void ComprasBorrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComprasBorrarMousePressed
         int n=0;
         n=JOptionPane.showConfirmDialog(rootPane, "Esta acción borrara todas las "
@@ -494,14 +518,6 @@ public class Historial extends javax.swing.JFrame {
     private void jLabeltotalVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabeltotalVentasMouseClicked
          
     }//GEN-LAST:event_jLabeltotalVentasMouseClicked
-
-    private void BuscarVentasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BuscarVentasFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarVentasFocusGained
-
-    private void BuscarVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarVentasMouseClicked
-        BuscarVentas.setText("");
-    }//GEN-LAST:event_BuscarVentasMouseClicked
 
     @SuppressWarnings("unchecked")
     private void BuscarVentasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarVentasKeyTyped
@@ -543,8 +559,8 @@ public class Historial extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_AñadirVentaMousePressed
 
-    private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
-        String s=(String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 9);
+    private void AbrirComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirComprasActionPerformed
+        String s=(String) jXTable1.getValueAt(jXTable1.getSelectedRow(), 7);
         File file=new File(s);
         Desktop desktop=Desktop.getDesktop();
         try {
@@ -552,7 +568,7 @@ public class Historial extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_AbrirActionPerformed
+    }//GEN-LAST:event_AbrirComprasActionPerformed
 
     private void tabComprasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabComprasMousePressed
        comprasTab();
@@ -564,14 +580,74 @@ public class Historial extends javax.swing.JFrame {
 
     private void tabExchangeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabExchangeMousePressed
        tabExchange.setBackground(new java.awt.Color(231,76,60));
-       tabCompras.setBackground(new java.awt.Color(66, 66, 66));
-       tabVentas.setBackground(new java.awt.Color(66,66,66));
-       
+       tabCompras.setBackground(new java.awt.Color(55,71,79));
+       tabVentas.setBackground(new java.awt.Color(55,71,79));
+       jScrollPane2.setVisible(true);
+       jScrollPane3.setVisible(false);
+       jPanel5.setVisible(false);
     }//GEN-LAST:event_tabExchangeMousePressed
 
-    private void BuscarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarVentasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarVentasActionPerformed
+    private void AbrirVentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AbrirVentaMousePressed
+        String s=(String) TablaVentas.getValueAt(TablaVentas.getSelectedRow(), 7);
+        File file=new File(s);
+        Desktop desktop=Desktop.getDesktop();
+        try {
+            desktop.open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_AbrirVentaMousePressed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        String s=(String) TablaExchange.getValueAt(TablaExchange.getSelectedRow(), 9);
+        File file=new File(s);
+        Desktop desktop=Desktop.getDesktop();
+        try {
+            desktop.open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AbrirCompras;
+    private javax.swing.JMenuItem AbrirVenta;
+    private javax.swing.JLabel AñadirCompra;
+    private javax.swing.JLabel AñadirVenta;
+    private javax.swing.JLabel BotonInicio;
+    private javax.swing.JTextField BuscarCompras;
+    private javax.swing.JTextField BuscarVentas;
+    private javax.swing.JLabel ComprasBorrar;
+    private org.jdesktop.swingx.JXTable TablaExchange;
+    private org.jdesktop.swingx.JXTable TablaVentas;
+    private javax.swing.JLabel TituloVentana;
+    private javax.swing.JLabel VentasBorrar;
+    private javax.swing.JLabel buscarIcono;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabeltotalCompra;
+    private javax.swing.JLabel jLabeltotalVentas;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPopupMenu jPopupExchange;
+    private javax.swing.JPopupMenu jPopupMenuCompras;
+    private javax.swing.JPopupMenu jPopupMenuVentas;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private org.jdesktop.swingx.JXTable jXTable1;
+    private javax.swing.JLabel montoTotalCompras;
+    private javax.swing.JLabel montoTotalVentas;
+    private javax.swing.JPanel tabCompras;
+    private javax.swing.JPanel tabExchange;
+    private javax.swing.JPanel tabVentas;
+    // End of variables declaration//GEN-END:variables
         
    
     //<editor-fold defaultstate="collapsed" desc="comment">
@@ -583,15 +659,15 @@ public class Historial extends javax.swing.JFrame {
        if (jComboBox2.getSelectedItem()=="Usuario"){
            int columna=0;
            trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
-       }else if(jComboBox2.getSelectedItem()=="Nombre"){
-           int columna=2;
-           trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
-       } else if(jComboBox2.getSelectedItem()=="Origen"){
+       }else if(jComboBox2.getSelectedItem()=="Origen"){
            int columna=1;
+           trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
+       } else if(jComboBox2.getSelectedItem()=="ID"){
+           int columna=4;
            trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
        }
        else if(jComboBox2.getSelectedItem()=="Fecha"){
-           int columna=8;
+           int columna=6;
            trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
        }
     }    
@@ -601,18 +677,19 @@ public class Historial extends javax.swing.JFrame {
        if (jComboBox2.getSelectedItem()=="Usuario"){
            int columna=0;
            trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
-       }else if(jComboBox2.getSelectedItem()=="Nombre"){
-           int columna=2;
-           trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
        }else if(jComboBox2.getSelectedItem()=="Origen"){
            int columna=1;
            trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
+       }else if(jComboBox2.getSelectedItem()=="ID"){
+           int columna=4;
+           trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
        }
        else if(jComboBox2.getSelectedItem()=="Fecha"){
-           int columna=7;
+           int columna=6;
            trsfiltro.setRowFilter(RowFilter.regexFilter(filtro, columna));
        }
     }
+    
     private void cargarTablaCompras() throws IOException, ClassNotFoundException, IOException{
 
         if(ficheroCompras.exists()){  
@@ -657,7 +734,7 @@ public class Historial extends javax.swing.JFrame {
          TablaVentas.setModel(new javax.swing.table.DefaultTableModel(
         datosVentas,
     new String [] {
-        "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha"
+        "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha","Directorio"
     }
 ) {
             private static final long serialVersionUID = 1L;
@@ -675,7 +752,36 @@ public class Historial extends javax.swing.JFrame {
                 JTableHeader Theader=TablaVentas.getTableHeader();
                 ((JLabel)Theader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
         sumarSaldoVentas();
-    }    
+    }
+    private void cargarTablaExchange() throws ClassNotFoundException, IOException{
+         if (ficheroExchange.exists()){
+        MatricesHistorial tablaHistorialVentas=new MatricesHistorial();
+        String [][]datosExchange=tablaHistorialVentas.cargarArrayTablaExchange();
+        
+         TablaExchange.setModel(new javax.swing.table.DefaultTableModel(
+        datosExchange,
+    new String [] {
+        "Usuario", "Origen", "Enviaste P", "Recibiste P", "Enviaste M", "Recibiste M", "ID", "Correo", "Fecha", "Directorio"
+    }
+) {
+            private static final long serialVersionUID = 1L;
+    boolean[] canEdit = new boolean [] {
+        false, false, false, false, false, false, false, false
+    };
+            @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return canEdit [columnIndex];
+    }
+        });
+        TablaExchange.getTableHeader().setFont(new Font("Microsoft jhenghei", Font.BOLD, 14));     
+        }       
+                 TablaExchange.setShowGrid(false, false);
+                JTableHeader Theader=TablaExchange.getTableHeader();
+                ((JLabel)Theader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        //sumarSaldoVentas();
+    }
+    
+            
     private void limpiarTableCompras(){
        
     jXTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -694,7 +800,7 @@ public class Historial extends javax.swing.JFrame {
 
     },
     new String [] {
-        "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha"
+        "Usuario", "Origen", "Procesador", "Monto $", "ID", "Correo", "Fecha","Directorio"
     }
 ));
     montoTotalVentas.setText("");
@@ -716,17 +822,19 @@ public class Historial extends javax.swing.JFrame {
     }
     }
     private void tabConfigIni(){
+        
         jPanel5.setVisible(false);
         jLabeltotalVentas.setVisible(false);
         BuscarVentas.setVisible(false);
         montoTotalVentas.setVisible(false);
         VentasBorrar.setVisible(false);
         AñadirVenta.setVisible(false);
+        jScrollPane2.setVisible(true);
 }
     private void comprasTab(){
        tabCompras.setBackground(new java.awt.Color(0,120,215));
-       tabVentas.setBackground(new java.awt.Color(66,66,66));
-       tabExchange.setBackground(new java.awt.Color(66,66,66));
+       tabVentas.setBackground(new java.awt.Color(55,71,79));
+       tabExchange.setBackground(new java.awt.Color(55,71,79));
        
        jPanel5.setVisible(false);
        jScrollPane3.setVisible(true);
@@ -743,8 +851,8 @@ public class Historial extends javax.swing.JFrame {
     }
     private void ventasTab(){
        tabVentas.setBackground(new java.awt.Color(39,174,96));
-       tabCompras.setBackground(new java.awt.Color(66, 66, 66));
-       tabExchange.setBackground(new java.awt.Color(66,66,66));
+       tabCompras.setBackground(new java.awt.Color(55,71,79));
+       tabExchange.setBackground(new java.awt.Color(55,71,79));
        jScrollPane3.setVisible(false);
        jPanel5.setVisible(true);
        jLabeltotalVentas.setVisible(true);
@@ -796,37 +904,9 @@ DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
 tcr.setHorizontalAlignment(SwingConstants.CENTER);
 table.getColumnModel().getColumn(column).setCellRenderer(tcr);
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Abrir;
-    private javax.swing.JLabel AñadirCompra;
-    private javax.swing.JLabel AñadirVenta;
-    private javax.swing.JLabel BotonInicio;
-    private javax.swing.JTextField BuscarCompras;
-    private javax.swing.JTextField BuscarVentas;
-    private javax.swing.JLabel ComprasBorrar;
-    private org.jdesktop.swingx.JXTable TablaVentas;
-    private javax.swing.JLabel TituloVentana;
-    private javax.swing.JLabel VentasBorrar;
-    private javax.swing.JLabel buscarIcono;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabeltotalCompra;
-    private javax.swing.JLabel jLabeltotalVentas;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
-    private org.jdesktop.swingx.JXTable jXTable1;
-    private javax.swing.JLabel montoTotalCompras;
-    private javax.swing.JLabel montoTotalVentas;
-    private javax.swing.JPanel tabCompras;
-    private javax.swing.JPanel tabExchange;
-    private javax.swing.JPanel tabVentas;
-    // End of variables declaration//GEN-END:variables
+    private void placeHolder(){
+        TextPrompt buscarC=new TextPrompt("Buscar...",BuscarCompras);
+        TextPrompt buscarV=new TextPrompt("Buscar...",BuscarVentas);
+        
+    }
 }

@@ -5,21 +5,37 @@
  */
 package Vistas;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.filechooser.FileSystemView;
+import walletcontrol.ControlExchange;
+import walletcontrol.CopiarArchivos;
+import walletcontrol.TextPrompt;
 
 /**
  *
  * @author Eduardo7
  */
 public class Exchange extends javax.swing.JFrame {
+private ControlExchange control1=new ControlExchange();
+private String Ruta;
+private final String Documentos;
+private int i;
 
-    /**
-     * Creates new form Exchange
-     */
+
     public Exchange() {
+        this.i = 0;
         initComponents();
         setLocationRelativeTo(null);
+        placeHolder();
+        Documentos=FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
     }
 
     /**
@@ -31,8 +47,7 @@ public class Exchange extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -42,47 +57,53 @@ public class Exchange extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        usuario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        txtEnvias = new javax.swing.JTextField();
+        jComboBoxOrigen = new javax.swing.JComboBox<>();
+        jComboBoxEnvias = new javax.swing.JComboBox<>();
+        jComboBoxRecibes = new javax.swing.JComboBox<>();
+        txtMontoEnvias = new javax.swing.JTextField();
         txtPorcentaje = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
+        txtMontoRecibes = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        correo = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel11 = new javax.swing.JLabel();
+        guardar = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        ID = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(30, 136, 229));
+        jPanel2.setBackground(new java.awt.Color(55, 71, 79));
         jPanel2.setForeground(new java.awt.Color(30, 136, 229));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px_1.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_26px.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_30px.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Registro Exchange");
 
@@ -97,7 +118,7 @@ public class Exchange extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,10 +132,10 @@ public class Exchange extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel3)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 90));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 90));
 
         jPanel3.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -124,47 +145,44 @@ public class Exchange extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel5.setText("Recibes");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_User_24px_1.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_User_24px_3.png"))); // NOI18N
 
-        jTextField1.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Usuario");
-        jTextField1.setBorder(null);
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Marker_24px_1.png"))); // NOI18N
-
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Foro-PTC", "Instagram", "Facebook", "AirTM" }));
-
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paypal", "Payza", "Payoneer", "Neteller", "Skrill", "Bitcoin", "Ethereum", "Giftcard", "Payeer", "STP" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+        usuario.setBackground(new java.awt.Color(245, 245, 245));
+        usuario.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usuario.setBorder(null);
+        usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usuarioKeyTyped(evt);
             }
         });
 
-        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paypal", "Payza", "Payoneer", "Neteller", "Skrill", "Bitcoin", "Ethereum", "Giftcard", "Payeer", "STP" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Geo-fence_24px.png"))); // NOI18N
+
+        jComboBoxOrigen.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jComboBoxOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Foro-PTC", "Instagram", "Facebook", "AirTM" }));
+
+        jComboBoxEnvias.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jComboBoxEnvias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paypal", "Payza", "Payoneer", "Neteller", "Skrill", "Bitcoin", "Ethereum", "Giftcard", "Payeer", "STP" }));
+
+        jComboBoxRecibes.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jComboBoxRecibes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paypal", "Payza", "Payoneer", "Neteller", "Skrill", "Bitcoin", "Ethereum", "Giftcard", "Payeer", "STP" }));
+
+        txtMontoEnvias.setBackground(new java.awt.Color(245, 245, 245));
+        txtMontoEnvias.setFont(new java.awt.Font("Microsoft JhengHei", 0, 24)); // NOI18N
+        txtMontoEnvias.setForeground(new java.awt.Color(0, 102, 204));
+        txtMontoEnvias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMontoEnvias.setBorder(null);
+        txtMontoEnvias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMontoEnviasKeyTyped(evt);
             }
         });
-
-        txtEnvias.setBackground(new java.awt.Color(245, 245, 245));
-        txtEnvias.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        txtEnvias.setForeground(new java.awt.Color(102, 102, 102));
-        txtEnvias.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEnvias.setText("0.0 $");
-        txtEnvias.setBorder(null);
 
         txtPorcentaje.setBackground(new java.awt.Color(245, 245, 245));
-        txtPorcentaje.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtPorcentaje.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
         txtPorcentaje.setForeground(new java.awt.Color(102, 102, 102));
         txtPorcentaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPorcentaje.setText("%");
         txtPorcentaje.setBorder(null);
         txtPorcentaje.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -173,70 +191,93 @@ public class Exchange extends javax.swing.JFrame {
         });
 
         jSeparator1.setBackground(new java.awt.Color(250, 250, 250));
-        jSeparator1.setForeground(new java.awt.Color(30, 136, 229));
+        jSeparator1.setForeground(new java.awt.Color(51, 51, 51));
 
         jSeparator2.setBackground(new java.awt.Color(250, 250, 250));
-        jSeparator2.setForeground(new java.awt.Color(30, 136, 229));
+        jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
 
         jSeparator3.setBackground(new java.awt.Color(250, 250, 250));
-        jSeparator3.setForeground(new java.awt.Color(30, 136, 229));
+        jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
 
         jSeparator4.setBackground(new java.awt.Color(250, 250, 250));
-        jSeparator4.setForeground(new java.awt.Color(30, 136, 229));
+        jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("0.0 $");
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtMontoRecibes.setFont(new java.awt.Font("Microsoft JhengHei", 0, 24)); // NOI18N
+        txtMontoRecibes.setForeground(new java.awt.Color(0, 102, 204));
+        txtMontoRecibes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtMontoRecibes.setText("Monto");
+        txtMontoRecibes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtMontoRecibes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel8MousePressed(evt);
+                txtMontoRecibesMousePressed(evt);
             }
         });
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Email_24px_3.png"))); // NOI18N
 
-        jTextField2.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Correo");
-        jTextField2.setBorder(null);
+        correo.setBackground(new java.awt.Color(245, 245, 245));
+        correo.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        correo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        correo.setBorder(null);
+        correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                correoKeyTyped(evt);
+            }
+        });
 
         jSeparator5.setBackground(new java.awt.Color(250, 250, 250));
-        jSeparator5.setForeground(new java.awt.Color(30, 136, 229));
+        jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Calendar_3_24px.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Calendar_24px.png"))); // NOI18N
 
         jDateChooser1.setDateFormatString("MMM dd yyyy");
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Save_30px.png"))); // NOI18N
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Save_30px.png"))); // NOI18N
+        guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                guardarMousePressed(evt);
+            }
+        });
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Erase_30px.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Broom_30px.png"))); // NOI18N
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Link_24px_1.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Link_24px.png"))); // NOI18N
         jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel14MousePressed(evt);
+            }
+        });
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Unsplash_24px.png"))); // NOI18N
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel15MousePressed(evt);
+            }
+        });
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Check_24px_1.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Check_24px.png"))); // NOI18N
 
-        jTextField3.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("ID");
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        ID.setBackground(new java.awt.Color(245, 245, 245));
+        ID.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        ID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ID.setBorder(null);
+        ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                IDActionPerformed(evt);
+            }
+        });
+        ID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IDKeyTyped(evt);
             }
         });
 
         jSeparator7.setBackground(new java.awt.Color(250, 250, 250));
-        jSeparator7.setForeground(new java.awt.Color(30, 136, 229));
+        jSeparator7.setForeground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -253,58 +294,57 @@ public class Exchange extends javax.swing.JFrame {
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                                            .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                                             .addComponent(jSeparator1)))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jSeparator5)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))))
+                                            .addComponent(correo, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jComboBoxOrigen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEnvias, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(40, 40, 40)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(19, 19, 19))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtMontoEnvias, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(37, 37, 37)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtMontoRecibes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(10, 10, 10))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jComboBoxEnvias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGap(91, 91, 91)))
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel5)
-                                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jComboBoxRecibes, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jSeparator7)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                                            .addComponent(ID, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -314,7 +354,7 @@ public class Exchange extends javax.swing.JFrame {
                         .addGap(78, 78, 78)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)))
+                        .addComponent(guardar)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -323,16 +363,16 @@ public class Exchange extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -349,16 +389,16 @@ public class Exchange extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxEnvias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxRecibes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMontoRecibes, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtEnvias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMontoEnvias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -368,13 +408,13 @@ public class Exchange extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
+                    .addComponent(guardar)
                     .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel15)
@@ -399,53 +439,169 @@ public class Exchange extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtPorcentajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPorcentajeKeyTyped
- 
+        char c=evt.getKeyChar();
+        if(!Character.isDigit(c) && c!='.'){
+            evt.consume();
+        }
+        
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();      
+          } 
     }//GEN-LAST:event_txtPorcentajeKeyTyped
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-
-    }//GEN-LAST:event_jComboBox3ActionPerformed
-
-    private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
-        if (jComboBox2.getSelectedItem()=="Giftcard"){
-            double envias=Double.parseDouble(txtEnvias.getText());
-        double porcetaje=Double.parseDouble(txtPorcentaje.getText());
-        porcetaje=(porcetaje/100);
-        double recibes=envias*porcetaje;
-        DecimalFormat df = new DecimalFormat("#.00");  
-        String recibes2=df.format(recibes);
-        jLabel8.setText(recibes2);
-        }else if (txtPorcentaje.getSize()!=null){
-        double envias=Double.parseDouble(txtEnvias.getText());
+    private void txtMontoRecibesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoRecibesMousePressed
+        
+        if(!txtMontoEnvias.getText().isEmpty() && !txtPorcentaje.getText().isEmpty())
+        {
+        double envias=Double.parseDouble(txtMontoEnvias.getText());
         double porcetaje=Double.parseDouble(txtPorcentaje.getText());
         porcetaje=(porcetaje/100+1);
         double recibes=envias*porcetaje;
         DecimalFormat df = new DecimalFormat("#.00");  
         String recibes2=df.format(recibes);
-        jLabel8.setText(recibes2);
-        }else{
+        txtMontoRecibes.setText(recibes2);
+        }
+    else{
                    JOptionPane.showMessageDialog(rootPane, "Debe ingresar un porcentaje");
                }
            
-    }//GEN-LAST:event_jLabel8MousePressed
+    }//GEN-LAST:event_txtMontoRecibesMousePressed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_IDActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+     new Home1().setVisible(true);
+     this.dispose();
+    }//GEN-LAST:event_jLabel1MousePressed
 
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        try {
+            new Historial().setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(Exchange.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Exchange.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel2MousePressed
 
+    private void guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMousePressed
+         if(!verificarCampos()){
+            try{
+                String anadirOrigen =(String)jComboBoxOrigen.getSelectedItem();
+                String fecha1=jDateChooser1.getDate().toString();
+                String ID1=ID.getText();
+                String montoEnvias=txtMontoEnvias.getText();
+                String montoRecibes=txtMontoRecibes.getText();
+                String procesadorEnvias=(String)jComboBoxEnvias.getSelectedItem();
+                String procesadorRecibes=(String)jComboBoxRecibes.getSelectedItem();
+                
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd yyyy");
+                fecha1 = dateFormat.format(jDateChooser1.getDate());
+                
+
+                int n=JOptionPane.showConfirmDialog(rootPane, "Esta seguro de que todos los "
+                    + "datos son correctos?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+
+                if(n==0){
+
+            control1.agregarExchgange(correo.getText(),correo.getText(),correo.getText(),
+                    txtMontoEnvias.getText(), txtMontoRecibes.getText(),
+                    fecha1,ID.getText(),procesadorEnvias,procesadorRecibes,Ruta,"");
+                    System.err.println(Ruta);
+                    JOptionPane.showMessageDialog(rootPane, "Exchange añadida", "Exchange",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    
+                }
+            }catch(NullPointerException e){
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar una fecha",
+                    "Datos Incompletos", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{JOptionPane.showMessageDialog(rootPane, "Datos incompletos",
+            "Datos Incompletos", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_guardarMousePressed
+
+    private void jLabel14MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MousePressed
+        Addlinks add = new Addlinks();
+        add.setUsuario(usuario.getText());
+        add.setID(ID.getText());
+        add.setDocumentos(Documentos+"\\WalletControl\\Exchange\\");
+        add.setVisible(true);
+        Ruta=Documentos+"\\WalletControl\\Exchange\\"+usuario.getText()+
+                   "\\"+ID.getText()+"\\";
+    }//GEN-LAST:event_jLabel14MousePressed
+
+    private void jLabel15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MousePressed
+        int returnVal= jFileChooser1.showOpenDialog(this);
+             if(returnVal==JFileChooser.APPROVE_OPTION){
+                String pathSC1=jFileChooser1.getSelectedFile().getPath();
+                String pathSC2=Documentos+"\\WalletControl\\Exchange\\"+usuario.getText()+
+                   "\\"+ID.getText()+"\\"+i+".jpg";
+                File directorioSC= new File(pathSC2);
+                Ruta=Documentos+"\\WalletControl\\Exchange\\"+usuario.getText()+
+                   "\\"+ID.getText()+"\\";
+                directorioSC.mkdirs();
+                i++;
+           try {
+               new CopiarArchivos(pathSC1,pathSC2);
+           } catch (IOException ex) {
+               Logger.getLogger(RegistroCompras.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           }
+    }//GEN-LAST:event_jLabel15MousePressed
+
+    private void usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioKeyTyped
+       toUpperCase(usuario,evt);
+       char c=evt.getKeyChar();
+        if(Character.isWhitespace(c)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_usuarioKeyTyped
+
+    private void correoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correoKeyTyped
+       toUpperCase(correo,evt);
+    }//GEN-LAST:event_correoKeyTyped
+
+    private void IDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDKeyTyped
+      char c=evt.getKeyChar();
+        if(Character.isWhitespace(c)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_IDKeyTyped
+
+    private void txtMontoEnviasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoEnviasKeyTyped
+        char c=evt.getKeyChar();
+        if(!Character.isDigit(c) && c!='.'){
+            evt.consume();
+        }
+        
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();      
+          }
+    }//GEN-LAST:event_txtMontoEnviasKeyTyped
+
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JTextField ID;
+    private javax.swing.JTextField correo;
+    private javax.swing.JLabel guardar;
+    private javax.swing.JComboBox<String> jComboBoxEnvias;
+    private javax.swing.JComboBox<String> jComboBoxOrigen;
+    private javax.swing.JComboBox<String> jComboBoxRecibes;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -456,23 +612,49 @@ public class Exchange extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField txtEnvias;
+    private javax.swing.JTextField txtMontoEnvias;
+    private javax.swing.JLabel txtMontoRecibes;
     private javax.swing.JTextField txtPorcentaje;
+    private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
+   private boolean verificarCampos(){
+        boolean r=usuario.getText().isEmpty();
+        r|=ID.getText().isEmpty();
+        r|=correo.getText().isEmpty();
+        r|=txtMontoEnvias.getText().isEmpty();
+        r|=txtMontoRecibes.getText().isEmpty();
+
+        return r;
+    }
+    private void placeHolder(){
+    TextPrompt user = new TextPrompt("     Usuario", usuario);
+    TextPrompt id= new TextPrompt ("         ID",ID);
+    id.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt mail=new TextPrompt("     Correo",correo);
+    mail.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt monto2=new TextPrompt(" Monto",txtMontoEnvias);
+    monto2.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt porcentaje=new TextPrompt("    %", txtPorcentaje);
+    porcentaje.setShow(TextPrompt.Show.FOCUS_LOST);
+    }
+    private void toUpperCase(JTextField field,java.awt.event.KeyEvent evt){
+    field=(JTextField)evt.getComponent();
+
+    String texto=field.getText().trim();//para evitar espacios en blanco antes y despues del texto
+    if(texto.length()>0){
+    char primero=texto.charAt(0);
+    texto=Character.toUpperCase(primero)+texto.substring(1, texto.length());
+    field.setText(texto);
+    }
+    }
 }

@@ -9,13 +9,19 @@ import walletcontrol.TextPrompt;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileSystemView;
 import walletcontrol.ControlVentas;
+import walletcontrol.CopiarArchivos;
 
 
 /**
@@ -24,11 +30,14 @@ import walletcontrol.ControlVentas;
  */
 public class RegistroVentas extends javax.swing.JFrame {
 private ControlVentas control=new ControlVentas();
-
+private final String Documentos;
+private String Ruta;
+private int i=0;
     public RegistroVentas() {
         initComponents();
         setLocationRelativeTo(null);
         PlaceHolder();
+         Documentos=FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
     }
     
      @Override
@@ -46,7 +55,7 @@ private ControlVentas control=new ControlVentas();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel10 = new javax.swing.JLabel();
+        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         botonInicio = new javax.swing.JLabel();
@@ -75,82 +84,73 @@ private ControlVentas control=new ControlVentas();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Save_35px.png"))); // NOI18N
+        jLabel12 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(510, 415));
+        setPreferredSize(new java.awt.Dimension(510, 480));
         setResizable(false);
-        setSize(new java.awt.Dimension(514, 415));
+        setSize(new java.awt.Dimension(514, 480));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(66, 66, 66));
+        jPanel1.setBackground(new java.awt.Color(55, 71, 79));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px.png"))); // NOI18N
+        botonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px_1.png"))); // NOI18N
         botonInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonInicioMousePressed(evt);
             }
         });
+        jPanel1.add(botonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 11, -1, -1));
 
-        botonHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_26px.png"))); // NOI18N
+        botonHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_30px.png"))); // NOI18N
         botonHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonHistorial.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 botonHistorialMousePressed(evt);
             }
         });
+        jPanel1.add(botonHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 11, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registrar ventas");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
-                .addComponent(botonInicio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonHistorial)
-                .addGap(20, 20, 20))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonInicio)
-                            .addComponent(botonHistorial)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel1)))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 247, -1));
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 514, 88));
 
         jPanel2.setBackground(new java.awt.Color(245, 245, 245));
         jPanel2.setPreferredSize(new java.awt.Dimension(511, 514));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_User_24px_1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_User_24px_3.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 29, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Check_24px_1.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Check_24px.png"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 98, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Calendar_3_24px.png"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 31, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Marker_24px_1.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Geo-fence_24px.png"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 29, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Email_24px_3.png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 98, -1, -1));
 
         correo.setBackground(new java.awt.Color(245, 245, 245));
         correo.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
@@ -172,25 +172,31 @@ private ControlVentas control=new ControlVentas();
                 correoKeyTyped(evt);
             }
         });
+        jPanel2.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 98, 97, -1));
 
         origen.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         origen.setForeground(new java.awt.Color(51, 51, 51));
         origen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Foro-PTC", "Instagram", "Facebook", "AirTM" }));
         origen.setToolTipText("Pagina web donde se origino la venta");
+        jPanel2.add(origen, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 29, 101, -1));
 
         jSeparator1.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 55, 100, 10));
 
         jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 55, 67, 10));
 
         jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 121, 97, 10));
 
-        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Erase_30px.png"))); // NOI18N
+        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Broom_30px.png"))); // NOI18N
         Limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 LimpiarMousePressed(evt);
             }
         });
+        jPanel2.add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
 
         ID.setBackground(new java.awt.Color(245, 245, 245));
         ID.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
@@ -198,8 +204,10 @@ private ControlVentas control=new ControlVentas();
         ID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         ID.setToolTipText("ID de la transaccion generado por el procesador usado");
         ID.setBorder(null);
+        jPanel2.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 98, 103, -1));
 
         jSeparator6.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 124, 103, 10));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Save_30px.png"))); // NOI18N
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -208,10 +216,11 @@ private ControlVentas control=new ControlVentas();
                 jLabel11MousePressed(evt);
             }
         });
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 310, -1, -1));
 
         monto.setBackground(new java.awt.Color(245, 245, 245));
         monto.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
-        monto.setForeground(new java.awt.Color(66, 66, 66));
+        monto.setForeground(new java.awt.Color(0, 102, 204));
         monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         monto.setBorder(null);
         monto.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -229,8 +238,10 @@ private ControlVentas control=new ControlVentas();
                 montoKeyTyped(evt);
             }
         });
+        jPanel2.add(monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 110, 38));
 
         jSeparator7.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 120, 10));
 
         usuario.setBackground(new java.awt.Color(245, 245, 245));
         usuario.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
@@ -242,126 +253,80 @@ private ControlVentas control=new ControlVentas();
                 usuarioKeyTyped(evt);
             }
         });
+        jPanel2.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 29, 100, -1));
+        jPanel2.add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 33, 99, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Wallet_24px_1.png"))); // NOI18N
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 98, -1, 26));
 
         jComboBox1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paypal", "Payza", "Payoneer", "Neteller", "Skrill", "Bitcoin", "Ethereum", "Giftcard", "Payeer", "STP" }));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 98, 90, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Link_24px.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+        });
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 316, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Unsplash_24px.png"))); // NOI18N
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel7MousePressed(evt);
+            }
+        });
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 316, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel3)
-                            .addGap(114, 114, 114)
-                            .addComponent(Limpiar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel11))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(6, 6, 6)
-                                    .addComponent(origen, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(4, 4, 4)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(ID, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                                        .addComponent(jSeparator6))))
-                            .addGap(33, 33, 33)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(6, 6, 6)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(correo)
-                                        .addComponent(jSeparator4)))))))
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6)
-                        .addComponent(origen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(10, 10, 10)))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1))
-                    .addComponent(jLabel4)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel8)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
-                .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11)
-                    .addComponent(Limpiar)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel7)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Contact_24px_1.png"))); // NOI18N
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 260, -1, -1));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 94, 514, 290));
+        jTextField1.setBackground(new java.awt.Color(245, 245, 245));
+        jTextField1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setBorder(null);
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 260, 90, -1));
+
+        jLabel13.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jLabel13.setText("Datos personales");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 220, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Microsoft JhengHei", 0, 11)); // NOI18N
+        jLabel14.setText("(Opcional)");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 221, -1, -1));
+
+        jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 285, 90, 10));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Contact_24px_1.png"))); // NOI18N
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 259, -1, -1));
+
+        jTextField2.setBackground(new java.awt.Color(245, 245, 245));
+        jTextField2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setBorder(null);
+        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 260, 97, 20));
+
+        jSeparator8.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 285, 103, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Contact_24px_1.png"))); // NOI18N
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 259, -1, -1));
+
+        jTextField3.setBackground(new java.awt.Color(245, 245, 245));
+        jTextField3.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField3.setBorder(null);
+        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 103, 20));
+
+        jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 285, 97, 10));
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 94, 514, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -371,7 +336,9 @@ private ControlVentas control=new ControlVentas();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 49, Short.MAX_VALUE))
         );
 
         pack();
@@ -420,19 +387,7 @@ private ControlVentas control=new ControlVentas();
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
         if(!verificarCampos()){
             try{
-                String anadirOrigen ="";
-
-                if(origen.getSelectedItem()=="Instagram"){
-                    anadirOrigen="Instagram";
-                }
-                if(origen.getSelectedItem()=="Facebook"){
-                    anadirOrigen="Facebook";
-                }
-                if (origen.getSelectedItem()=="Foro-PTC"){
-
-                    anadirOrigen="Foro-PTC";
-                }
-
+                String anadirOrigen =(String)origen.getSelectedItem();
                 String fecha1=jXDatePicker1.getDate().toString();
                 String usuario1=usuario.getText();
                 String ID1=ID.getText();
@@ -448,11 +403,12 @@ private ControlVentas control=new ControlVentas();
                     + "datos son correctos?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
                 if(n==0){
-                    
-
+                    if(!verificarCamposDatosPersonales()){
+                    guardarDatosPersonles();
+                    }
 
             control.agregarVenta(usuario1,anadirOrigen,procesador,correo1,monto1,
-                        fecha1,ID1);
+                        fecha1,ID1,Ruta);
                     System.err.println(usuario1+" "+anadirOrigen+" "+procesador+" "+correo1+" "+monto1+" "+
                         fecha1+" "+ID1);
 
@@ -487,6 +443,35 @@ private ControlVentas control=new ControlVentas();
         correo.setText("");
     }//GEN-LAST:event_correoFocusGained
 
+    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+       int returnVal= jFileChooser1.showOpenDialog(this);
+             if(returnVal==JFileChooser.APPROVE_OPTION){
+                String pathSC1=jFileChooser1.getSelectedFile().getPath();
+                String pathSC2=Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                   "\\"+ID.getText()+"\\"+i+".jpg";
+                File directorioSC= new File(pathSC2);
+                Ruta=Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                   "\\"+ID.getText()+"\\";
+                directorioSC.mkdirs();
+                i++;
+           try {
+               new CopiarArchivos(pathSC1,pathSC2);
+           } catch (IOException ex) {
+               Logger.getLogger(RegistroCompras.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           }
+    }//GEN-LAST:event_jLabel7MousePressed
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        Addlinks add = new Addlinks();
+        add.setUsuario(usuario.getText());
+        add.setID(ID.getText());
+        add.setDocumentos(Documentos+"\\WalletControl\\Ventas\\");
+        add.setVisible(true);
+        Ruta=Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                   "\\"+ID.getText()+"\\";
+    }//GEN-LAST:event_jLabel3MousePressed
+
     private void toUpperCase(JTextField field,java.awt.event.KeyEvent evt){
         field= (JTextField)evt.getComponent();
 
@@ -504,8 +489,14 @@ private ControlVentas control=new ControlVentas();
     id.setShow(TextPrompt.Show.FOCUS_LOST);
     TextPrompt mail=new TextPrompt("      Correo",correo);
     mail.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt monto2=new TextPrompt("      0.0$",monto);
+    TextPrompt monto2=new TextPrompt("   Monto",monto);
     monto2.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt nombre2=new TextPrompt("    Nombre", jTextField1);
+    nombre2.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt apellido2=new TextPrompt("     Apellido", jTextField3);
+    apellido2.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt documento2=new TextPrompt("  Documento", jTextField2);
+    documento2.setShow(TextPrompt.Show.FOCUS_LOST);
 } 
     
       private boolean verificarCampos(){
@@ -522,7 +513,35 @@ private ControlVentas control=new ControlVentas();
         correo.setText("");
         ID.setText("");
       }
-
+      private void guardarDatosPersonles(){
+    try {
+        File ruta=new File(Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                "\\"+ID.getText());
+        ruta.mkdirs();
+        File fichero = new File(Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                "\\"+ID.getText()+"\\"+ID.getText()+".txt");
+        
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fichero,true));
+        bw.write("Datos Personales para esta operacion");
+        bw.newLine();
+        bw.write("Nombre: "+jTextField1.getText()+" "+jTextField3.getText()+" C.I:"+jTextField2.getText());
+        bw.newLine();
+        bw.close();
+        Ruta=Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                "\\"+ID.getText()+"\\";
+    } catch (IOException ex) {
+        Logger.getLogger(RegistroVentas.class.getName()).log(Level.SEVERE, null, ex);
+    }
+          
+    
+    }
+      private boolean verificarCamposDatosPersonales(){
+           boolean r=jTextField1.getText().isEmpty();
+        r|=jTextField3.getText().isEmpty();
+        r|=jTextField2.getText().isEmpty();
+        
+        return r;
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ID;
     private javax.swing.JLabel Limpiar;
@@ -530,9 +549,14 @@ private ControlVentas control=new ControlVentas();
     private javax.swing.JLabel botonInicio;
     private javax.swing.JTextField correo;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -545,10 +569,16 @@ private ControlVentas control=new ControlVentas();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JTextField monto;
     private javax.swing.JComboBox<String> origen;
