@@ -30,10 +30,10 @@ public class RegistroCompras extends javax.swing.JFrame {
 
     
 
-
+    private final File ficheroCompras=new File("C:\\ProgramData\\WalletControl.dat");   
     private String Ruta;
-    int i,c;
-    String Documentos;
+    private int i,c;
+    private String Documentos;
     
     public RegistroCompras() throws IOException, ClassNotFoundException {
         
@@ -159,11 +159,6 @@ public class RegistroCompras extends javax.swing.JFrame {
         monto.setForeground(new java.awt.Color(0, 102, 204));
         monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         monto.setBorder(null);
-        monto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                montoActionPerformed(evt);
-            }
-        });
         monto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 montoKeyTyped(evt);
@@ -319,7 +314,7 @@ public class RegistroCompras extends javax.swing.JFrame {
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 462, -1, -1));
 
         comboBanco.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        comboBanco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banco", "Banesco", "Mercantil", "Venezuela", "Provincial", "Exterior" }));
+        comboBanco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banesco", "Mercantil", "Venezuela", "Provincial", "Exterior" }));
         comboBanco.setBorder(null);
         jPanel2.add(comboBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 462, 90, -1));
 
@@ -412,7 +407,7 @@ public class RegistroCompras extends javax.swing.JFrame {
             
             
                
-            JOptionPane.showMessageDialog(rootPane, "Compra Añadida", "Compras",
+            JOptionPane.showMessageDialog(rootPane, "Compra añadida", "Compras",
                     JOptionPane.INFORMATION_MESSAGE);
             
             
@@ -421,7 +416,10 @@ public class RegistroCompras extends javax.swing.JFrame {
             email.setText("");
             ID.setText("");
             apellido.setText("");
-            nombre.setText("");    
+            nombre.setText(""); 
+            txtDocumento.setText("");
+            txtCuenta.setText("");
+            Ruta="";
         }
         
         }catch(NullPointerException e){
@@ -448,6 +446,7 @@ public class RegistroCompras extends javax.swing.JFrame {
         nombre.setText("");
         txtDocumento.setText("");
         txtCuenta.setText("");
+        Ruta="";
     }//GEN-LAST:event_BotonLimpiarMousePressed
 
     private void montoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_montoKeyTyped
@@ -476,14 +475,17 @@ public class RegistroCompras extends javax.swing.JFrame {
     }//GEN-LAST:event_apellidoKeyTyped
 
     private void btnnHistorialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnHistorialMousePressed
-       
+        if (ficheroCompras.exists()){
         try {
-           Historial historial = new Historial();
+           Historial historial = new Historial("Compras");
            historial.setVisible(true);
            this.dispose();
         } 
        catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(RegistroCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Debe añadir una Compra", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnnHistorialMousePressed
 
@@ -498,10 +500,6 @@ public class RegistroCompras extends javax.swing.JFrame {
         toUpperCase(nombre,evt);
 
     }//GEN-LAST:event_Typed
-
-    private void montoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_montoActionPerformed
 
     private void labelScreenshotMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelScreenshotMousePressed
        int returnVal= Screenshot.showOpenDialog(this);

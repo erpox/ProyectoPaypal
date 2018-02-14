@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import walletcontrol.ControlVentas;
 import walletcontrol.CopiarArchivos;
@@ -33,6 +34,8 @@ private ControlVentas control=new ControlVentas();
 private final String Documentos;
 private String Ruta;
 private int i=0;
+ private final File ficheroVentas=new File("C:\\ProgramData\\WalletControlVentas.dat");
+    
     public RegistroVentas() {
         initComponents();
         setLocationRelativeTo(null);
@@ -96,6 +99,8 @@ private int i=0;
         jTextField3 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
 
+        jFileChooser1.setFileFilter(new FileNameExtensionFilter("Imagenes", "jpg", "png", "gif", "bmp"));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(510, 480));
@@ -157,16 +162,6 @@ private int i=0;
         correo.setForeground(new java.awt.Color(66, 66, 66));
         correo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         correo.setBorder(null);
-        correo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                correoFocusGained(evt);
-            }
-        });
-        correo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                correoMouseClicked(evt);
-            }
-        });
         correo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 correoKeyTyped(evt);
@@ -177,7 +172,7 @@ private int i=0;
         origen.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         origen.setForeground(new java.awt.Color(51, 51, 51));
         origen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Foro-PTC", "Instagram", "Facebook", "AirTM" }));
-        origen.setToolTipText("Pagina web donde se origino la venta");
+        origen.setToolTipText("Se refiere al sitio web donde realizó la venta");
         jPanel2.add(origen, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 29, 101, -1));
 
         jSeparator1.setForeground(new java.awt.Color(51, 51, 51));
@@ -223,16 +218,6 @@ private int i=0;
         monto.setForeground(new java.awt.Color(0, 102, 204));
         monto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         monto.setBorder(null);
-        monto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                montoFocusGained(evt);
-            }
-        });
-        monto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                montoMouseClicked(evt);
-            }
-        });
         monto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 montoKeyTyped(evt);
@@ -264,6 +249,7 @@ private int i=0;
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 98, 90, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Link_24px.png"))); // NOI18N
+        jLabel3.setToolTipText("Añade enlaces externos, comentarios, etc");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -273,6 +259,7 @@ private int i=0;
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 316, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Unsplash_24px.png"))); // NOI18N
+        jLabel7.setToolTipText("Añade una captura desde una carpeta local");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -345,13 +332,18 @@ private int i=0;
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonHistorialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonHistorialMousePressed
-         try {
-             Historial historial=new Historial();
+        if(ficheroVentas.exists()){ 
+        try {
+             Historial historial=new Historial("Ventas");
+
              historial.setVisible(true);
              this.dispose();
          } catch (IOException | ClassNotFoundException ex) {
              Logger.getLogger(RegistroVentas.class.getName()).log(Level.SEVERE, null, ex);
          }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Debe añadir una Venta", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_botonHistorialMousePressed
 
     private void botonInicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonInicioMousePressed
@@ -375,14 +367,6 @@ private int i=0;
             evt.consume();
         }
     }//GEN-LAST:event_montoKeyTyped
-
-    private void montoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_montoMouseClicked
-        monto.setText("");
-    }//GEN-LAST:event_montoMouseClicked
-
-    private void montoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_montoFocusGained
-        monto.setText("");
-    }//GEN-LAST:event_montoFocusGained
 
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
         if(!verificarCampos()){
@@ -435,14 +419,6 @@ private int i=0;
         toUpperCase(correo,evt);
     }//GEN-LAST:event_correoKeyTyped
 
-    private void correoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoMouseClicked
-        correo.setText("");
-    }//GEN-LAST:event_correoMouseClicked
-
-    private void correoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoFocusGained
-        correo.setText("");
-    }//GEN-LAST:event_correoFocusGained
-
     private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
        int returnVal= jFileChooser1.showOpenDialog(this);
              if(returnVal==JFileChooser.APPROVE_OPTION){
@@ -472,76 +448,6 @@ private int i=0;
                    "\\"+ID.getText()+"\\";
     }//GEN-LAST:event_jLabel3MousePressed
 
-    private void toUpperCase(JTextField field,java.awt.event.KeyEvent evt){
-        field= (JTextField)evt.getComponent();
-
-    String texto=field.getText().trim();//para evitar espacios en blanco antes y despues del texto
-    if(texto.length()>0){
-    char primero=texto.charAt(0);
-    texto=Character.toUpperCase(primero)+texto.substring(1, texto.length());
-    field.setText(texto);
-    }
-    }
-    
-    private void PlaceHolder()    {
-    TextPrompt user = new TextPrompt("      Usuario", usuario);
-    TextPrompt id= new TextPrompt ("          ID",ID);
-    id.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt mail=new TextPrompt("      Correo",correo);
-    mail.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt monto2=new TextPrompt("   Monto",monto);
-    monto2.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt nombre2=new TextPrompt("    Nombre", jTextField1);
-    nombre2.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt apellido2=new TextPrompt("     Apellido", jTextField3);
-    apellido2.setShow(TextPrompt.Show.FOCUS_LOST);
-    TextPrompt documento2=new TextPrompt("  Documento", jTextField2);
-    documento2.setShow(TextPrompt.Show.FOCUS_LOST);
-} 
-    
-      private boolean verificarCampos(){
-        boolean r=usuario.getText().isEmpty();
-        r|=ID.getText().isEmpty();
-        r|=correo.getText().isEmpty();
-        r|=monto.getText().isEmpty();
-        
-        return r;
-    }
-      private void limpiarCampos(){
-        usuario.setText("");
-        monto.setText("");
-        correo.setText("");
-        ID.setText("");
-      }
-      private void guardarDatosPersonles(){
-    try {
-        File ruta=new File(Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
-                "\\"+ID.getText());
-        ruta.mkdirs();
-        File fichero = new File(Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
-                "\\"+ID.getText()+"\\"+ID.getText()+".txt");
-        
-        BufferedWriter bw = new BufferedWriter(new FileWriter(fichero,true));
-        bw.write("Datos Personales para esta operacion");
-        bw.newLine();
-        bw.write("Nombre: "+jTextField1.getText()+" "+jTextField3.getText()+" C.I:"+jTextField2.getText());
-        bw.newLine();
-        bw.close();
-        Ruta=Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
-                "\\"+ID.getText()+"\\";
-    } catch (IOException ex) {
-        Logger.getLogger(RegistroVentas.class.getName()).log(Level.SEVERE, null, ex);
-    }
-          
-    
-    }
-      private boolean verificarCamposDatosPersonales(){
-           boolean r=jTextField1.getText().isEmpty();
-        r|=jTextField3.getText().isEmpty();
-        r|=jTextField2.getText().isEmpty();
-        
-        return r;
-      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ID;
     private javax.swing.JLabel Limpiar;
@@ -584,4 +490,79 @@ private int i=0;
     private javax.swing.JComboBox<String> origen;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
+
+    private void toUpperCase(JTextField field,java.awt.event.KeyEvent evt){
+        field= (JTextField)evt.getComponent();
+
+    String texto=field.getText().trim();//para evitar espacios en blanco antes y despues del texto
+    if(texto.length()>0){
+    char primero=texto.charAt(0);
+    texto=Character.toUpperCase(primero)+texto.substring(1, texto.length());
+    field.setText(texto);
+    }
+    }
+    
+    private void PlaceHolder()    {
+    TextPrompt user = new TextPrompt("      Usuario", usuario);
+    TextPrompt id= new TextPrompt ("          ID",ID);
+    id.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt mail=new TextPrompt("      Correo",correo);
+    mail.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt monto2=new TextPrompt("   Monto",monto);
+    monto2.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt nombre2=new TextPrompt("    Nombre", jTextField1);
+    nombre2.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt apellido2=new TextPrompt("     Apellido", jTextField3);
+    apellido2.setShow(TextPrompt.Show.FOCUS_LOST);
+    TextPrompt documento2=new TextPrompt("  Documento", jTextField2);
+    documento2.setShow(TextPrompt.Show.FOCUS_LOST);
+} 
+    
+      private boolean verificarCampos(){
+        boolean r=usuario.getText().isEmpty();
+        r|=ID.getText().isEmpty();
+        r|=correo.getText().isEmpty();
+        r|=monto.getText().isEmpty();
+        
+        return r;
+    }
+      private void limpiarCampos(){
+        usuario.setText("");
+        monto.setText("");
+        correo.setText("");
+        ID.setText("");
+        jTextField1.setText("");
+        jTextField3.setText("");
+        jTextField2.setText("");
+        Ruta="";
+      }
+      private void guardarDatosPersonles(){
+    try {
+        File ruta=new File(Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                "\\"+ID.getText());
+        ruta.mkdirs();
+        File fichero = new File(Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                "\\"+ID.getText()+"\\"+ID.getText()+".txt");
+        
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fichero,true));
+        bw.write("Datos Personales para esta operacion");
+        bw.newLine();
+        bw.write("Nombre: "+jTextField1.getText()+" "+jTextField3.getText()+" C.I:"+jTextField2.getText());
+        bw.newLine();
+        bw.close();
+        Ruta=Documentos+"\\WalletControl\\Ventas\\"+usuario.getText()+
+                "\\"+ID.getText()+"\\";
+    } catch (IOException ex) {
+        Logger.getLogger(RegistroVentas.class.getName()).log(Level.SEVERE, null, ex);
+    }
+          
+    
+    }
+      private boolean verificarCamposDatosPersonales(){
+           boolean r=jTextField1.getText().isEmpty();
+        r|=jTextField3.getText().isEmpty();
+        r|=jTextField2.getText().isEmpty();
+        
+        return r;
+      }
 }

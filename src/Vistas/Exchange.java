@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import walletcontrol.ControlExchange;
 import walletcontrol.CopiarArchivos;
@@ -28,7 +29,7 @@ private ControlExchange control1=new ControlExchange();
 private String Ruta;
 private final String Documentos;
 private int i;
-
+private final File ficheroExchange=new File("C:\\ProgramData\\WalletControlExchange.dat");
 
     public Exchange() {
         this.i = 0;
@@ -82,6 +83,8 @@ private int i;
         ID = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
 
+        jFileChooser1.setFileFilter(new FileNameExtensionFilter("Imagenes", "jpg", "png", "gif", "bmp"));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -90,6 +93,7 @@ private int i;
         jPanel2.setForeground(new java.awt.Color(30, 136, 229));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Home_24px_1.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel1MousePressed(evt);
@@ -97,6 +101,7 @@ private int i;
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Literature_30px.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel2MousePressed(evt);
@@ -161,6 +166,7 @@ private int i;
 
         jComboBoxOrigen.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jComboBoxOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Foro-PTC", "Instagram", "Facebook", "AirTM" }));
+        jComboBoxOrigen.setToolTipText("Se refiere al sitio web donde realizó el Exchange");
 
         jComboBoxEnvias.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jComboBoxEnvias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paypal", "Payza", "Payoneer", "Neteller", "Skrill", "Bitcoin", "Ethereum", "Giftcard", "Payeer", "STP" }));
@@ -206,7 +212,8 @@ private int i;
         txtMontoRecibes.setForeground(new java.awt.Color(0, 102, 204));
         txtMontoRecibes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtMontoRecibes.setText("Monto");
-        txtMontoRecibes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtMontoRecibes.setToolTipText("Presiona aqui para calcular el monto recibido");
+        txtMontoRecibes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtMontoRecibes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtMontoRecibesMousePressed(evt);
@@ -233,7 +240,7 @@ private int i;
         jDateChooser1.setDateFormatString("MMM dd yyyy");
 
         guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Save_30px.png"))); // NOI18N
-        guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         guardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 guardarMousePressed(evt);
@@ -241,10 +248,16 @@ private int i;
         });
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Broom_30px.png"))); // NOI18N
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel13MousePressed(evt);
+            }
+        });
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Add_Link_24px.png"))); // NOI18N
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel14.setToolTipText("Añade enlaces externos, comentarios, etc");
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel14MousePressed(evt);
@@ -252,7 +265,8 @@ private int i;
         });
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/Images/icons8_Unsplash_24px.png"))); // NOI18N
-        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel15.setToolTipText("Añade una captura desde una carpeta local");
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel15MousePressed(evt);
@@ -479,14 +493,19 @@ private int i;
     }//GEN-LAST:event_jLabel1MousePressed
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        if(ficheroExchange.exists()){
         try {
-            new Historial().setVisible(true);
+            new Historial("Exchange").setVisible(true);
             this.dispose();
         } catch (IOException ex) {
             Logger.getLogger(Exchange.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Exchange.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Debe añadir un Exchange", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jLabel2MousePressed
 
     private void guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMousePressed
@@ -513,14 +532,20 @@ private int i;
                     txtMontoEnvias.getText(), txtMontoRecibes.getText(),
                     fecha1,ID.getText(),procesadorEnvias,procesadorRecibes,Ruta,"");
                     System.err.println(Ruta);
-                    JOptionPane.showMessageDialog(rootPane, "Exchange añadida", "Exchange",
+                    JOptionPane.showMessageDialog(rootPane, "Exhange añadida", "Exchange",
                         JOptionPane.INFORMATION_MESSAGE);
 
-                    
+                     usuario.setText("");
+                     txtMontoEnvias.setText("");
+                     correo.setText("");
+                     ID.setText("");
+                     txtPorcentaje.setText("");
+                     txtMontoRecibes.setText("Monto");
+                     Ruta="";
                 }
             }catch(NullPointerException e){
                 JOptionPane.showMessageDialog(rootPane, "Debe ingresar una fecha",
-                    "Datos Incompletos", JOptionPane.ERROR_MESSAGE);
+                    "Datos incompletos", JOptionPane.ERROR_MESSAGE);
             }
         }else{JOptionPane.showMessageDialog(rootPane, "Datos incompletos",
             "Datos Incompletos", JOptionPane.ERROR_MESSAGE);
@@ -589,6 +614,15 @@ private int i;
               evt.consume();      
           }
     }//GEN-LAST:event_txtMontoEnviasKeyTyped
+
+    private void jLabel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MousePressed
+        usuario.setText("");
+        txtMontoEnvias.setText("");
+        correo.setText("");
+        ID.setText("");
+        txtPorcentaje.setText("");
+        txtMontoRecibes.setText("Monto");
+    }//GEN-LAST:event_jLabel13MousePressed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables

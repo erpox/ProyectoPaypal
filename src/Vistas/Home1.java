@@ -8,10 +8,12 @@ package Vistas;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.beans.PropertyVetoException;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.paint.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -21,10 +23,16 @@ import javax.swing.JPanel;
 public class Home1 extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 1L;
-
+    private final File ficheroCompras=new File("C:\\ProgramData\\WalletControl.dat");
+    private final File ficheroVentas=new File("C:\\ProgramData\\WalletControlVentas.dat");
+    private final File ficheroExchange=new File("C:\\ProgramData\\WalletControlExchange.dat");
+    private String selectedTab=null;
+    
+    
     public Home1() {
         initComponents();
         setLocationRelativeTo(null);
+        verificarFichero();
        
     }
     @Override
@@ -470,14 +478,19 @@ public class Home1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelComprasMousePressed
 
     private void jPanelHistorialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHistorialMousePressed
+
+       if(selectedTab!=null){
         try {
             Historial comprash;
-            comprash = new Historial();
+            comprash = new Historial(selectedTab);
             comprash.setVisible(true);
             this.dispose();
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(Home1.class.getName()).log(Level.SEVERE, null, ex);
         }
+       }else{
+           JOptionPane.showMessageDialog(jPanel1, "No hay registros","Error",JOptionPane.ERROR_MESSAGE);
+       }
     }//GEN-LAST:event_jPanelHistorialMousePressed
 
     private void jPanelVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMousePressed
@@ -508,7 +521,7 @@ public class Home1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelconfigMouseExited
 
     private void jPanelconfigMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelconfigMousePressed
-        // TODO add your handling code here:
+       JOptionPane.showMessageDialog(jPanel1, "Modulo en desarrollo");
     }//GEN-LAST:event_jPanelconfigMousePressed
 
     private void jPanelExportarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelExportarMouseEntered
@@ -520,8 +533,13 @@ public class Home1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelExportarMouseExited
 
     private void jPanelExportarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelExportarMousePressed
-       new Dashboard().setVisible(true);
+        
+        if(selectedTab!=null){
+        new Dashboard(selectedTab).setVisible(true);
        this.dispose();
+       }else{
+           JOptionPane.showMessageDialog(jPanel1, "No hay registros","Error",JOptionPane.ERROR_MESSAGE);
+       }
     }//GEN-LAST:event_jPanelExportarMousePressed
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(224, 224, 224));
@@ -588,4 +606,14 @@ public class Home1 extends javax.swing.JFrame {
     private void setVisibility(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    private void verificarFichero(){
+        if(ficheroCompras.exists()){
+           selectedTab="Compras";
+       }else if(ficheroVentas.exists()){
+           selectedTab="Ventas";
+       }else if(ficheroExchange.exists()){
+           selectedTab="Exchange";
+       }
+    }
 }
+

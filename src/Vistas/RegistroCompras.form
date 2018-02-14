@@ -197,7 +197,6 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="montoActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="montoKeyTyped"/>
               </Events>
               <Constraints>
@@ -629,13 +628,12 @@
                   <Font name="Microsoft JhengHei" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
-                    <StringItem index="0" value="Banco"/>
-                    <StringItem index="1" value="Banesco"/>
-                    <StringItem index="2" value="Mercantil"/>
-                    <StringItem index="3" value="Venezuela"/>
-                    <StringItem index="4" value="Provincial"/>
-                    <StringItem index="5" value="Exterior"/>
+                  <StringArray count="5">
+                    <StringItem index="0" value="Banesco"/>
+                    <StringItem index="1" value="Mercantil"/>
+                    <StringItem index="2" value="Venezuela"/>
+                    <StringItem index="3" value="Provincial"/>
+                    <StringItem index="4" value="Exterior"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
